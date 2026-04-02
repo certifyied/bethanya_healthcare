@@ -1,8 +1,13 @@
-import type { Config } from "tailwindcss";
+const tailwindcssAnimate = require("tailwindcss-animate");
 
-export default {
+module.exports = {
   darkMode: ["class"],
-  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -14,9 +19,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ['Playfair Display', 'Georgia', 'serif'],
-        body: ['Lato', 'Helvetica Neue', 'sans-serif'],
-        // bodoni: ['"Bodoni Moda"', 'serif'],
+        heading: ["Playfair Display", "Georgia", "serif"],
+        body: ["Lato", "Helvetica Neue", "sans-serif"],
+        bodoni: ["Bodoni Moda", "serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -102,5 +107,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
-} satisfies Config;
+  plugins: [tailwindcssAnimate],
+};

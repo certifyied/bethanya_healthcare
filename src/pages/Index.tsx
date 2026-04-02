@@ -24,38 +24,67 @@ const Index = () => {
   return (
     <div className="overflow-hidden">
       {/* Hero */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-hero overflow-hidden">
-        <FloatingLeaves />
-        <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
-          <ScrollReveal>
-            <p className="font-body text-herbal text-sm tracking-[0.3em] uppercase mb-4">
-              Ancient Wisdom, Modern Wellness
-            </p>
-          </ScrollReveal>
-          <ScrollReveal delay={0.2}>
-            <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold text-primary-foreground leading-tight mb-6">
-              Rooted in Nature,{" "}
-              <span className="italic text-herbal">Powered by Ayurveda</span>
-            </h1>
-          </ScrollReveal>
-          <ScrollReveal delay={0.4}>
-            <p className="font-body text-primary-foreground/70 text-lg md:text-xl mb-10 max-w-xl mx-auto">
-              Discover handcrafted Ayurvedic products that honor centuries of wisdom
-              and bring the healing power of nature to your daily rituals.
-            </p>
-          </ScrollReveal>
-          <ScrollReveal delay={0.6}>
-            <Link
-              to="/products"
-              className="inline-flex items-center gap-2 bg-gradient-leaf text-primary-foreground font-body font-medium px-8 py-4 rounded-2xl shadow-glow hover:shadow-[0_0_40px_-5px_hsl(122_39%_49%_/_0.5)] transition-all duration-300 hover:scale-105"
-            >
-              <Leaf className="w-5 h-5" />
-              Explore Products
-            </Link>
-          </ScrollReveal>
+      <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden mt-[-67px] px-4">
+
+        {/* 🌿 CURVED BACKGROUND (DOES NOT AFFECT TEXT POSITION) */}
+        {/* 🌿 CURVED BACKGROUND WITH PERFECT BORDER */}
+        <div className="absolute left-1/2 -translate-x-1/2 w-[85%] md:w-[70%] lg:w-[60%] top-0 bottom-0 -z-10">
+
+          {/* BORDER WRAPPER */}
+          <div className="w-full h-full rounded-b-[180px] md:rounded-b-[240px] border border-black/30 p-[6px]">
+
+            {/* GREEN BACKGROUND */}
+            <div className="w-full h-full bg-[#1f3d2b] rounded-b-[180px] md:rounded-b-[240px] p-[10px]">
+
+              {/* GOLD INNER LINE (DEEP INSIDE) */}
+              <div className="w-full h-full rounded-b-[180px] md:rounded-b-[240px] border border-[#D4AF37]"></div>
+
+            </div>
+
+          </div>
+
         </div>
-        {/* Bottom gradient fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-10" />
+
+        {/* TEXT (UNCHANGED) */}
+        <div className="text-center z-10 px-8 -mt-16">
+          <h1 className="font-serif text-[#D4AF37] text-4xl md:text-7xl leading-tight tracking-wider scale-x-110">
+            Bethanya Healthcare
+          </h1>
+
+          <p className="mt-4 text-xs tracking-[0.4em] uppercase text-[#D4AF37]">
+            Authentic Ayurveda
+          </p>
+        </div>
+
+        {/* IMAGE (UNCHANGED) */}
+        {/* IMAGE SECTION */}
+        <div className="absolute bottom-0 w-full flex justify-center items-end">
+
+          {/* LEFT PNG IMAGE */}
+          <img
+            src="/images/395fc983a28dadfb76c29d23b78a40ec.png"
+            alt="left decoration"
+            className="
+    absolute 
+    left-[-25px] sm:left-[-10px] md:left-[0%]   /* 👈 mobile → closer to edge */
+    bottom-4 sm:bottom-6 md:bottom-10
+    w-[80px] sm:w-[100px] md:w-[320px]         /* 👈 smaller on mobile */
+    object-contain 
+    opacity-90
+    pointer-events-none
+  "
+          />
+
+          {/* MAIN IMAGE */}
+          <img
+            src="/images/Download premium image of Ayurveda spice plant herbs_ by George about ayurveda, ayurveda background, white background, background, and leaf 13798578.png"
+            alt="herbs"
+            className="w-[90%] md:w-[700px] object-contain 
+    drop-shadow-[0_100px_40px_rgba(0,0,0,0.15)]"
+          />
+
+        </div>
+
       </section>
 
       {/* Philosophy */}
@@ -67,8 +96,8 @@ const Index = () => {
               The Science of Life
             </h2>
             <p className="font-body text-muted-foreground text-lg leading-relaxed max-w-2xl mx-auto">
-              Ayurveda — the "science of life" — is one of the world's oldest holistic healing systems, 
-              developed over 5,000 years ago in India. At Vriksha, we honor this timeless tradition by 
+              Ayurveda — the "science of life" — is one of the world's oldest holistic healing systems,
+              developed over 5,000 years ago in India. At Vriksha, we honor this timeless tradition by
               creating products that balance your body, mind, and spirit through the pure power of nature.
             </p>
           </ScrollReveal>
