@@ -46,7 +46,7 @@ const ProductDetail = () => {
             <div>
               <span className="font-body text-herbal text-sm tracking-[0.2em] uppercase">{product.category}</span>
               <h1 className="font-heading text-3xl md:text-4xl text-foreground mt-2 mb-3">{product.name}</h1>
-              <p className="font-heading text-2xl text-forest font-semibold mb-6">{product.price}</p>
+              {/* <p className="font-heading text-2xl text-forest font-semibold mb-6">{product.price}</p> */}
               <p className="font-body text-muted-foreground leading-relaxed mb-8">{product.description}</p>
 
               <div className="mb-8">
@@ -72,9 +72,9 @@ const ProductDetail = () => {
                 </ul>
               </div>
 
-              <button className="w-full bg-gradient-leaf text-primary-foreground font-body font-medium py-4 rounded-2xl shadow-glow hover:shadow-[0_0_40px_-5px_hsl(122_39%_49%_/_0.5)] transition-all duration-300 hover:scale-[1.02]">
+              {/* <button className="w-full bg-gradient-leaf text-primary-foreground font-body font-medium py-4 rounded-2xl shadow-glow hover:shadow-[0_0_40px_-5px_hsl(122_39%_49%_/_0.5)] transition-all duration-300 hover:scale-[1.02]">
                 Add to Cart
-              </button>
+              </button> */}
             </div>
           </ScrollReveal>
         </div>

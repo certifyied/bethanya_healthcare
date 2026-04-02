@@ -4,6 +4,7 @@ import FloatingLeaves from "@/components/FloatingLeaves";
 import ScrollReveal from "@/components/ScrollReveal";
 import ProductCard from "@/components/ProductCard";
 import { products } from "@/data/products";
+import Banner from "@/components/Banner";
 
 const benefits = [
   { icon: Leaf, title: "100% Natural", desc: "Pure ingredients sourced from ancient forests and organic farms." },
@@ -66,12 +67,18 @@ const Index = () => {
             alt="left decoration"
             className="
     absolute 
-    left-[-25px] sm:left-[-10px] md:left-[0%]   /* 👈 mobile → closer to edge */
+    left-[-25px] sm:left-[-10px] md:left-[0%]
     bottom-4 sm:bottom-6 md:bottom-10
-    w-[80px] sm:w-[100px] md:w-[320px]         /* 👈 smaller on mobile */
+
+    w-[80px] 
+    sm:w-[100px] 
+    md:w-[160px]   /* 👈 smaller for tablet */
+    lg:w-[320px]   /* 👈 keep big for desktop */
+
     object-contain 
     opacity-90
     pointer-events-none
+    drop-shadow-[0_20px_25px_rgba(0,0,0,0.60)]
   "
           />
 
@@ -87,51 +94,123 @@ const Index = () => {
 
       </section>
 
-      {/* Philosophy */}
       <section className="py-24 px-6">
         <div className="container mx-auto max-w-4xl text-center">
           <ScrollReveal>
-            <p className="font-body text-herbal text-sm tracking-[0.2em] uppercase mb-3">Our Philosophy</p>
-            <h2 className="font-heading text-3xl md:text-5xl text-foreground mb-6">
+
+            {/* DARK GOLD */}
+            <p className="font-body text-[#9c7c1f] text-sm tracking-[0.2em] uppercase mb-3">
+              Our Philosophy
+            </p>
+
+            {/* DARK GREEN */}
+            <h2 className="font-heading text-3xl md:text-5xl text-[#1f3d2b] mb-6">
               The Science of Life
             </h2>
-            <p className="font-body text-muted-foreground text-lg leading-relaxed max-w-2xl mx-auto">
-              Ayurveda — the "science of life" — is one of the world's oldest holistic healing systems,
-              developed over 5,000 years ago in India. At Vriksha, we honor this timeless tradition by
-              creating products that balance your body, mind, and spirit through the pure power of nature.
-            </p>
+
+            {/* DARK GREEN with relative container */}
+            <div className="relative max-w-2xl mx-auto text-left">
+              <p className="font-body text-[#1f3d2b]/100 text-lg leading-relaxed">
+                Ayurveda — the "science of life" — is one of the world's oldest holistic healing systems,
+                developed over 5,000 years ago in India. At Vriksha, we honor this timeless tradition by
+                creating products that balance your body, mind, and spirit through the pure power of nature.
+              </p>
+
+              {/* Bottom-left PNG image, responsive translate */}
+              <img
+                src="/images/0cc4c6cb031fafe691548f47d651493e.png"
+                alt="Ayurveda Illustration"
+                className="
+    absolute bottom-0 left-0
+    w-24 h-24 md:w-48 md:h-48
+    object-contain
+
+    -translate-x-20 sm:-translate-x-24 md:-translate-x-36
+    -translate-y-6 md:-translate-y-8
+
+    drop-shadow-[0_20px_25px_rgba(0,0,0,0.60)]
+  "
+              />
+            </div>
+
           </ScrollReveal>
         </div>
       </section>
 
+
+      <Banner />
+
+
       {/* Featured Products */}
-      <section className="py-20 px-6 bg-card/50">
-        <div className="container mx-auto">
+      <section
+        className="py-20 px-6 bg-cover bg-center relative"
+        style={{ backgroundImage: "url('/images/download.jpg')" }} // your uploaded image
+      >
+        <div className="relative container mx-auto">
+
+          {/* HEADING */}
           <ScrollReveal>
             <div className="text-center mb-14">
-              <p className="font-body text-herbal text-sm tracking-[0.2em] uppercase mb-3">Curated for You</p>
-              <h2 className="font-heading text-3xl md:text-4xl text-foreground">Featured Products</h2>
+              <p className="font-body text-[#c2a97a] text-sm tracking-[0.2em] uppercase mb-3">
+                Curated for You
+              </p>
+
+              <h2 className="font-heading text-3xl md:text-7xl 
+    bg-gradient-to-r from-[#c2a97a] via-[#e6d3a3] to-[#a67c2d] 
+    bg-clip-text text-transparent">
+                Featured Products
+              </h2>
             </div>
           </ScrollReveal>
+
+          {/* PRODUCT GRID */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+
             {featured.map((product, i) => (
-              <ScrollReveal key={product.id} delay={i * 0.15}>
-                <ProductCard {...product} />
-              </ScrollReveal>
+              <div
+                key={product.id}
+                className="opacity-0 animate-slideRight"
+                style={{ animationDelay: `${i * 0.2}s`, animationFillMode: "forwards" }}
+              >
+                {/* GOLDEN OUTLINE WRAPPER */}
+                <div>
+                  <ProductCard {...product} />
+                </div>
+              </div>
             ))}
+
           </div>
+
+          {/* BUTTON */}
           <ScrollReveal delay={0.4}>
             <div className="text-center mt-12">
               <Link
-                to="/products"
-                className="font-body text-forest font-medium border-2 border-forest px-8 py-3 rounded-2xl hover:bg-forest hover:text-primary-foreground transition-all duration-300"
-              >
-                View All Products
-              </Link>
+  to="/products"
+  className="
+    inline-block px-10 py-3 rounded-full
+
+    forum-regular text-lg lg:text-xl xl:text-3xl font-semibold tracking-wide
+
+    text-black
+    bg-gradient-to-r from-[#c2a97a] via-[#e6d3a3] to-[#a67c2d]
+
+    shadow-[0_6px_25px_rgba(194,169,122,0.4),inset_0_1px_2px_rgba(255,255,255,0.4)]
+
+    hover:brightness-110
+    hover:shadow-[0_10px_35px_rgba(194,169,122,0.6)]
+
+    transition-all duration-300
+  "
+>
+  View All Products
+</Link>
             </div>
           </ScrollReveal>
+
         </div>
       </section>
+
+
 
       {/* Benefits */}
       <section className="py-24 px-6">
