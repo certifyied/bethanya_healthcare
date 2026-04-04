@@ -35,7 +35,7 @@ const Index = () => {
           <div className="w-full h-full rounded-b-[180px] md:rounded-b-[240px] border border-black/30 p-[6px]">
 
             {/* GREEN BACKGROUND */}
-            <div className="w-full h-full bg-[#1f3d2b] rounded-b-[180px] md:rounded-b-[240px] p-[10px]">
+            <div className="w-full h-full bg-[#0f2218] rounded-b-[180px] md:rounded-b-[240px] p-[10px]">
 
               {/* GOLD INNER LINE (DEEP INSIDE) */}
               <div className="w-full h-full rounded-b-[180px] md:rounded-b-[240px] border border-[#D4AF37]"></div>
@@ -48,7 +48,7 @@ const Index = () => {
 
         {/* TEXT (UNCHANGED) */}
         <div className="text-center z-10 px-8 -mt-16">
-          <h1 className="font-serif text-[#D4AF37] text-4xl md:text-7xl leading-tight tracking-wider scale-x-110">
+          <h1 className="forum-regular text-[#D4AF37] text-4xl md:text-7xl leading-tight tracking-wider scale-x-110">
             Bethanya Healthcare
           </h1>
 
@@ -63,24 +63,26 @@ const Index = () => {
 
           {/* LEFT PNG IMAGE */}
           <img
-            src="/images/395fc983a28dadfb76c29d23b78a40ec.png"
-            alt="left decoration"
-            className="
+  src="/images/395fc983a28dadfb76c29d23b78a40ec.png"
+  alt="left decoration"
+  className="
     absolute 
     left-[-25px] sm:left-[-10px] md:left-[0%]
     bottom-4 sm:bottom-6 md:bottom-10
 
     w-[80px] 
     sm:w-[100px] 
-    md:w-[160px]   /* 👈 smaller for tablet */
-    lg:w-[320px]   /* 👈 keep big for desktop */
+    md:w-[160px]
+    lg:w-[320px]
 
     object-contain 
     opacity-90
     pointer-events-none
-    drop-shadow-[0_20px_25px_rgba(0,0,0,0.60)]
+    drop-shadow-[0_20px_15px_rgba(0,0,0,0.60)]
+
+    animate-float
   "
-          />
+/>
 
           {/* MAIN IMAGE */}
           <img
@@ -142,10 +144,7 @@ const Index = () => {
 
 
       {/* Featured Products */}
-      <section
-        className="py-20 px-6 bg-cover bg-center relative"
-        style={{ backgroundImage: "url('/images/download.jpg')" }} // your uploaded image
-      >
+      <section className="py-20 px-6 bg-[#0f2218] relative">
         <div className="relative container mx-auto">
 
           {/* HEADING */}
@@ -156,8 +155,8 @@ const Index = () => {
               </p>
 
               <h2 className="font-heading text-3xl md:text-7xl 
-    bg-gradient-to-r from-[#c2a97a] via-[#e6d3a3] to-[#a67c2d] 
-    bg-clip-text text-transparent">
+bg-gradient-to-r from-[#c2a97a] via-[#e6d3a3] to-[#a67c2d] 
+bg-clip-text text-transparent">
                 Featured Products
               </h2>
             </div>
@@ -165,45 +164,37 @@ const Index = () => {
 
           {/* PRODUCT GRID */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-
             {featured.map((product, i) => (
               <div
                 key={product.id}
                 className="opacity-0 animate-slideRight"
                 style={{ animationDelay: `${i * 0.2}s`, animationFillMode: "forwards" }}
               >
-                {/* GOLDEN OUTLINE WRAPPER */}
                 <div>
                   <ProductCard {...product} />
                 </div>
               </div>
             ))}
-
           </div>
 
           {/* BUTTON */}
           <ScrollReveal delay={0.4}>
             <div className="text-center mt-12">
               <Link
-  to="/products"
-  className="
-    inline-block px-10 py-3 rounded-full
-
-    forum-regular text-lg lg:text-xl xl:text-3xl font-semibold tracking-wide
-
-    text-black
-    bg-gradient-to-r from-[#c2a97a] via-[#e6d3a3] to-[#a67c2d]
-
-    shadow-[0_6px_25px_rgba(194,169,122,0.4),inset_0_1px_2px_rgba(255,255,255,0.4)]
-
-    hover:brightness-110
-    hover:shadow-[0_10px_35px_rgba(194,169,122,0.6)]
-
-    transition-all duration-300
-  "
->
-  View All Products
-</Link>
+                to="/products"
+                className="
+inline-block px-10 py-3 rounded-full
+forum-regular text-lg lg:text-xl xl:text-3xl font-semibold tracking-wide
+text-black
+bg-gradient-to-r from-[#c2a97a] via-[#e6d3a3] to-[#a67c2d]
+shadow-md
+hover:brightness-110
+hover:shadow-lg
+transition-all duration-300
+"
+              >
+                View All Products
+              </Link>
             </div>
           </ScrollReveal>
 

@@ -28,11 +28,8 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
-        ? "navbar-blur bg-white/90 py-3"
-        : "bg-transparent py-5"
-        }`}
-    >
+  className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md py-4 transition-all duration-300"
+>
       <div className="container mx-auto flex items-center justify-between px-6">
 
         {/* LEFT NAV */}
@@ -41,10 +38,10 @@ const Navbar = () => {
             <Link
               key={link.to}
               to={link.to}
-              className={`relative forum-regular text-lg lg:text-xl xl:text-3xl font-semibold tracking-wide transition-all duration-300 ${location.pathname === link.to
-                ? "text-forest"
-                : "text-accent hover:text-forest"
-                }`}
+              className={`relative forum-regular text-lg lg:text-xl xl:text-3xl font-semibold tracking-wide text-[#1f3d2b]
+after:content-[''] after:absolute after:left-0 after:bottom-[-6px] after:h-[2px] after:bg-[#D4AF37] after:transition-all after:duration-300
+${location.pathname === link.to ? "after:w-full" : "after:w-0 hover:after:w-full"}
+`}
             >
               {link.label}
             </Link>
@@ -52,13 +49,20 @@ const Navbar = () => {
         </div>
 
         {/* CENTER LOGO */}
-        <div className="flex justify-center flex-1">
-          <Link to="/" className="flex items-center gap-2 group">
-            <Leaf className="w-7 h-7  text-herbal transition-transform duration-300 group-hover:rotate-12" />
-            <span className="font-heading text-[#D4AF37] text-2xl font-bold tracking-tight">
-              Bethanya
-            </span>
-          </Link>
+        <div className="flex justify-center flex-1 ">
+          <div className="relative p-[6px] rounded-full ring-2 ring-[#D4AF37]/70">
+
+            {/* INNER BORDER */}
+            <div className="rounded-full border border-[#D4AF37]/40 px-5 py-2 bg-[#0f2218] shadow-inner shadow-[#D4AF37]/10">
+              <Link to="/" className="flex items-center gap-2 group">
+                <Leaf className="w-7 h-7 text-herbal transition-transform duration-300 group-hover:rotate-12" />
+                <span className="font-heading text-[#D4AF37] text-2xl font-bold tracking-tight">
+                  Bethanya
+                </span>
+              </Link>
+
+            </div>
+          </div>
         </div>
 
         {/* RIGHT NAV */}
@@ -67,10 +71,10 @@ const Navbar = () => {
             <Link
               key={link.to}
               to={link.to}
-              className={`relative forum-regular text-lg lg:text-xl xl:text-3xl font-semibold tracking-wide transition-all duration-300 ${location.pathname === link.to
-                ? "text-forest"
-                : "text-accent hover:text-forest"
-                }`}
+              className={`relative forum-regular text-lg lg:text-xl xl:text-3xl font-semibold tracking-wide text-[#1f3d2b]
+after:content-[''] after:absolute after:left-0 after:bottom-[-6px] after:h-[2px] after:bg-[#D4AF37] after:transition-all after:duration-300
+${location.pathname === link.to ? "after:w-full" : "after:w-0 hover:after:w-full"}
+`}
             >
               {link.label}
             </Link>

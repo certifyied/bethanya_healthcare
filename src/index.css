@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&family=Anton&family=Bebas+Neue&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Cinzel:wght@400..900&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Forum&family=Fredoka:wght@300..700&family=Gruppo&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Major+Mono+Display&family=Michroma&family=Orbitron:wght@400..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Sofia&family=Sometype+Mono:ital,wght@0,400..700;1,400..700&family=Special+Gothic+Expanded+One&family=Urbanist:ital,wght@0,100..900;1,100..900&family=Yeseva+One&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Bellefair&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
