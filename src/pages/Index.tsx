@@ -5,6 +5,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import ProductCard from "@/components/ProductCard";
 import { products } from "@/data/products";
 import Banner from "@/components/Banner";
+import ServicesPackages from "@/pages/ServicesPackages";
 
 const benefits = [
   { icon: Leaf, title: "100% Natural", desc: "Pure ingredients sourced from ancient forests and organic farms." },
@@ -27,45 +28,47 @@ const Index = () => {
       {/* Hero */}
       <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden mt-[-67px] px-4">
 
-        {/* 🌿 CURVED BACKGROUND (DOES NOT AFFECT TEXT POSITION) */}
         {/* 🌿 CURVED BACKGROUND WITH PERFECT BORDER */}
-        <div className="absolute left-1/2 -translate-x-1/2 w-[85%] md:w-[70%] lg:w-[60%] top-0 bottom-0 -z-10">
+        <div className="absolute left-1/2 -translate-x-1/2 w-[115%] md:w-[105%] lg:w-[95%] top-0 bottom-0 -z-10">
 
           {/* BORDER WRAPPER */}
-          <div className="w-full h-full rounded-b-[180px] md:rounded-b-[240px] border border-black/30 p-[6px]">
+          <div className="w-full h-full rounded-b-[180px] md:rounded-b-[240px] border border-black/80 p-[6px]">
 
             {/* GREEN BACKGROUND */}
-            <div className="w-full h-full bg-[#0f2218] rounded-b-[180px] md:rounded-b-[240px] p-[10px]">
+            <div className="w-full h-full bg-white rounded-b-[180px] md:rounded-b-[240px] p-[10px]">
 
               {/* GOLD INNER LINE (DEEP INSIDE) */}
               <div className="w-full h-full rounded-b-[180px] md:rounded-b-[240px] border border-[#D4AF37]"></div>
-
             </div>
-
           </div>
-
         </div>
 
-        {/* TEXT (UNCHANGED) */}
-        <div className="text-center z-10 px-8 -mt-16">
-          <h1 className="forum-regular text-[#D4AF37] text-4xl md:text-7xl leading-tight tracking-wider scale-x-110">
-            Bethanya Healthcare
-          </h1>
+        {/* TEXT + LOGO */}
+       <div className="text-center z-10 px-8 -mt-52 md:-mt-64 lg:-mt-80 flex flex-col items-center">
+          {/* LOGO */}
+          <img
+            src="/images/BETHANYA AYURVEDA HOSPITAL.png"
+            alt="Bethanya Logo"
+            className="w-[180px] md:w-[240px] lg:w-[300px] mb-2 
+    object-contain 
+    drop-shadow-[0_10px_5px_rgba(0,0,0,0.5)]"
+          />
 
-          <p className="mt-4 text-xs tracking-[0.4em] uppercase text-[#D4AF37]">
+          {/* SUBTITLE */}
+          <p className="mt-3 text-xs tracking-[0.4em] uppercase text-[#D4AF37]">
             Authentic Ayurveda
           </p>
+
         </div>
 
-        {/* IMAGE (UNCHANGED) */}
         {/* IMAGE SECTION */}
         <div className="absolute bottom-0 w-full flex justify-center items-end">
 
           {/* LEFT PNG IMAGE */}
           <img
-  src="/images/395fc983a28dadfb76c29d23b78a40ec.png"
-  alt="left decoration"
-  className="
+            src="/images/395fc983a28dadfb76c29d23b78a40ec.png"
+            alt="left decoration"
+            className="
     absolute 
     left-[-25px] sm:left-[-10px] md:left-[0%]
     bottom-4 sm:bottom-6 md:bottom-10
@@ -78,22 +81,47 @@ const Index = () => {
     object-contain 
     opacity-90
     pointer-events-none
-    drop-shadow-[0_20px_15px_rgba(0,0,0,0.60)]
+    drop-shadow-[0_10px_05px_rgba(0,0,0,0.60)]
 
     animate-float
   "
-/>
+          />
 
           {/* MAIN IMAGE */}
           <img
             src="/images/Download premium image of Ayurveda spice plant herbs_ by George about ayurveda, ayurveda background, white background, background, and leaf 13798578.png"
             alt="herbs"
             className="w-[90%] md:w-[700px] object-contain 
-    drop-shadow-[0_100px_40px_rgba(0,0,0,0.15)]"
+    drop-shadow-[0_10px_10px_rgba(0,0,0,0.15)]"
           />
 
         </div>
 
+      </section>
+
+      {/* Benefits */}
+      <section className="py-24 px-6">
+        <div className="container mx-auto max-w-5xl">
+          <ScrollReveal>
+            <div className="text-center mb-14">
+              <p className="font-body text-herbal text-sm tracking-[0.2em] uppercase mb-3">Why Choose Us</p>
+              <h2 className="font-heading text-3xl md:text-4xl text-foreground">Pure by Promise</h2>
+            </div>
+          </ScrollReveal>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {benefits.map((b, i) => (
+              <ScrollReveal key={b.title} delay={i * 0.1}>
+                <div className="text-center p-6 rounded-3xl bg-card shadow-card hover:shadow-glow transition-all duration-300">
+                  <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-leaf flex items-center justify-center">
+                    <b.icon className="w-7 h-7 text-primary-foreground" />
+                  </div>
+                  <h3 className="font-heading text-lg text-foreground mb-2">{b.title}</h3>
+                  <p className="font-body text-sm text-muted-foreground">{b.desc}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
       </section>
 
       <section className="py-24 px-6">
@@ -198,33 +226,6 @@ transition-all duration-300
             </div>
           </ScrollReveal>
 
-        </div>
-      </section>
-
-
-
-      {/* Benefits */}
-      <section className="py-24 px-6">
-        <div className="container mx-auto max-w-5xl">
-          <ScrollReveal>
-            <div className="text-center mb-14">
-              <p className="font-body text-herbal text-sm tracking-[0.2em] uppercase mb-3">Why Choose Us</p>
-              <h2 className="font-heading text-3xl md:text-4xl text-foreground">Pure by Promise</h2>
-            </div>
-          </ScrollReveal>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {benefits.map((b, i) => (
-              <ScrollReveal key={b.title} delay={i * 0.1}>
-                <div className="text-center p-6 rounded-3xl bg-card shadow-card hover:shadow-glow transition-all duration-300">
-                  <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-leaf flex items-center justify-center">
-                    <b.icon className="w-7 h-7 text-primary-foreground" />
-                  </div>
-                  <h3 className="font-heading text-lg text-foreground mb-2">{b.title}</h3>
-                  <p className="font-body text-sm text-muted-foreground">{b.desc}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
         </div>
       </section>
 

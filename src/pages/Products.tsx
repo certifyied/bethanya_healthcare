@@ -13,16 +13,16 @@ const Products = () => {
     <div className="min-h-screen">
 
       {/* 🌿 TOP GREEN SECTION */}
-      <div className="relative text-white pt-24 pb-20 rounded-b-[50px] ">
+      <div className="relative text-white pt-24 pb-20  ">
 
         {/* 🌿 DARK BG WITH LIGHT CENTER FADE */}
-        <div className="absolute inset-0 bg-[#0f2218] rounded-b-[50px]"></div>
+        <div className="absolute inset-0 bg-[#0f2218] "></div>
 
         {/* 🟡 OUTER GOLD RING */}
-        <div className="absolute inset-0 rounded-b-[50px] ring-2 ring-inset ring-[#c2a97a]/60 pointer-events-none"></div>
+        <div className="absolute inset-0  ring-2 ring-inset ring-[#c2a97a]/60 pointer-events-none"></div>
 
         {/* 🟡 INNER BORDER */}
-        <div className="absolute top-[10px] left-[10px] right-[10px] bottom-[10px] rounded-b-[40px] border-b border-l border-r border-[#c2a97a]/40 pointer-events-none"></div>
+        <div className="absolute top-[10px] left-[10px] right-[10px] bottom-[10px] border-b border-l border-r border-[#c2a97a]/40 pointer-events-none"></div>
 
         {/* 🌿 CONTENT */}
         <div className="relative container mx-auto max-w-6xl px-6">
@@ -55,8 +55,8 @@ const Products = () => {
         />
       </div>
       <h1 className="text-center text-2xl sm:text-3xl md:text-9xl forum-regular my-16">
-  Products
-</h1>
+        Products
+      </h1>
       {/* 🌿 CATEGORY BUTTONS (COMPLETELY OUTSIDE) */}
       <div className="px-6 mt-10 mb-10">
         <div className="container mx-auto max-w-6xl">

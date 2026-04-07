@@ -27,28 +27,40 @@
 import { useEffect, useState } from "react";
 
 const LoadingScreen = () => {
-  const [loading, setLoading] = useState(true);
+  const [isVisible, setIsVisible] = useState(true);
+  const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2500);
+    const fillTimer = setTimeout(() => {
+      setFadeOut(true); // start fade out after fill
+    }, 2300); // slightly before animation ends
 
-    return () => clearTimeout(timer);
+    const removeTimer = setTimeout(() => {
+      setIsVisible(false); // remove completely
+    }, 2700);
+
+    return () => {
+      clearTimeout(fillTimer);
+      clearTimeout(removeTimer);
+    };
   }, []);
 
-  if (!loading) return null;
+  if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#0f2218]">
+    <div
+      className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#0f2218] transition-opacity duration-500 ${
+        fadeOut ? "opacity-0" : "opacity-100"
+      }`}
+    >
       
-      {/* Main Animated Text */}
+      {/* Bethanya */}
       <h1 className="bethanya-text">
         Bethanya
       </h1>
 
-      {/* Static Subtitle */}
-      <p className="forum-regular mt-4 text-[#c2a97a]/80 tracking-[4px] text-sm md:text-base font-body">
+      {/* Healthcare */}
+      <p className="mt-4 text-[#c2a97a]/80 tracking-[4px] text-sm md:text-base font-body">
         Healthcare
       </p>
 
@@ -68,17 +80,19 @@ const LoadingScreen = () => {
           position: absolute;
           left: 0;
           top: 0;
-          width: 0%;
+          width: 100%;
           height: 100%;
           color: #c2a97a;
           white-space: nowrap;
           overflow: hidden;
-          animation: fillText 2.5s ease forwards;
+          clip-path: inset(0 100% 0 0);
+          animation: fillText 2.3s ease forwards;
         }
 
         @keyframes fillText {
-          0% { width: 0%; }
-          100% { width: 100%; }
+          to {
+            clip-path: inset(0 0 0 0);
+          }
         }
       `}</style>
     </div>

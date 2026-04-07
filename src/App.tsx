@@ -7,6 +7,8 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
+import ServicesPackages from "./pages/ServicesPackages";
+import Testimonials from "./pages/Testimonials";
 
 const Index = lazy(() => import("./pages/Index"));
 const Products = lazy(() => import("./pages/Products"));
@@ -37,10 +39,12 @@ const App = () => {
           <Suspense fallback={<LoadingScreen />}>
             <Routes>
               <Route path="/" element={<Index />} />
+              <Route path="/services" element={<ServicesPackages />} />
               <Route path="/products" element={<Products />} />
               <Route path="/products/:id" element={<ProductDetail />} />
-              <Route path="/about" element={<About />} />
+              <Route path="/testimonials" element={<Testimonials />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/about" element={<About />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
