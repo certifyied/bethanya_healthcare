@@ -41,8 +41,6 @@
 
 // export default ProductCard;
 
-
-
 import { Link } from "react-router-dom";
 
 interface ProductCardProps {
@@ -55,38 +53,41 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ id, name, price, category, image, description }: ProductCardProps) => (
-  <div>
-    <Link
-      to={`/products/${id}`}
-      className="block bg-card rounded-3xl overflow-hidden 
-border border-[#c2a97a] 
-shadow-card transition-all duration-300"
-    >
-      <div className="aspect-square overflow-hidden bg-muted relative">
-        <img
-          src={image}
-          alt={name}
-          className="w-full h-full object-cover"
-          loading="lazy"
-        />
-        <span className="absolute top-4 left-4 bg-primary/90 text-primary-foreground font-body text-xs px-3 py-1 rounded-full">
-          {category}
-        </span>
-      </div>
+  <div className="rounded-3xl border border-[#c2a97a]">
+    {/* Golden outer border */}
 
-      <div className="p-5">
-        <h3 className="font-heading text-lg text-[#c2a97a] mb-1">
-          {name}
-        </h3>
+    <div className="m-[4px] rounded-3xl">
+      {/* Transparent gap */}
 
-        <p className="font-body text-sm text-[#c2a97a]/80 mb-3 line-clamp-2">
-          {description}
-        </p>
-        {/* <span className="font-heading text-xl text-forest font-semibold">
-          {price}
-        </span> */}
-      </div>
-    </Link>
+      <Link
+        to={`/products/${id}`}
+        className="block bg-[#0f2218] rounded-3xl overflow-hidden  
+        ring-1 ring-[#1f3d2b]/80 
+        transition-all duration-300"
+      >
+        <div className="aspect-square overflow-hidden bg-muted relative">
+          <img
+            src={image}
+            alt={name}
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
+          <span className="absolute top-4 left-4 bg-primary/90 text-primary-foreground font-body text-xs px-3 py-1 rounded-full">
+            {category}
+          </span>
+        </div>
+
+        <div className="p-5">
+          <h3 className="font-heading text-lg text-[#c2a97a] mb-1">
+            {name}
+          </h3>
+
+          <p className="font-body text-sm text-[#c2a97a]/80 mb-3 line-clamp-2">
+            {description}
+          </p>
+        </div>
+      </Link>
+    </div>
   </div>
 );
 

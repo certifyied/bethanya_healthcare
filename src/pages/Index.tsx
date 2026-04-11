@@ -6,6 +6,9 @@ import ProductCard from "@/components/ProductCard";
 import { products } from "@/data/products";
 import Banner from "@/components/Banner";
 import ServicesPackages from "@/pages/ServicesPackages";
+import ServicesSection from "@/components/ServicesSection";
+import BranchesSection from "@/components/BranchesSection";
+import ProductCarousel from "@/components/ProductCarousel";
 
 const benefits = [
   { icon: Leaf, title: "100% Natural", desc: "Pure ingredients sourced from ancient forests and organic farms." },
@@ -44,7 +47,7 @@ const Index = () => {
         </div>
 
         {/* TEXT + LOGO */}
-       <div className="text-center z-10 px-8 -mt-52 md:-mt-64 lg:-mt-80 flex flex-col items-center">
+        <div className="text-center z-10 px-8 -mt-52 md:-mt-64 lg:-mt-80 flex flex-col items-center">
           {/* LOGO */}
           <img
             src="/images/BETHANYA AYURVEDA HOSPITAL.png"
@@ -170,7 +173,6 @@ const Index = () => {
 
       <Banner />
 
-
       {/* Featured Products */}
       <section className="py-20 px-6 bg-[#0f2218] relative">
         <div className="relative container mx-auto">
@@ -183,51 +185,38 @@ const Index = () => {
               </p>
 
               <h2 className="font-heading text-3xl md:text-7xl 
-bg-gradient-to-r from-[#c2a97a] via-[#e6d3a3] to-[#a67c2d] 
-bg-clip-text text-transparent">
-                Featured Products
+        bg-gradient-to-r from-[#c2a97a] via-[#e6d3a3] to-[#a67c2d] 
+        bg-clip-text text-transparent">
+                Premium Selections
               </h2>
             </div>
           </ScrollReveal>
 
-          {/* PRODUCT GRID */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {featured.map((product, i) => (
-              <div
-                key={product.id}
-                className="opacity-0 animate-slideRight"
-                style={{ animationDelay: `${i * 0.2}s`, animationFillMode: "forwards" }}
-              >
-                <div>
-                  <ProductCard {...product} />
-                </div>
-              </div>
-            ))}
-          </div>
+          {/* ✅ CAROUSEL (ONLY THIS) */}
+          <ProductCarousel products={featured} />
 
           {/* BUTTON */}
           <ScrollReveal delay={0.4}>
             <div className="text-center mt-12">
-              <Link
-                to="/products"
-                className="
-inline-block px-10 py-3 rounded-full
-forum-regular text-lg lg:text-xl xl:text-3xl font-semibold tracking-wide
-text-black
-bg-gradient-to-r from-[#c2a97a] via-[#e6d3a3] to-[#a67c2d]
-shadow-md
-hover:brightness-110
-hover:shadow-lg
-transition-all duration-300
-"
-              >
-                View All Products
-              </Link>
+              <div className="inline-block rounded-full border border-[#FFD700] p-[2px]">
+                <Link
+                  to="/products"
+                  className="inline-block px-6 py-2 rounded-full
+        forum-regular text-lg lg:text-xl xl:text-2xl font-semibold tracking-wide
+        text-black
+        bg-gradient-to-r from-[#c2a97a] via-[#e6d3a3] to-[#a67c2d]
+        shadow-md hover:brightness-110 hover:shadow-lg transition-all duration-300"
+                >
+                  View All Products
+                </Link>
+              </div>
             </div>
           </ScrollReveal>
 
         </div>
       </section>
+
+      <ServicesSection />
 
       {/* Testimonials */}
       <section className="py-24 px-6 bg-gradient-earth">
@@ -253,6 +242,7 @@ transition-all duration-300
           </div>
         </div>
       </section>
+      <BranchesSection />
     </div>
   );
 };
