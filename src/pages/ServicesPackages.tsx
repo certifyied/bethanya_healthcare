@@ -3,7 +3,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { useSearchParams } from "react-router-dom";
 import AppointmentModal from "@/components/AppointmentModal";
 
-const branches = ["KATTANAM", "THONNAKKAD", "VARKALA"];
+const branches = ["KATTANAM", "VARKALA", "THONNAKKAD"];
 
 const servicesData: any = {
   KATTANAM: {
@@ -38,7 +38,7 @@ const servicesData: any = {
     ],
   },
 
-  THONNAKKAD: {
+  VARKALA: {
     // you can customize later if needed
     combo: ["Abhyangam & Steam bath", "Abhyanga & Shirodhara"],
     spa: ["Rejuvenation therapy"],
@@ -46,7 +46,7 @@ const servicesData: any = {
     massage: ["Abhyangam", "Head massage"],
   },
 
-  VARKALA: null, // coming soon
+  THONNAKKAD: null, // coming soon
 };
 
 const Section = ({ title, items, image, reverse = false, branch, openEnquiry }: any) => {
@@ -172,7 +172,7 @@ function ServicesPackages() {
   w-[180px] md:w-[260px] 
   pointer-events-none 
   z-20
-  drop-shadow-[0_10px_5px_rgba(0,0,0,0.5)]"
+  drop-shadow-[0_20px_40px_rgba(0,0,0,0.35)]"
         />
       </div>
 

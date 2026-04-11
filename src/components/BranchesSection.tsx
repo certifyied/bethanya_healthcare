@@ -7,14 +7,14 @@ const branches = [
         tagline: "Peaceful village wellness",
     },
     {
+        name: "Varkala",
+        image: "/images/Gemini_Generated_Image_8121581215812158 (1).png",
+        tagline: " Cliffside serenity & ocean breeze",
+    },
+    {
         name: "Thonnakkad",
         image: "/images/Gemini_Generated_Image_plmpgplmpgplmpgp.png",
         tagline: "Tradition meets healing",
-    },
-    {
-        name: "Varkala",
-        image: "/images/Gemini_Generated_Image_8121581215812158 (1).png",
-        tagline: "Cliffside serenity & ocean breeze",
         comingSoon: true, // 👈 add this
     },
 ];
