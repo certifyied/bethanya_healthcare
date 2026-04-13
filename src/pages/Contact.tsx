@@ -28,9 +28,9 @@ const Contact = () => {
           />
 
           {/* TITLE */}
-          <h1 className="text-center text-2xl sm:text-3xl md:text-7xl forum-regular mt-24 md:mt-32 mb-4 text-[#c2a97a]">
-            Your Path to Balance Starts Here
-          </h1>
+          <h1 className="text-center text-4xl sm:text-5xl md:text-7xl lg:text-8xl forum-regular mt-24 md:mt-32 mb-4 text-[#c2a97a]">
+  Contact Us
+</h1>
 
           <p className="text-center text-sm md:text-base text-[#c2a97a]/70 max-w-xl mx-auto">
             Connect with our experts and begin your journey towards holistic healing and wellness.
@@ -138,7 +138,7 @@ const Contact = () => {
                 <div className="relative z-10 w-full flex flex-col items-center">
 
                   <h2 className="text-center text-5xl md:text-7xl forum-regular text-[#0f2218] mb-2">
-                    Contact Us
+                    Your Path to Balance Starts Here
                   </h2>
 
                   <img
