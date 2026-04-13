@@ -97,8 +97,8 @@ const Contact = () => {
 
                   </div>
                 ) : (
-                  <div className="flex items-center justify-center h-full -mt-10">
-  <p className="font-cinzel shine-text text-3xl text-center text-white font-medium tracking-wide drop-shadow-[0_0_6px_rgba(212,175,55,0.7)]">
+                  <div className="flex items-center justify-center h-full py-10">
+  <p className="font-cinzel shine-text text-xl sm:text-2xl md:text-3xl text-center text-white font-medium tracking-wide leading-tight px-4 drop-shadow-[0_0_6px_rgba(212,175,55,0.7)]">
     Opening Soon
   </p>
 </div>
