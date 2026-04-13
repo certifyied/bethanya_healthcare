@@ -86,9 +86,11 @@ const Contact = () => {
                     </div>
 
                     <div className="flex items-center gap-3 text-muted-foreground">
-                      <Mail className="w-4 h-4 text-[#c2a97a]" />
-                      {branch.email}
-                    </div>
+  <Mail className="w-5 h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 text-[#c2a97a] flex-shrink-0" />
+  <span className="text-sm md:text-base break-words">
+    {branch.email}
+  </span>
+</div>
 
                     <div className="flex items-start gap-3 text-muted-foreground">
                       <MapPin className="w-5 h-5 text-[#c2a97a] mt-1 flex-shrink-0" />
