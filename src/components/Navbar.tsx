@@ -50,7 +50,7 @@ const Navbar = () => {
             <button
               key={link.to}
               onClick={() => handleNavigate(link.to)}
-              className={`relative forum-regular text-lg lg:text-xl xl:text-2xl font-semibold tracking-wide ${scrolled ? "text-[#1f3d2b]" : "text-[#1f3d2b]"}
+              className={`relative forum-regular text-lg lg:text-xl xl:text-2xl font-semibold tracking-wide ${scrolled ? "text-[#1f3d2b]" : "text-white"}
               after:content-[''] after:absolute after:left-0 after:bottom-[-6px] after:h-[2px] after:bg-[#D4AF37] after:transition-all after:duration-300
               ${location.pathname === link.to
                   ? "after:w-full"
@@ -61,7 +61,7 @@ const Navbar = () => {
             </button>
           ))}
         </div>
-        
+
         {/* RIGHT NAV */}
         <div className="hidden md:flex items-center justify-end gap-8 flex-1">
           {rightLinks.map((link) =>
@@ -82,7 +82,7 @@ const Navbar = () => {
                 key={link.to}
                 onClick={() => handleNavigate(link.to)}
                 className={`relative forum-regular text-lg lg:text-xl xl:text-2xl font-semibold tracking-wide 
-        ${scrolled ? "text-[#1f3d2b]" : "text-[#1f3d2b]"}
+        ${scrolled ? "text-[#1f3d2b]" : "text-white "}
         after:content-[''] after:absolute after:left-0 after:bottom-[-6px] after:h-[2px] after:bg-[#D4AF37] after:transition-all after:duration-300
         ${location.pathname === link.to
                     ? "after:w-full"
@@ -97,7 +97,7 @@ const Navbar = () => {
 
         {/* MOBILE MENU BUTTON */}
         <button
-          className="md:hidden text-[#1f3d2b]"
+          className={`md:hidden ${scrolled ? "text-[#1f3d2b]" : "text-white"}`}
           onClick={() => setMobileOpen(!mobileOpen)}
         >
           {mobileOpen ? <X /> : <Menu />}

@@ -124,60 +124,20 @@ function ServicesPackages() {
     <section id="services" className="bg-white">
 
 
-      {/* 🌿 TOP GREEN SECTION */}
-      <div className="relative text-white pt-24 pb-20">
-
-        {/* 🌿 WHITE BG */}
-        <div className="absolute inset-0 bg-white z-0"></div>
-
-        {/* 🟡 OUTER GOLD RING */}
-        <div className="absolute inset-0 ring-2 ring-inset ring-[#c2a97a]/60 pointer-events-none"></div>
-
-        {/* 🟡 INNER BORDER (NO TOP LINE) */}
-        <div className="absolute top-[10px] left-[10px] right-[10px] bottom-[10px] border-b border-l border-r border-[#1f3d2b]/90 pointer-events-none"></div>
-
-        {/* 🌿 CONTENT */}
-        <div className="relative z-10 container mx-auto max-w-6xl px-6 text-center py-6 md:py-8 -mt-20 md:-mt-28 flex flex-col items-center">
-
-          {/* LOGO */}
-          <img
-            src="/images/BETHANYA AYURVEDA HOSPITAL.png"
-            alt="Bethanya Logo"
-            className="w-[120px] md:w-[160px] lg:w-[200px] mb-4 
-    object-contain 
-    drop-shadow-[0_10px_5px_rgba(0,0,0,0.5)]"
-          />
-
-          <ScrollReveal>
-            <p className="text-[#1f3d2b] text-sm tracking-[0.2em] uppercase mb-3">
-              Our Services
-            </p>
-
-            <h2 className="text-4xl md:text-5xl font-semibold text-[#1f3d2b]">
-              Services & Packages
-            </h2>
-
-            <p className="text-[#c2a97a]/80 max-w-lg mx-auto mt-4">
-              Experience authentic Ayurvedic therapies designed to rejuvenate your body and mind.
-            </p>
-          </ScrollReveal>
-
-        </div>
-
-        {/* 🌸 DECOR IMAGE */}
-        <img
-          src="/images/Flower.png"
-          alt="decoration"
-          className="absolute right-0 bottom-[-80px] 
-  w-[180px] md:w-[260px] 
-  pointer-events-none 
-  z-20
-  drop-shadow-[0_20px_40px_rgba(0,0,0,0.35)]"
-        />
-      </div>
-
       {/* 🔽 FULL WIDTH GREEN SECTION */}
       <div className="bg-[#0f2218] pt-4 pb-4 relative z-10 overflow-hidden w-full">
+
+        {/* 🟢🟡 DOUBLE BORDER BOTTOM */}
+        <div className="absolute bottom-0 left-0 w-full">
+          {/* Gold line */}
+          <div className="h-[1px] bg-[#c2a97a]"></div>
+
+          {/* Small gap */}
+          <div className="h-[3px] bg-[#0f2218]"></div>
+
+          {/* Inner green/dark line */}
+          <div className="h-[1px] bg-[#0a1a12]"></div>
+        </div>
 
         {/* LEFT BOTTOM PNG BORDER */}
         <img
@@ -187,7 +147,7 @@ function ServicesPackages() {
         />
 
         {/* TITLE */}
-        <h1 className="text-center text-2xl sm:text-3xl md:text-9xl forum-regular my-16 text-[#c2a97a]">
+        <h1 className="text-center text-2xl sm:text-3xl md:text-9xl forum-regular mt-24 md:mt-32 mb-16 text-[#c2a97a]">
           Services & Packages
         </h1>
 
@@ -201,20 +161,31 @@ function ServicesPackages() {
                 Choose Our Branch
               </h3>
 
-              <div className="flex justify-center gap-3 flex-wrap">
+              <div className="flex justify-center gap-2 flex-nowrap">
                 {branches.map((branch) => (
                   <button
                     key={branch}
                     onClick={() => setSelectedBranch(branch)}
-                    className={`font-body text-sm px-6 py-2.5 rounded-2xl transition-all duration-300 relative
-bg-[#0f2218]
+                    className={`relative z-20
+
+font-body 
+text-xs md:text-sm 
+px-3 md:px-6 
+py-1.5 md:py-2.5 
+rounded-xl md:rounded-2xl 
+transition-all duration-300 
+whitespace-nowrap 
+flex-shrink-0
+
+bg-[#1f3d2b]
 border border-[#d4af37]
-outline outline-1 outline-[#d4af37]/30
-outline-offset-4
+
+ring-1 ring-[#d4af37]/40 ring-offset-2 ring-offset-[#0f2218]  /* 👈 OUTER GOLD LINE */
+
 ${selectedBranch === branch
-                        ? "bg-[#d4af37] text-[#0f2218] shadow-glow"
-                        : "text-muted-foreground hover:bg-[#0f2218]"
-                      }`}
+    ? "bg-[#d4af37] text-[#0f2218] ring-[#d4af37]"
+    : "text-[#c2a97a]"
+}`}
                   >
                     {branch}
                   </button>

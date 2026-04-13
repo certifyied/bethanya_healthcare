@@ -2,9 +2,15 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Bellefair&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
 
 @layer base {
   :root {
@@ -182,4 +188,51 @@
 
 .animate-autoSlide {
   animation: autoSlide 20s linear infinite;
+}
+
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+/* ✨ Shining text effect */
+.shine-text {
+  position: relative;
+  display: inline-block;
+  color: white;
+  overflow: hidden;
+}
+
+/* moving light */
+.shine-text::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+
+  /* 👇 UPDATED: smooth fade edges */
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 215, 0, 0) 25%,
+    rgba(255, 215, 0, 0.8) 50%,
+    rgba(255, 215, 0, 0) 75%,
+    transparent 100%
+  );
+
+  transform: skewX(-25deg);
+
+  /* 👇 smoother motion */
+  animation: shine 3s ease-in-out infinite;
+}
+
+/* animation */
+@keyframes shine {
+  0% {
+    left: -75%;
+  }
+  100% {
+    left: 125%;
+  }
 }

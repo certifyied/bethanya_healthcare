@@ -7,63 +7,35 @@ const Contact = () => {
 
   return (
     <>
-      {/* 🌿 LUXURY HEADER */}
-      <div className="relative pt-24 pb-20">
-
-        {/* 🌿 WHITE BG */}
-        <div className="absolute inset-0 bg-white"></div>
-
-        {/* 🟡 OUTER GOLD RING */}
-        <div className="absolute inset-0 ring-2 ring-inset ring-[#c2a97a]/60 pointer-events-none"></div>
-
-        {/* 🟡 INNER BORDER (NO TOP LINE) */}
-        <div className="absolute top-[10px] left-[10px] right-[10px] bottom-[10px] border-b border-l border-r border-[#1f3d2b]/90 pointer-events-none"></div>
-
-        {/* 🌿 CONTENT */}
-        <div className="relative container mx-auto max-w-5xl px-6 text-center py-6 md:py-8 -mt-20 md:-mt-28 flex flex-col items-center">
-
-          {/* 🌿 OPTIONAL LOGO */}
-          <img
-            src="/images/BETHANYA AYURVEDA HOSPITAL.png"
-            alt="Logo"
-            className="w-[120px] md:w-[160px] lg:w-[200px] mb-4 object-contain drop-shadow-[0_10px_5px_rgba(0,0,0,0.5)]"
-          />
-
-          <ScrollReveal>
-            <p className="text-[#1f3d2b] text-sm tracking-[0.2em] uppercase mb-3">
-              Get in Touch
-            </p>
-
-            <h1 className="text-4xl md:text-5xl font-semibold text-[#1f3d2b]">
-              Contact Us
-            </h1>
-
-            <p className="text-[#c2a97a]/80 max-w-lg mx-auto mt-4">
-              We'd love to hear from you. Reach out with questions, feedback, or partnership inquiries.
-            </p>
-          </ScrollReveal>
-
-        </div>
-
-        {/* 🌸 DECOR IMAGE */}
-        <img
-          src="/images/Flower.png"
-          alt="decoration"
-          className="absolute right-0 bottom-[-80px] w-[180px] md:w-[260px] pointer-events-none drop-shadow-[0_10px_5px_rgba(0,0,0,0.5)]"
-        />
-      </div>
-
-      {/* 🌿 CONTACT CONTENT */}
       {/* 🌿 CONTACT CONTENT */}
       <div className="pb-20 min-h-screen">
 
         {/* 🌿 FULL WIDTH BG SECTION */}
-        <div className="w-full bg-[#0f2218] py-16">
-          <div className="max-w-5xl mx-auto px-6">
-            <h1 className="text-center text-2xl sm:text-3xl md:text-7xl forum-regular text-[#c2a97a]">
-              Your Path to Balance Starts Here
-            </h1>
+        <div className="bg-[#0f2218] pt-16 pb-24 md:pb-32 relative z-10 overflow-hidden w-full">
+
+          {/* 🟢🟡 DOUBLE BORDER BOTTOM */}
+          <div className="absolute bottom-0 left-0 w-full">
+            <div className="h-[1px] bg-[#c2a97a]"></div>
+            <div className="h-[3px] bg-[#0f2218]"></div>
+            <div className="h-[1px] bg-[#0a1a12]"></div>
           </div>
+
+          {/* 🌿 LEFT BOTTOM PNG BORDER */}
+          <img
+            src="/images/bba3b14fb34e0afa43cfe531b8ab86.png"
+            alt="border"
+            className="absolute left-0 bottom-0 w-60 opacity-60 pointer-events-none"
+          />
+
+          {/* TITLE */}
+          <h1 className="text-center text-2xl sm:text-3xl md:text-7xl forum-regular mt-24 md:mt-32 mb-4 text-[#c2a97a]">
+            Your Path to Balance Starts Here
+          </h1>
+
+          <p className="text-center text-sm md:text-base text-[#c2a97a]/70 max-w-xl mx-auto">
+            Connect with our experts and begin your journey towards holistic healing and wellness.
+          </p>
+
         </div>
 
         {/* 🌿 BRANCH CONTACTS */}
@@ -73,20 +45,20 @@ const Contact = () => {
             {[
               {
                 name: "KATTANAM",
-                phone: "+91 98765 11111",
-                email: "kattanam@vriksha.in",
-                location: "Kattanam, Kerala",
-                available: true,
-              },
-              {
-                name: "THONNAKKAD",
-                phone: "+91 98765 22222",
-                email: "thonnakkad@vriksha.in",
-                location: "Thonnakkad, Kerala",
+                phone: "+91 9894176585",
+                email: "bethanyahealthcare@gmail.com",
+                address: "BETHANYA HEALTHCARE PVT. LTD., Regd. Office: X/498 'REHOBOTH' Valuparampil Puthen Veedu, Thonnakkad, Chengannur–Mavelikkara Road, Near Thonnakkad Church, Chengannur, Kerala - 689511",
                 available: true,
               },
               {
                 name: "VARKKALA",
+                phone: "+91 8867127954",
+                email: "bethanyahealthcare@gmail.com",
+                address: "BETHANYA AYURVEDA KSHETRA RETREAT, Kshetra Street, North Cliff, Varkala, Kerala",
+                available: true,
+              },
+              {
+                name: "THONNAKKAD",
                 phone: "",
                 email: "",
                 location: "Varkkala, Kerala",
@@ -101,7 +73,7 @@ const Contact = () => {
                 {/* 🌿 Gold Top Line */}
                 <div className="absolute top-0 left-6 right-6 h-[1px] bg-[#c2a97a]/50"></div>
 
-                <h2 className="text-xl font-semibold text-[#c2a97a] mb-4 tracking-wide">
+                <h2 className="forum-regular text-2xl md:text-3xl font-semibold text-[#c2a97a] mb-4 tracking-wide text-center">
                   {branch.name}
                 </h2>
 
@@ -118,16 +90,18 @@ const Contact = () => {
                       {branch.email}
                     </div>
 
-                    <div className="flex items-center gap-3 text-muted-foreground">
-                      <MapPin className="w-4 h-4 text-[#c2a97a]" />
-                      {branch.location}
+                    <div className="flex items-start gap-3 text-muted-foreground">
+                      <MapPin className="w-5 h-5 text-[#c2a97a] mt-1 flex-shrink-0" />
+                      <span>{branch.address}</span>
                     </div>
 
                   </div>
                 ) : (
-                  <p className="text-sm text-[#c2a97a]/70 italic">
-                    Opening Soon ✨
-                  </p>
+                  <div className="flex items-center justify-center h-full -mt-10">
+  <p className="font-cinzel shine-text text-3xl text-center text-white font-medium tracking-wide drop-shadow-[0_0_6px_rgba(212,175,55,0.7)]">
+    Opening Soon
+  </p>
+</div>
                 )}
               </div>
             ))}
@@ -144,11 +118,11 @@ const Contact = () => {
             <ScrollReveal>
               <div className="relative w-full min-h-[500px] py-20 md:py-28 flex items-center justify-center overflow-hidden border-t border-b border-[#0f2218]">
 
-  {/* 🌿 INNER TOP LINE */}
-  <div className="absolute top-3 left-0 w-full h-[1px] bg-[#0f2218]"></div>
+                {/* 🌿 INNER TOP LINE */}
+                <div className="absolute top-3 left-0 w-full h-[1px] bg-[#0f2218]"></div>
 
-  {/* 🌿 INNER BOTTOM LINE */}
-  <div className="absolute bottom-3 left-0 w-full h-[1px] bg-[#0f2218]"></div>
+                {/* 🌿 INNER BOTTOM LINE */}
+                <div className="absolute bottom-3 left-0 w-full h-[1px] bg-[#0f2218]"></div>
 
                 {/* 🌿 BACKGROUND IMAGE */}
                 <div
@@ -160,6 +134,16 @@ const Contact = () => {
 
                 {/* 🌿 CONTENT */}
                 <div className="relative z-10 w-full flex flex-col items-center">
+
+                  <h2 className="text-center text-5xl md:text-7xl forum-regular text-[#0f2218] mb-2">
+                    Contact Us
+                  </h2>
+
+                  <img
+                    src="/images/underline.png"
+                    alt="divider"
+                    className="mx-auto mb-8 w-36 md:w-48 opacity-80 -mt-12 drop-shadow-[0_10px_05px_rgba(0,0,0,0.50)]"
+                  />
 
                   <form
                     onSubmit={(e) => {

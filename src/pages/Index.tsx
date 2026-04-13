@@ -37,31 +37,51 @@ const Index = () => {
           {/* BORDER WRAPPER */}
           <div className="w-full h-full rounded-b-[180px] md:rounded-b-[240px] border border-black/80 p-[6px]">
 
-            {/* GREEN BACKGROUND */}
-            <div className="w-full h-full bg-white rounded-b-[180px] md:rounded-b-[240px] p-[10px]">
+            {/* BACKGROUND IMAGE LAYER */}
+            <div
+              className="w-full h-full rounded-b-[180px] md:rounded-b-[240px] p-[10px] 
+  bg-cover bg-center relative overflow-hidden"
+              style={{
+                backgroundImage: "url('/images/Hero2.jpg')",
+              }}
+            >
 
-              {/* GOLD INNER LINE (DEEP INSIDE) */}
-              <div className="w-full h-full rounded-b-[180px] md:rounded-b-[240px] border border-[#D4AF37]"></div>
+              {/* OPTIONAL DARK / WHITE OVERLAY */}
+              <div className="absolute inset-0 bg-black/40"></div>
+
+              {/* GOLD INNER LINE */}
+              <div className="relative w-full h-full rounded-b-[180px] md:rounded-b-[240px] border border-[#D4AF37]"></div>
+
             </div>
           </div>
         </div>
 
         {/* TEXT + LOGO */}
-        <div className="text-center z-10 px-8 -mt-52 md:-mt-64 lg:-mt-80 flex flex-col items-center">
+        <div className="text-center z-10 px-8 -mt-16 md:-mt-24 lg:-mt-32 flex flex-col items-center">
           {/* LOGO */}
-          <img
+          {/* <img
             src="/images/BETHANYA AYURVEDA HOSPITAL.png"
             alt="Bethanya Logo"
             className="w-[180px] md:w-[240px] lg:w-[300px] mb-2 
     object-contain 
     drop-shadow-[0_10px_5px_rgba(0,0,0,0.5)]"
-          />
+          /> */}
+          <div className="mt-16 w-[140px] md:w-[200px] lg:w-[260px] aspect-square rounded-full overflow-hidden shadow-lg">
+            <img
+              src="/images/Bethanya Trade mark-1.jpeg"
+              alt="Bethanya Logo"
+              className="w-full h-full object-cover"
+            />
+          </div>
 
           {/* SUBTITLE */}
-          <p className="mt-3 text-xs tracking-[0.4em] uppercase text-[#D4AF37]">
-            Authentic Ayurveda
+          <p className="mt-7 text-[10px] sm:text-xs tracking-[0.4em] uppercase text-white inline-block border-b border-[#c2a97a] pb-1">
+            EMBRACE LIFE | EMBRACE WELLNESS
           </p>
 
+          <p className="forum-regular mt-4 text-sm sm:text-base md:text-lg lg:text-xl text-white text-center max-w-2xl mx-auto leading-relaxed">
+            Welcome to Bethanya Ayurveda, a serene healing sanctuary rooted in the timeless traditions of Kerala Ayurveda. Here, classical wisdom, pure herbal care, and graceful hospitality come together to restore balance, awaken vitality, and nurture complete well being. Experience our Ayurvedic Massages, Special Treatments, thoughtfully curated Combo Packs, and rejuvenating Spa Therapies.
+          </p>
         </div>
 
         {/* IMAGE SECTION */}
@@ -90,20 +110,16 @@ const Index = () => {
   "
           />
 
-          {/* MAIN IMAGE */}
-          <img
-            src="/images/Download premium image of Ayurveda spice plant herbs_ by George about ayurveda, ayurveda background, white background, background, and leaf 13798578.png"
-            alt="herbs"
-            className="w-[90%] md:w-[700px] object-contain 
-    drop-shadow-[0_10px_10px_rgba(0,0,0,0.15)]"
-          />
 
         </div>
 
       </section>
 
+
+
+
       {/* Benefits */}
-      <section className="py-24 px-6">
+      {/* <section className="py-24 px-6">
         <div className="container mx-auto max-w-5xl">
           <ScrollReveal>
             <div className="text-center mb-14">
@@ -125,53 +141,52 @@ const Index = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
-      <section className="py-24 px-6">
-        <div className="container mx-auto max-w-4xl text-center">
+      <section className="relative py-24 px-6 overflow-hidden">
+        {/* 🌿 TOP RIGHT PNG */}
+        <img
+          src="/images/c8e87042094b221187b54a21cd70ba6b.png"
+          alt="decor"
+          className="absolute top-2 right-0 sm:-top-10 w-32 sm:w-40 md:w-60 lg:w-80 pointer-events-none drop-shadow-[0_10px_05px_rgba(0,0,0,0.80)]"
+        />
+
+        <div className="container mx-auto max-w-5xl relative z-10">
           <ScrollReveal>
-
-            {/* DARK GOLD */}
-            <p className="font-body text-[#9c7c1f] text-sm tracking-[0.2em] uppercase mb-3">
-              Our Philosophy
-            </p>
-
-            {/* DARK GREEN */}
-            <h2 className="font-heading text-3xl md:text-5xl text-[#1f3d2b] mb-6">
-              The Science of Life
-            </h2>
-
-            {/* DARK GREEN with relative container */}
-            <div className="relative max-w-2xl mx-auto text-left">
-              <p className="font-body text-[#1f3d2b]/100 text-lg leading-relaxed">
-                Ayurveda — the "science of life" — is one of the world's oldest holistic healing systems,
-                developed over 5,000 years ago in India. At Vriksha, we honor this timeless tradition by
-                creating products that balance your body, mind, and spirit through the pure power of nature.
+            <div className="text-center mb-14">
+              <p className="font-body text-green-900 text-sm tracking-[0.2em] uppercase mb-3">
+                Why Choose Us
               </p>
-
-              {/* Bottom-left PNG image, responsive translate */}
-              <img
-                src="/images/0cc4c6cb031fafe691548f47d651493e.png"
-                alt="Ayurveda Illustration"
-                className="
-    absolute bottom-0 left-0
-    w-24 h-24 md:w-48 md:h-48
-    object-contain
-
-    -translate-x-20 sm:-translate-x-24 md:-translate-x-36
-    -translate-y-6 md:-translate-y-8
-
-    drop-shadow-[0_20px_25px_rgba(0,0,0,0.60)]
-  "
-              />
+              <h2 className="forum-regular text-5xl md:text-6xl text-foreground">
+                Pure by Promise
+              </h2>
             </div>
-
           </ScrollReveal>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {benefits.map((b, i) => (
+              <ScrollReveal key={b.title} delay={i * 0.1}>
+                <div className="text-center p-6 rounded-3xl bg-card shadow-card hover:shadow-glow transition-all duration-300 border border-[#c2a97a]">
+                  <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-[#0f2218] flex items-center justify-center">
+                    <b.icon className="w-7 h-7 text-primary-foreground" />
+                  </div>
+                  <h3 className="font-heading text-lg text-foreground mb-2">
+                    {b.title}
+                  </h3>
+                  <p className="font-body text-sm text-muted-foreground">
+                    {b.desc}
+                  </p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </section>
 
 
+
       <Banner />
+
 
       {/* Featured Products */}
       <section className="py-20 px-6 bg-[#0f2218] relative">
