@@ -147,9 +147,9 @@ function ServicesPackages() {
         />
 
         {/* TITLE */}
-        <h1 className="text-center text-2xl sm:text-3xl md:text-9xl forum-regular mt-24 md:mt-32 mb-16 text-[#c2a97a]">
-          Services & Packages
-        </h1>
+        <h1 className="text-center text-4xl sm:text-5xl md:text-9xl forum-regular mt-24 md:mt-32 mb-16 text-[#c2a97a]">
+  Services & Packages
+</h1>
 
         {/* BRANCH SELECTOR */}
         <div className="px-6 mt-10 mb-10">
