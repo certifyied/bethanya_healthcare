@@ -9,6 +9,7 @@ import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
 import ServicesPackages from "./pages/ServicesPackages";
 import Testimonials from "./pages/Testimonials";
+import ScrollToTop from "./components/ScrollToTop";
 
 const Index = lazy(() => import("./pages/Index"));
 const Products = lazy(() => import("./pages/Products"));
@@ -35,20 +36,21 @@ const App = () => {
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <Navbar />
-          <Suspense fallback={<LoadingScreen />}>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/services" element={<ServicesPackages />} />
-              <Route path="/products" element={<Products />} />
-              <Route path="/products/:id" element={<ProductDetail />} />
-              <Route path="/testimonials" element={<Testimonials />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/about" element={<About />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Suspense>
-          <Footer />
+        <ScrollToTop/>
+            <Navbar />
+            <Suspense fallback={<LoadingScreen />}>
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/services" element={<ServicesPackages />} />
+                <Route path="/products" element={<Products />} />
+                <Route path="/products/:id" element={<ProductDetail />} />
+                <Route path="/testimonials" element={<Testimonials />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/about" element={<About />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Suspense>
+            <Footer />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
