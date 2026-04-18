@@ -53,9 +53,9 @@ const Index = () => {
         {/* 🌿 LOGO */}
         <div className="absolute top-4 md:top-6 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center">
           <div className="w-[70px] sm:w-[90px] md:w-[110px] lg:w-[140px] 2xl:w-[180px] aspect-square rounded-full overflow-hidden">
-            <img src="/images/Bethanya_Logo.png" alt="logo" className="w-full h-full object-cover" />
+            <img src="/images/Bethanya_Logo.png" alt="logo" className="w-full h-full object-cover mt-2" />
           </div>
-          <p className="mt-2 text-[10px] sm:text-xs md:text-xs lg:text-sm tracking-[0.25em] text-[#D4AF37] uppercase text-center">
+          <p className="mt-2 md:mb-12 text-[10px] sm:text-xs md:text-xs lg:text-sm tracking-[0.25em] text-[#D4AF37] uppercase text-center">
             Embrace Life | Embrace Wellness
           </p>
         </div>
@@ -72,13 +72,13 @@ const Index = () => {
         />
 
         {/* 🌿 CONTENT */}
-        <div className="relative z-10 w-full grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 lg:gap-16 items-center">
+        <div className="relative z-10 w-full grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 lg:gap-16 items-center lg:items-end">
 
           {/* 🌿 LEFT */}
-          <div className="max-w-[500px] lg:max-w-[550px] xl:max-w-[750px] mx-auto md:mx-0 pl-8 md:pl-12 lg:pl-16">
+          <div className="max-w-[500px] lg:max-w-[550px] xl:max-w-[750px] mx-auto md:mx-0 pl-8 md:pl-12 lg:pl-16 lg:self-end xl:mt-24">
 
             <motion.h1
-              className="bodoni-moda mt-24 md:mt-16 lg:mt-12 
+              className="bodoni-moda mt-32 md:mt-28 lg:mt-24 xl:mt-20 
   text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-8xl 
   font-semibold text-white leading-[1.1] mb-5 tracking-[0.04em]"
               initial={{ opacity: 0, y: 20 }}
