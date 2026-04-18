@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { X } from "lucide-react";
 import { useSearchParams } from "react-router-dom";
 
+
 const AppointmentModal = ({ isOpen, onClose }: any) => {
   const [searchParams] = useSearchParams();
 
@@ -22,40 +23,37 @@ const AppointmentModal = ({ isOpen, onClose }: any) => {
     }));
   }, [searchParams]);
 
+  const [actionType, setActionType] = useState<"whatsapp" | "email">("whatsapp");
+
   const handleChange = (e: any) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  // ✅ WhatsApp Send
-  const handleWhatsApp = () => {
-    const message = `Appointment Request:
+  // ✅ Handle Submit (used for both buttons)
+ const handleSubmit = (e: any) => {
+  e.preventDefault();
+
+  const message = `Appointment Request:
 Name: ${form.name}
 Email: ${form.email}
 Phone: ${form.phone}
 Branch: ${form.branch}
 Service: ${form.service}`;
 
+  if (actionType === "whatsapp") {
     const url = `https://wa.me/918136951157?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
-  };
-
-  // ✅ Email Send (mailto fallback)
-  const handleEmail = () => {
+  } else {
     const subject = "New Appointment Request";
-    const body = `Name: ${form.name}
-Email: ${form.email}
-Phone: ${form.phone}
-Branch: ${form.branch}
-Service: ${form.service}`;
-
-    window.location.href = `mailto:soorajcpchathanathparampil@gmail.com?subject=${subject}&body=${encodeURIComponent(body)}`;
-  };
+    window.location.href = `mailto:soorajcpchathanathparampil@gmail.com?subject=${subject}&body=${encodeURIComponent(message)}`;
+  }
+};
 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
-      <div className="bg-[#0f2218] w-[90%] max-w-lg rounded-3xl p-8 relative border border-[#c2a97a]">
+    <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 px-4">
+      <div className="bg-[#0f2218] w-full max-w-lg rounded-3xl p-8 relative border border-[#c2a97a]">
 
         {/* ❌ Close */}
         <button onClick={onClose} className="absolute top-4 right-4 text-white">
@@ -66,61 +64,80 @@ Service: ${form.service}`;
           Book Appointment
         </h2>
 
-        <div className="space-y-4">
+        {/* ✅ FORM */}
+        <form
+  className="space-y-4"
+  onSubmit={(e) => handleSubmit(e)}
+>
+
           <input
             name="name"
             placeholder="Your Name"
+            required
             onChange={handleChange}
-            className="w-full p-3 rounded-xl bg-transparent border border-[#c2a97a]/40 text-white"
+            className="w-full p-3 rounded-xl bg-transparent border border-[#c2a97a]/40 text-white outline-none"
           />
 
           <input
+            type="email"
             name="email"
             placeholder="Email"
+            required
             onChange={handleChange}
-            className="w-full p-3 rounded-xl bg-transparent border border-[#c2a97a]/40 text-white"
+            className="w-full p-3 rounded-xl bg-transparent border border-[#c2a97a]/40 text-white outline-none"
           />
 
           <input
+            type="tel"
             name="phone"
             placeholder="Phone"
+            required
             onChange={handleChange}
-            className="w-full p-3 rounded-xl bg-transparent border border-[#c2a97a]/40 text-white"
+            className="w-full p-3 rounded-xl bg-transparent border border-[#c2a97a]/40 text-white outline-none"
           />
 
-          {/* ✅ Branch (readonly default) */}
           <input
             name="branch"
+            placeholder="Branch"
             value={form.branch}
             readOnly
-            className="w-full p-3 rounded-xl bg-[#1a3a2a] border border-[#c2a97a]/40 text-white"
+            required
+            onChange={handleChange}
+            className="w-full p-3 rounded-xl bg-[#1a3a2a] border border-[#c2a97a]/40 text-white outline-none"
           />
 
-          {/* ✅ Service */}
           <input
             name="service"
+            placeholder="Service"
             value={form.service}
             readOnly
-            className="w-full p-3 rounded-xl bg-[#1a3a2a] border border-[#c2a97a]/40 text-white"
+            required
+            onChange={handleChange}
+            className="w-full p-3 rounded-xl bg-[#1a3a2a] border border-[#c2a97a]/40 text-white outline-none"
           />
-        </div>
 
-        {/* 🔥 ACTION BUTTONS */}
-        <div className="flex gap-4 mt-6">
-          <button
-            onClick={handleWhatsApp}
-            className="flex-1 py-3 rounded-xl bg-green-600 hover:bg-green-700 text-white"
-          >
-            WhatsApp
-          </button>
+          {/* 🔥 ACTION BUTTONS */}
+          <div className="flex gap-4 mt-6">
 
-          <button
-            onClick={handleEmail}
-            className="flex-1 py-3 rounded-xl bg-[#c2a97a] hover:bg-[#d4af37] text-[#0f2218]"
-          >
-            Email
-          </button>
-        </div>
+            <button
+  type="submit"
+  onClick={() => setActionType("whatsapp")}
+  className="flex-1 py-3 rounded-xl bg-green-600 hover:bg-green-700 text-white"
+>
+  WhatsApp
+</button>
+
+<button
+  type="submit"
+  onClick={() => setActionType("email")}
+  className="flex-1 py-3 rounded-xl bg-[#c2a97a] hover:bg-[#d4af37] text-[#0f2218]"
+>
+  Email
+</button>
+
+          </div>
+
+        </form>
       </div>
     </div>
   );

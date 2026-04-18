@@ -69,7 +69,7 @@ const Navbar = () => {
               <button
                 key={link.to}
                 onClick={() => handleNavigate(link.to)}
-                className="relative px-5 py-2 rounded-full bg-[#1f3d2b] text-white font-semibold hover:bg-[#163020] transition shadow-md"
+                className="forum-regular relative px-5 py-2 rounded-full bg-[#1f3d2b] text-white font-semibold hover:bg-[#163020] transition shadow-md"
               >
                 {/* INNER GOLD BORDER */}
                 <span className="absolute inset-[1px] rounded-full border border-[#D4AF37] box-border pointer-events-none"></span>

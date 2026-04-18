@@ -29,8 +29,8 @@ const Contact = () => {
 
           {/* TITLE */}
           <h1 className="text-center text-4xl sm:text-5xl md:text-7xl lg:text-8xl forum-regular mt-24 md:mt-32 mb-4 text-[#c2a97a]">
-  Contact Us
-</h1>
+            Contact Us
+          </h1>
 
           <p className="text-center text-sm md:text-base text-[#c2a97a]/70 max-w-xl mx-auto">
             Connect with our experts and begin your journey towards holistic healing and wellness.
@@ -86,11 +86,11 @@ const Contact = () => {
                     </div>
 
                     <div className="flex items-center gap-3 text-muted-foreground">
-  <Mail className="w-5 h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 text-[#c2a97a] flex-shrink-0" />
-  <span className="text-sm md:text-base break-words">
-    {branch.email}
-  </span>
-</div>
+                      <Mail className="w-5 h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 text-[#c2a97a] flex-shrink-0" />
+                      <span className="text-sm md:text-base break-words">
+                        {branch.email}
+                      </span>
+                    </div>
 
                     <div className="flex items-start gap-3 text-muted-foreground">
                       <MapPin className="w-5 h-5 text-[#c2a97a] mt-1 flex-shrink-0" />
@@ -100,10 +100,10 @@ const Contact = () => {
                   </div>
                 ) : (
                   <div className="flex items-center justify-center h-full py-10">
-  <p className="font-cinzel shine-text text-xl sm:text-2xl md:text-3xl text-center text-white font-medium tracking-wide leading-tight px-4 drop-shadow-[0_0_6px_rgba(212,175,55,0.7)]">
-    Opening Soon
-  </p>
-</div>
+                    <p className="font-cinzel shine-text text-xl sm:text-2xl md:text-3xl text-center text-white font-medium tracking-wide leading-tight px-4 drop-shadow-[0_0_6px_rgba(212,175,55,0.7)]">
+                      Opening Soon
+                    </p>
+                  </div>
                 )}
               </div>
             ))}
