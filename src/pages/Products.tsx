@@ -12,54 +12,6 @@ const Products = () => {
   return (
     <div className="min-h-screen">
 
-      {/* 🌿 TOP GREEN SECTION */}
-      <div className="relative pt-24 pb-20">
-
-        {/* 🌿 WHITE BG */}
-        <div className="absolute inset-0 bg-white z-0"></div>
-
-        {/* 🟡 OUTER GOLD RING */}
-        <div className="absolute inset-0 ring-2 ring-inset ring-[#c2a97a]/60 pointer-events-none"></div>
-
-        {/* 🟡 INNER BORDER (NO TOP) */}
-        <div className="absolute top-[10px] left-[10px] right-[10px] bottom-[10px] border-b border-l border-r border-[#1f3d2b]/90 pointer-events-none"></div>
-
-        {/* 🌿 CONTENT */}
-        <div className="relative z-10 container mx-auto max-w-6xl px-6 text-center py-6 md:py-8 -mt-20 md:-mt-28 flex flex-col items-center">
-
-          {/* 🌿 OPTIONAL LOGO */}
-          <img
-            src="/images/BETHANYA AYURVEDA HOSPITAL.png"
-            alt="Logo"
-            className="w-[120px] md:w-[160px] lg:w-[200px] mb-4 object-contain drop-shadow-[0_10px_5px_rgba(0,0,0,0.5)]"
-          />
-
-          <ScrollReveal>
-            <p className="text-[#1f3d2b] text-sm tracking-[0.2em] uppercase mb-3">
-              Our Collection
-            </p>
-
-            <h1 className="text-4xl md:text-5xl font-semibold text-[#1f3d2b]">
-              Ayurvedic Products
-            </h1>
-
-            <p className="text-[#c2a97a]/80 max-w-lg mx-auto mt-4">
-              Handcrafted with love using ancient formulations and the purest ingredients from nature.
-            </p>
-          </ScrollReveal>
-
-        </div>
-
-        {/* 🌸 DECOR IMAGE */}
-        <img
-          src="/images/Flower.png"
-          alt="decoration"
-          className="absolute right-0 bottom-[-80px] z-20
-  w-[180px] md:w-[260px] 
-  pointer-events-none 
-  drop-shadow-[0_10px_5px_rgba(0,0,0,0.5)]"
-        />
-      </div>
       <div className="bg-[#0f2218] pt-4 pb-4 relative overflow-hidden">
 
         {/* LEFT SIDE BACKGROUND IMAGE */}

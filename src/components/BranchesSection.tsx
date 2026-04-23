@@ -28,7 +28,7 @@ export default function BranchesSection() {
                 <p className="text-sm tracking-[0.3em] text-[#c9a45c] uppercase">
                     Our Presence
                 </p>
-                <h2 className="text-4xl md:text-5xl font-serif mt-3 text-black">
+                <h2 className="forum-regular text-5xl md:text-7xl font-serif mt-3 text-black">
                     Our Branches
                 </h2>
             </div>

@@ -1,29 +1,3 @@
-// import { Leaf } from "lucide-react";
-
-// const LoadingScreen = () => (
-//   <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-gradient-hero">
-//     <Leaf className="w-12 h-12 text-herbal animate-spin-leaf" />
-//     <p className="mt-6 font-heading text-xl text-primary-foreground tracking-wider opacity-80">
-//       Vriksha
-//     </p>
-//     <div className="mt-4 w-24 h-0.5 bg-herbal/30 rounded-full overflow-hidden">
-//       <div className="h-full bg-herbal rounded-full animate-[loading_1.5s_ease-in-out_infinite]" 
-//         style={{ animation: "loading 1.5s ease-in-out infinite" }} />
-//     </div>
-//     <style>{`
-//       @keyframes loading {
-//         0% { width: 0%; margin-left: 0; }
-//         50% { width: 100%; margin-left: 0; }
-//         100% { width: 0%; margin-left: 100%; }
-//       }
-//     `}</style>
-//   </div>
-// );
-
-// export default LoadingScreen;
-
-
-
 import { useEffect, useState } from "react";
 
 const LoadingScreen = () => {
@@ -32,11 +6,11 @@ const LoadingScreen = () => {
 
   useEffect(() => {
     const fillTimer = setTimeout(() => {
-      setFadeOut(true); // start fade out after fill
-    }, 2300); // slightly before animation ends
+      setFadeOut(true);
+    }, 2300);
 
     const removeTimer = setTimeout(() => {
-      setIsVisible(false); // remove completely
+      setIsVisible(false);
     }, 2700);
 
     return () => {
@@ -49,19 +23,26 @@ const LoadingScreen = () => {
 
   return (
     <div
-      className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#0f2218] transition-opacity duration-500 ${
-        fadeOut ? "opacity-0" : "opacity-100"
-      }`}
+      className={`fixed inset-0 z-[100] flex flex-col items-center justify-center transition-opacity duration-500 ${fadeOut ? "opacity-0" : "opacity-100"
+        }`}
     >
-      
+      {/* 🌿 SAME BACKGROUND GRADIENT */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#006B1A]/90 to-[#004D12]/95"></div>
+
+      {/* 🌿 TOP FADE */}
+      {/* <div className="absolute top-0 left-0 w-full h-[120px] md:h-[160px] bg-gradient-to-b from-black/80 via-black/40 to-transparent z-10 pointer-events-none" /> */}
+
+      {/* 🌿 GLOW */}
+      <div className="absolute right-[-80px] top-[25%] w-[250px] h-[250px] md:w-[320px] md:h-[320px] bg-green-800/20 blur-[100px] rounded-full"></div>
+
       {/* Bethanya */}
-      <h1 className="bethanya-text">
+      <h1 className="bethanya-text cinzel-heading relative z-20 drop-shadow-[2px_2px_6px_rgba(0,0,0,0.8)]">
         Bethanya
       </h1>
 
       {/* Healthcare */}
-      <p className="mt-4 text-[#c2a97a]/80 tracking-[4px] text-sm md:text-base font-body">
-        Healthcare
+      <p className="cinzel-heading relative z-20 mt-4 text-[#c2a97a]/80 tracking-[4px] text-lg md:text-xl lg:text-6xl drop-shadow-[2px_2px_6px_rgba(0,0,0,0.8)]">
+        Ayurveda
       </p>
 
       <style>{`

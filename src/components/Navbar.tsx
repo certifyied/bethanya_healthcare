@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Leaf } from "lucide-react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { Menu, X } from "lucide-react";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 
 const navLinks = [
   { to: "/", label: "Home" },
-  { to: "/services", label: "Services" },
+  { to: "/services", label: "Branches & Services" },
   { to: "/products", label: "Products" },
   { to: "/testimonials", label: "Testimonials" },
   { to: "/contact", label: "Contact" },
@@ -18,127 +18,117 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Scroll shadow effect
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Navigation handler
   const handleNavigate = (path) => {
     navigate(path);
     setMobileOpen(false);
   };
 
-  // Split links
-  const leftLinks = navLinks.slice(0, 3);
-  const rightLinks = navLinks.slice(3);
-
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-        ? "bg-white shadow-md py-3"
-        : "bg-transparent py-4"
-        }`}
-    >
-      <div className="container mx-auto flex items-center justify-between px-6">
+    <>
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md py-3 transition-all duration-300">
+        {scrolled && (
+          <div className="absolute inset-0 pointer-events-none"></div>
+        )}
 
-        {/* LEFT NAV */}
-        <div className="hidden md:flex items-center gap-8 flex-1">
-          {leftLinks.map((link) => (
-            <button
-              key={link.to}
-              onClick={() => handleNavigate(link.to)}
-              className={`relative forum-regular text-lg lg:text-xl xl:text-2xl font-semibold tracking-wide ${scrolled ? "text-[#1f3d2b]" : "text-white"}
-              after:content-[''] after:absolute after:left-0 after:bottom-[-6px] after:h-[2px] after:bg-[#D4AF37] after:transition-all after:duration-300
-              ${location.pathname === link.to
-                  ? "after:w-full"
-                  : "after:w-0 hover:after:w-full"
-                }`}
-            >
-              {link.label}
-            </button>
-          ))}
-        </div>
+        <div className="container mx-auto flex items-center justify-between px-6">
 
-        {/* RIGHT NAV */}
-        <div className="hidden md:flex items-center justify-end gap-8 flex-1">
-          {rightLinks.map((link) =>
-            link.isButton ? (
-              <button
-                key={link.to}
-                onClick={() => handleNavigate(link.to)}
-                className="forum-regular relative px-5 py-2 rounded-full bg-[#1f3d2b] text-white font-semibold hover:bg-[#163020] transition shadow-md"
-              >
-                {/* INNER GOLD BORDER */}
-                <span className="absolute inset-[1px] rounded-full border border-[#D4AF37] box-border pointer-events-none"></span>
+          {/* 🌿 LOGO LEFT WITH HOME LINK */}
+          <Link to="/" className="flex items-center">
+            <img
+              src="/images/Bethanya_Trade_mark-1.png"
+              alt="logo"
+              className="w-[60px] sm:w-[70px] md:w-[80px] lg:w-[100px] xl:w-[110px]
+              aspect-square rounded-full object-cover cursor-pointer"
+            />
+          </Link>
 
-                {/* TEXT */}
-                <span className="relative z-10">{link.label}</span>
-              </button>
-            ) : (
-              <button
-                key={link.to}
-                onClick={() => handleNavigate(link.to)}
-                className={`relative forum-regular text-lg lg:text-xl xl:text-2xl font-semibold tracking-wide 
-        ${scrolled ? "text-[#1f3d2b]" : "text-white "}
-        after:content-[''] after:absolute after:left-0 after:bottom-[-6px] after:h-[2px] after:bg-[#D4AF37] after:transition-all after:duration-300
-        ${location.pathname === link.to
-                    ? "after:w-full"
-                    : "after:w-0 hover:after:w-full"
+          {/* 🌿 CENTER NAV */}
+          <div className="hidden md:flex flex-1 justify-center items-center gap-8">
+            {navLinks
+              .filter((link) => !link.isButton)
+              .map((link) => (
+                <button
+                  key={link.to}
+                  onClick={() => handleNavigate(link.to)}
+                  className={`relative forum-regular text-lg lg:text-xl xl:text-3xl font-semibold tracking-wide
+                  text-[#0f2218]
+                  after:content-[''] after:absolute after:left-0 after:bottom-[-6px]
+                  after:h-[2px] after:bg-[#D4AF37] after:transition-all after:duration-300
+                  ${
+                    location.pathname === link.to
+                      ? "after:w-full"
+                      : "after:w-0 hover:after:w-full"
                   }`}
-              >
-                {link.label}
-              </button>
-            )
-          )}
+                >
+                  {link.label}
+                </button>
+              ))}
+          </div>
+
+          {/* 🌿 APPOINTMENT BUTTON */}
+          <div className="hidden md:flex items-center">
+            <button
+              onClick={() => handleNavigate("/services")}
+              className="forum-regular relative px-5 py-2 rounded-full bg-[#1f3d2b]
+              text-white text-xl font-semibold hover:bg-[#163020]
+              transition shadow-md"
+            >
+              <span className="absolute inset-[1px] rounded-full pointer-events-none"></span>
+              <span className="relative z-10">Appointment</span>
+            </button>
+          </div>
+
+          {/* 📱 MOBILE MENU BUTTON */}
+          <button
+            className="md:hidden text-[#1f3d2b]"
+            onClick={() => setMobileOpen(!mobileOpen)}
+          >
+            {mobileOpen ? <X /> : <Menu />}
+          </button>
         </div>
 
-        {/* MOBILE MENU BUTTON */}
-        <button
-          className={`md:hidden ${scrolled ? "text-[#1f3d2b]" : "text-white"}`}
-          onClick={() => setMobileOpen(!mobileOpen)}
-        >
-          {mobileOpen ? <X /> : <Menu />}
-        </button>
-      </div>
-
-      {/* MOBILE MENU */}
-      {mobileOpen && (
-        <div className="forum-regular md:hidden bg-white border-t mt-2 animate-fade-in">
-          <div className="flex flex-col py-4 px-6 gap-4">
-            {navLinks.map((link) => (
-              <button
-                key={link.to}
-                onClick={() => handleNavigate(link.to)}
-                className={`relative px-3 py-2 rounded-full text-left text-base font-medium transition
-  
-    ${link.isButton
-                    ? "bg-[#1f3d2b] text-white hover:bg-[#163020]"
-                    : location.pathname === link.to
+        {/* 📱 MOBILE MENU */}
+        {mobileOpen && (
+          <div className="forum-regular md:hidden bg-white border-t mt-2 animate-fade-in">
+            <div className="flex flex-col py-4 px-6 gap-4">
+              {navLinks.map((link) => (
+                <button
+                  key={link.to}
+                  onClick={() => handleNavigate(link.to)}
+                  className={`relative px-3 py-2 rounded-full text-left text-base font-medium transition
+                  ${
+                    link.isButton
+                      ? "bg-[#1f3d2b] text-white hover:bg-[#163020]"
+                      : location.pathname === link.to
                       ? "text-green-700"
                       : "text-gray-600 hover:text-green-700"
                   }`}
-              >
-                {/* INNER GOLD BORDER */}
-                <span
-                  className={`absolute inset-[1px] rounded-full border pointer-events-none ${link.isButton
-                    ? "border-[#D4AF37]/70"
-                    : location.pathname === link.to
-                      ? "border-[#D4AF37]/60"
-                      : "border-transparent"
+                >
+                  <span
+                    className={`absolute inset-[1px] rounded-full border pointer-events-none
+                    ${
+                      link.isButton
+                        ? "border-[#D4AF37]/70"
+                        : location.pathname === link.to
+                        ? "border-[#D4AF37]/60"
+                        : "border-transparent"
                     }`}
-                ></span>
+                  ></span>
 
-                {/* TEXT */}
-                <span className="relative z-10">{link.label}</span>
-              </button>
-            ))}
+                  <span className="relative z-10">{link.label}</span>
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
-      )}
-    </nav>
+        )}
+      </nav>
+    </>
   );
 };
 

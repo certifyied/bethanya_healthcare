@@ -57,48 +57,58 @@ const Section = ({ title, items, image, reverse = false, branch, openEnquiry }: 
 items-center gap-10 
 p-[6px]  /* 👈 THIS CREATES THE GAP */
 rounded-3xl 
-border border-[#c2a97a] 
-bg-[#0f2218]
-shadow-[0_10px_40px_rgba(0,0,0,0.08)]
+border border-[#0f2218] 
+shadow-[0_10px_10px_rgba(0,0,0,0.08)]
 hover:shadow-[0_20px_60px_rgba(0,0,0,0.15)]
 transition-all duration-300`}
       >
         {/* 🔥 INNER CARD */}
-        <div className="flex flex-col md:flex-row items-center gap-10 p-6 md:p-10 rounded-3xl border border-[#c2a97a]/40 bg-[#0f2218] w-full">
+        <div className="relative flex flex-col md:flex-row items-center gap-10 p-6 md:p-10 rounded-3xl border border-[#c2a97a]/40 bg-[#006B1A] w-full overflow-hidden">
 
-          <div className="w-full md:w-1/2">
-            <div
-              className="h-[350px] md:h-[450px] w-full rounded-3xl bg-cover bg-center shadow-lg"
-              style={{ backgroundImage: `url(${image})` }}
-            />
-          </div>
+          {/* 🌿 BACKGROUND IMAGE (NO URL STYLE) */}
+          {/* <img
+            src="/images/6a39089268a36d4b20c6a15202e41ac0.jpg"
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover opacity-40"
+          /> */}
 
-          <div className="w-full md:w-1/2">
-            <h3 className="text-[#c2a97a]  text-3xl md:text-4xl font-semibold text-[#1f3d2b] mb-6">
-              {title}
-            </h3>
+          {/* CONTENT */}
+          <div className="relative z-10 flex flex-col md:flex-row items-center gap-10 w-full">
 
-            <ul className="space-y-3 text-[#4b3a2f]">
-              {items.map((item: string, i: number) => (
-                <li key={i} className="flex gap-3 text-lg">
-                  <span className="text-[#c2a97a] font-semibold">{i + 1}.</span>
-                  <span className="text-[#c2a97a] ">{item}</span>
-                </li>
-              ))}
-            </ul>
+            <div className="w-full md:w-1/2">
+              <div
+                className="h-[350px] md:h-[450px] w-full rounded-3xl bg-cover bg-center shadow-lg"
+                style={{ backgroundImage: `url(${image})` }}
+              />
+            </div>
 
-            {/* ✅ APPOINTMENT BUTTON */}
-            <div className="text-center mt-6">
-              <button
-                onClick={() => openEnquiry(title)}
-                className="px-6 py-3 rounded-2xl transition-all duration-300
-    bg-transparent border border-[#d4af37]
-    outline outline-1 outline-[#d4af37]/30 outline-offset-4
-    text-[#c2a97a]
-    hover:bg-[#d4af37] hover:text-[#0f2218]"
-              >
-                Appointment
-              </button>
+            <div className="w-full md:w-1/2">
+              <h3 className="text-[#c2a97a] text-3xl md:text-4xl font-semibold text-[#1f3d2b] mb-6 drop-shadow-md">
+                {title}
+              </h3>
+
+              <ul className="space-y-3 text-[#4b3a2f] drop-shadow-md">
+                {items.map((item: string, i: number) => (
+                  <li key={i} className="flex gap-3 text-lg">
+                    <span className="text-[#c2a97a] font-semibold">{i + 1}.</span>
+                    <span className="text-[#c2a97a] ">{item}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* ✅ APPOINTMENT BUTTON */}
+              <div className="text-center mt-6">
+                <button
+                  onClick={() => openEnquiry(title)}
+                  className="px-6 py-3 rounded-2xl transition-all duration-300
+  bg-[#0f2218] border border-[#d4af37]
+  outline outline-1 outline-[#d4af37]/30 outline-offset-4
+  text-[#c2a97a]
+  hover:bg-[#d4af37] hover:text-[#0f2218]"
+                >
+                  Appointment
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -123,33 +133,21 @@ function ServicesPackages() {
   return (
     <section id="services" className="bg-white">
 
-
       {/* 🔽 FULL WIDTH GREEN SECTION */}
-      <div className="bg-[#0f2218] pt-4 pb-4 relative z-10 overflow-hidden w-full">
+      <div className="bg-[#006B1A] pt-4 pb-4 relative z-10 overflow-hidden w-full">
 
         {/* 🟢🟡 DOUBLE BORDER BOTTOM */}
         <div className="absolute bottom-0 left-0 w-full">
-          {/* Gold line */}
-          <div className="h-[1px] bg-[#c2a97a]"></div>
-
-          {/* Small gap */}
-          <div className="h-[3px] bg-[#0f2218]"></div>
 
           {/* Inner green/dark line */}
           <div className="h-[1px] bg-[#0a1a12]"></div>
         </div>
 
-        {/* LEFT BOTTOM PNG BORDER */}
-        <img
-          src="/images/bba3b14fb34e0afa43cfe531b8ab86.png"
-          alt="border"
-          className="absolute left-0 bottom-0 w-60 opacity-60 pointer-events-none"
-        />
 
         {/* TITLE */}
-        <h1 className="text-center text-4xl sm:text-5xl md:text-9xl forum-regular mt-24 md:mt-32 mb-16 text-[#c2a97a]">
-  Services & Packages
-</h1>
+        <h1 className="text-center text-4xl sm:text-5xl md:text-9xl forum-regular mt-32 md:mt-40 lg:mt-48 mb-16 text-[#c2a97a] drop-shadow-md">
+          Branches & Services
+        </h1>
 
         {/* BRANCH SELECTOR */}
         <div className="px-6 mt-10 mb-10">
@@ -157,7 +155,7 @@ function ServicesPackages() {
             <ScrollReveal delay={0.2}>
 
               {/* 🔹 HEADING */}
-              <h3 className="text-center text-lg md:text-xl font-medium text-[#c2a97a] mb-6 tracking-wide">
+              <h3 className="text-center text-2xl md:text-3xl font-medium text-[#c2a97a] mb-6 tracking-wide">
                 Choose Our Branch
               </h3>
 
@@ -166,27 +164,16 @@ function ServicesPackages() {
                   <button
                     key={branch}
                     onClick={() => setSelectedBranch(branch)}
-                    className={`relative z-20
-
-font-body 
-text-xs md:text-sm 
-px-3 md:px-6 
-py-1.5 md:py-2.5 
-rounded-xl md:rounded-2xl 
-transition-all duration-300 
-whitespace-nowrap 
-flex-shrink-0
+                    className={`forum-regular relative z-20 font-body text-sm md:text-base px-5 md:px-8 py-2 md:py-3 rounded-xl md:rounded-2xl transition-all duration-300 whitespace-nowrap flex-shrink-0
 
 bg-[#1f3d2b]
-border border-[#d4af37]
-
-ring-1 ring-[#d4af37]/40 ring-offset-2 ring-offset-[#0f2218]  /* 👈 OUTER GOLD LINE */
+ring-1 ring-[#0f2218]
+tracking-wider
 
 ${selectedBranch === branch
-    ? "bg-[#d4af37] text-[#0f2218] ring-[#d4af37]"
-    : "text-[#c2a97a]"
-}`}
-                  >
+                        ? "bg-[#d4af37] text-[#0f2218] ring-[#d4af37]"
+                        : "text-[#c2a97a]"
+                      }`}        >
                     {branch}
                   </button>
                 ))}
@@ -203,7 +190,7 @@ ${selectedBranch === branch
 
         {/* ✅ SELECTED BRANCH NAME */}
         {selectedBranch && (
-          <h2 className="text-center text-2xl md:text-3xl font-semibold text-[#1f3d2b] mb-10">
+          <h2 className="cinzel-heading text-center text-3xl md:text-5xl font-semibold text-[#1f3d2b] mb-10">
             {selectedBranch} Branch
           </h2>
         )}

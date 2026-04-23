@@ -4,6 +4,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -15,7 +17,16 @@
 .bodoni-moda {
   font-family: "Bodoni Moda", serif;
   font-optical-sizing: auto;
-  font-weight: 600; /* you can change: 400–900 */
+  font-weight: 600;
+  /* you can change: 400–900 */
+  font-style: normal;
+}
+
+.cinzel-heading {
+  font-family: "Cinzel", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  /* change weight like 400, 500, 700, 900 */
   font-style: normal;
 }
 
@@ -28,7 +39,7 @@
     --card-foreground: 16 27% 18%; */
 
     --popover: 60 56% 95%;
-    --popover-foreground: 16 27% 18%; 
+    --popover-foreground: 16 27% 18%;
 
     --primary: 122 56% 24%;
     --primary-foreground: 60 56% 95%;
@@ -92,7 +103,12 @@
     font-family: var(--font-body);
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-heading);
   }
 }
@@ -144,9 +160,17 @@
 
 /* Loading spinner */
 @keyframes spin-leaf {
-  0% { transform: rotate(0deg) scale(1); }
-  50% { transform: rotate(180deg) scale(1.1); }
-  100% { transform: rotate(360deg) scale(1); }
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(180deg) scale(1.1);
+  }
+
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
 }
 
 .animate-spin-leaf {
@@ -155,8 +179,15 @@
 
 /* Scroll fade in */
 @keyframes reveal-up {
-  0% { opacity: 0; transform: translateY(40px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .animate-reveal-up {
@@ -174,6 +205,7 @@
     opacity: 0;
     transform: translateX(-40px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -188,6 +220,7 @@
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -219,14 +252,12 @@
   height: 100%;
 
   /* 👇 UPDATED: smooth fade edges */
-  background: linear-gradient(
-    120deg,
-    transparent 0%,
-    rgba(255, 215, 0, 0) 25%,
-    rgba(255, 215, 0, 0.8) 50%,
-    rgba(255, 215, 0, 0) 75%,
-    transparent 100%
-  );
+  background: linear-gradient(120deg,
+      transparent 0%,
+      rgba(255, 215, 0, 0) 25%,
+      rgba(255, 215, 0, 0.8) 50%,
+      rgba(255, 215, 0, 0) 75%,
+      transparent 100%);
 
   transform: skewX(-25deg);
 
@@ -239,17 +270,24 @@
   0% {
     left: -75%;
   }
+
   100% {
     left: 125%;
   }
 }
 
 @keyframes float {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
 }
 
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
-

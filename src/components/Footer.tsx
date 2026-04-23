@@ -2,7 +2,7 @@ import { Leaf } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Footer = () => (
-  <footer className="relative bg-[#0f2218] text-white py-16 rounded-t-[50px] shadow-[0_-8px_30px_rgba(0,0,0,0.15)] ring-2 ring-inset ring-[#c2a97a]/60 before:content-[''] before:absolute before:top-[10px] before:left-[10px] before:right-[10px] before:bottom-[10px] before:rounded-t-[40px] before:border-t before:border-l before:border-r before:border-[#c2a97a]/40 before:pointer-events-none after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[4px] after:bg-[#1f3d2b] after:pointer-events-none">
+  <footer className="relative bg-[#1f3d2b] text-white py-16 shadow-[0_-8px_30px_rgba(0,0,0,0.15)] ring-2 ring-inset ring-[#c2a97a]/60 before:content-[''] before:absolute before:top-[10px] before:left-[10px] before:right-[10px] before:bottom-[10px] before:pointer-events-none after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[4px] after:bg-[#1f3d2b] after:pointer-events-none">
 
     <div className="container mx-auto px-6">
 
@@ -12,7 +12,7 @@ const Footer = () => (
         <div>
           <div className="mb-4">
             <img
-              src="/images/Bethanya Trade mark-1.jpeg"
+              src="/images/Bethanya_Trade_mark-1.png"
               alt="Vriksha Logo"
               className="h-16 w-16 object-cover rounded-full shadow-[0_4px_10px_rgba(0,0,0,0.4)]"
             />

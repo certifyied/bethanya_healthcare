@@ -10,6 +10,7 @@ import ServicesSection from "@/components/ServicesSection";
 import BranchesSection from "@/components/BranchesSection";
 import ProductCarousel from "@/components/ProductCarousel";
 import { motion } from "framer-motion";
+import HomeAdress from "@/components/HomeAdress";
 
 const benefits = [
   { icon: Leaf, title: "100% Natural", desc: "Pure ingredients sourced from ancient forests and organic farms." },
@@ -30,19 +31,19 @@ const Index = () => {
   return (
     <div className="overflow-hidden">
       {/* Hero */}
-      <section className="relative min-h-screen bg-[#071a12] flex items-center justify-center overflow-hidden px-4 sm:px-6 md:px-10 lg:px-16 py-12 md:py-16 lg:py-0">
+      <section className="relative min-h-screen  flex items-center justify-center overflow-hidden px-4 sm:px-6 md:px-10 lg:px-16 py-12 md:py-16 lg:py-0">
 
         {/* 🌿 BACKGROUND GRADIENT */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0b2d1f]/90 via-[#071a12]/40 to-[#020d08]/95 z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#006B1A]/90  to-[#004D12]/95 "></div>
 
         {/* 🌿 BACKGROUND IMAGE */}
-        <div className="absolute inset-0 z-0">
+        {/* <div className="absolute inset-0 z-0">
           <img
             src="/images/6a39089268a36d4b20c6a15202e41ac0.jpg"
             alt="background"
-            className="w-full h-full object-cover opacity-20 md:opacity-30"
+            className="w-full h-full object-cover opacity-20 md:opacity-10"
           />
-        </div>
+        </div> */}
 
         {/* 🌿 TOP FADE */}
         <div className="absolute top-0 left-0 w-full h-[120px] md:h-[160px] bg-gradient-to-b from-black/80 via-black/40 to-transparent z-20 pointer-events-none" />
@@ -50,48 +51,52 @@ const Index = () => {
         {/* 🌿 GLOW */}
         <div className="absolute right-[-80px] md:right-[-100px] top-[25%] w-[250px] h-[250px] md:w-[320px] md:h-[320px] lg:w-[400px] lg:h-[400px] bg-green-800/20 blur-[100px] rounded-full" />
 
-        {/* 🌿 LOGO */}
-        <div className="absolute top-4 md:top-6 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center">
-          <div className="w-[70px] sm:w-[90px] md:w-[110px] lg:w-[140px] 2xl:w-[180px] aspect-square rounded-full overflow-hidden">
-            <img src="/images/Bethanya_Logo.png" alt="logo" className="w-full h-full object-cover mt-2" />
-          </div>
-          <p className="mt-2 md:mb-12 text-[10px] sm:text-xs md:text-xs lg:text-sm tracking-[0.25em] text-[#D4AF37] uppercase text-center">
-            Embrace Life | Embrace Wellness
-          </p>
-        </div>
-
         {/* 🌿 FLOATING LEAF */}
         <motion.img
           src="/images/8826c6b22fbc58a7e6c3202646061610.png"
           alt="leaf"
           className="absolute -top-10 -right-10 md:-right-16 
   w-[180px] md:w-[240px] lg:w-[300px] xl:w-[420px] 
-  opacity-80 pointer-events-none"
+  opacity-80 pointer-events-none
+  drop-shadow-[0_30px_10px_rgba(0,0,0,0.35)]"
           animate={{ y: [0, -15, 0] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         />
 
-        {/* 🌿 CONTENT */}
-        <div className="relative z-10 w-full grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 lg:gap-16 items-center lg:items-end">
+        {/* 🌿 CONTENT (TRUE CENTER) */}
+        <div className="relative z-10 w-full flex justify-center items-center text-center">
 
-          {/* 🌿 LEFT */}
-          <div className="max-w-[500px] lg:max-w-[550px] xl:max-w-[750px] mx-auto md:mx-0 pl-8 md:pl-12 lg:pl-16 lg:self-end xl:mt-24">
+          <div className="max-w-[750px] mx-auto mt-16">
 
+            {/* 🌿 HEADING */}
             <motion.h1
-              className="bodoni-moda mt-32 md:mt-28 lg:mt-24 xl:mt-20 
+              className="cinzel-heading mt-32 md:mt-28 lg:mt-24 xl:mt-20 
   text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-8xl 
-  font-semibold text-white leading-[1.1] mb-5 tracking-[0.04em]"
+  font-semibold text-white leading-[1.1] mb-3 tracking-[0.04em] text-center w-full"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: "easeOut" }}
             >
-              Bethanya <br /> Healthcare
+              Bethanya Ayurveda
             </motion.h1>
 
             <motion.p
+              className="forum-regular text-[#D4AF37] 
+  text-lg sm:text-xl md:text-2xl 
+  tracking-[0.3em] uppercase mb-6
+  drop-shadow-[2px_2px_2px_rgba(0,0,0,0.8)]"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.2 }}
+            >
+              Embrace Life | Embrace Wellness
+            </motion.p>
+
+            {/* 🌿 DESCRIPTION */}
+            <motion.p
               className="forum-regular text-gray-300 mb-8 leading-relaxed 
-  text-base md:text-lg lg:text-base 
-  max-w-[420px] md:max-w-[400px] lg:max-w-[450px]"
+  text-xl md:text-2xl lg:text-xl 
+  max-w-[500px] mx-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.25, ease: "easeOut" }}
@@ -99,88 +104,35 @@ const Index = () => {
               Welcome to Bethanya Ayurveda, a serene healing sanctuary rooted in the timeless traditions of Kerala Ayurveda. Here, classical wisdom, pure herbal care, and graceful hospitality come together to restore balance, awaken vitality, and nurture complete well being.
             </motion.p>
 
-            <Link
-              to="/products"
-              className="relative px-8 py-4 rounded-full bg-[#1f3d2b] text-white text-base md:text-lg hover:bg-[#163020] transition shadow-lg"
+            {/* 🌿 BUTTON */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.4 }}
             >
-              <span className="absolute inset-[2px] rounded-full border border-[#D4AF37]"></span>
-              <span className="relative z-10">Explore Products</span>
-            </Link>
+              <Link
+                to="/products"
+                className="inline-block relative px-8 py-4 rounded-full bg-[#1f3d2b] text-white text-base md:text-lg hover:bg-[#163020] transition shadow-lg"
+              >
+                <span className="absolute inset-[2px] rounded-full"></span>
+                <span className="forum-regular relative z-10">Explore Products</span>
+
+              </Link>
+            </motion.div>
 
           </div>
-
-          {/* 🌿 RIGHT */}
-          <div className="relative flex justify-center items-center mt-10 md:mt-10 lg:mt-20 xl:mt-0">
-
-            {/* SHADOW */}
-            <div className="absolute bottom-5 w-[160px] h-[40px] bg-black/40 blur-xl rounded-full"></div>
-
-            {/* CARD */}
-            <div className="relative z-30 
-    w-[200px] md:w-[220px] lg:w-[230px] xl:w-[260px]
-    h-[280px] md:h-[300px] lg:h-[320px] xl:h-[360px]
-    rounded-[24px] lg:rounded-[28px]
-    bg-white/5 backdrop-blur-xl border border-white/10
-    flex flex-col items-center justify-between py-5 overflow-hidden">
-
-              {/* 🌿 GLASS EFFECT (FIXED) */}
-              <div className="absolute inset-0 rounded-[inherit] 
-      bg-gradient-to-t from-transparent via-white/10 to-transparent 
-      opacity-40 pointer-events-none z-10" />
-
-              {/* 🌿 PRODUCT */}
-              <div className="relative flex justify-center items-center z-20">
-
-                <img
-                  src="/images/21285de1f73f9229d9a5fa7283d514a3.png"
-                  alt="bg"
-                  className="absolute 
-    w-[220px] md:w-[260px] lg:w-[280px] 
-    opacity-60 md:opacity-70 lg:opacity-80 
-    drop-shadow-[0_10px_5px_rgba(0,0,0,0.80)]"
-                />
-
-                <img
-                  src="/images/9d3f1a6256c5a52679f6c90d177eeb4c.png"
-                  alt="product"
-                  className="relative z-20 
-          w-[140px] md:w-[170px] lg:w-[190px] xl:w-[260px]
-          object-contain drop-shadow-[0_10px_05px_rgba(0,0,0,0.80)]"
-                />
-
-              </div>
-            </div>
-          </div>
-
         </div>
+        <motion.img
+          src="/images/cdde68071816c2b47099100d06e01d06.png"
+          alt="leaf"
+          className="absolute bottom-[-20px] left-[-20px] 
+  w-[140px] sm:w-[180px] md:w-[220px] lg:w-[260px] xl:w-[320px] 
+  opacity-80 pointer-events-none z-10
+  drop-shadow-[0_30px_10px_rgba(0,0,0,0.35)]"
+          animate={{ y: [0, 12, 0] }}
+          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+        />
       </section>
-
-
-
-      {/* Benefits */}
-      {/* <section className="py-24 px-6">
-        <div className="container mx-auto max-w-5xl">
-          <ScrollReveal>
-            <div className="text-center mb-14">
-              <p className="font-body text-herbal text-sm tracking-[0.2em] uppercase mb-3">Why Choose Us</p>
-              <h2 className="font-heading text-3xl md:text-4xl text-foreground">Pure by Promise</h2>
-            </div>
-          </ScrollReveal>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {benefits.map((b, i) => (
-              <ScrollReveal key={b.title} delay={i * 0.1}>
-                <div className="text-center p-6 rounded-3xl bg-card shadow-card hover:shadow-glow transition-all duration-300">
-                  <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-leaf flex items-center justify-center">
-                    <b.icon className="w-7 h-7 text-primary-foreground" />
-                  </div>
-                  <h3 className="font-heading text-lg text-foreground mb-2">{b.title}</h3>
-                  <p className="font-body text-sm text-muted-foreground">{b.desc}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section> */}
 
       <section className="relative py-24 px-6 overflow-hidden">
         {/* 🌿 TOP RIGHT PNG */}
@@ -222,13 +174,21 @@ const Index = () => {
         </div>
       </section>
 
-
+      <HomeAdress />
 
       <Banner />
 
 
       {/* Featured Products */}
-      <section className="py-20 px-6 bg-[#0f2218] relative">
+      <section className="py-20 px-6 bg-[#0f2218] relative overflow-hidden">
+
+        {/* 🌿 BLURRED BACKGROUND IMAGE */}
+        <img
+          src="/images/6a39089268a36d4b20c6a15202e41ac0.jpg"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover blur-md scale-110 "
+        />
+
         <div className="relative container mx-auto">
 
           {/* HEADING */}
@@ -238,7 +198,7 @@ const Index = () => {
                 Curated for You
               </p>
 
-              <h2 className="font-heading text-3xl md:text-7xl 
+              <h2 className="forum-regular font-heading text-3xl md:text-7xl 
         bg-gradient-to-r from-[#c2a97a] via-[#e6d3a3] to-[#a67c2d] 
         bg-clip-text text-transparent">
                 Premium Selections
@@ -246,7 +206,7 @@ const Index = () => {
             </div>
           </ScrollReveal>
 
-          {/* ✅ CAROUSEL (ONLY THIS) */}
+          {/* CAROUSEL */}
           <ProductCarousel products={featured} />
 
           {/* BUTTON */}
@@ -256,10 +216,10 @@ const Index = () => {
                 <Link
                   to="/products"
                   className="inline-block px-6 py-2 rounded-full
-        forum-regular text-lg lg:text-xl xl:text-2xl font-semibold tracking-wide
-        text-black
-        bg-gradient-to-r from-[#c2a97a] via-[#e6d3a3] to-[#a67c2d]
-        shadow-md hover:brightness-110 hover:shadow-lg transition-all duration-300"
+            forum-regular text-lg lg:text-xl xl:text-2xl font-semibold tracking-wide
+            text-black
+            bg-gradient-to-r from-[#c2a97a] via-[#e6d3a3] to-[#a67c2d]
+            shadow-md hover:brightness-110 hover:shadow-lg transition-all duration-300"
                 >
                   View All Products
                 </Link>
@@ -273,27 +233,57 @@ const Index = () => {
       <ServicesSection />
 
       {/* Testimonials */}
-      <section className="py-24 px-6 bg-gradient-earth">
-        <div className="container mx-auto max-w-5xl">
+      <section
+        className="py-24 px-6 bg-[#0f2218] bg-cover bg-center relative"
+        style={{
+          backgroundImage: "url('/images/Hero2.jpg')", // change path
+        }}
+      >
+
+        {/* Dark overlay for readability */}
+        <div className="absolute inset-0 bg-[#0f2218]/80"></div>
+
+        <div className="container mx-auto max-w-5xl relative z-10">
+
           <ScrollReveal>
             <div className="text-center mb-14">
-              <p className="font-body text-herbal text-sm tracking-[0.2em] uppercase mb-3">Testimonials</p>
-              <h2 className="font-heading text-3xl md:text-4xl text-primary-foreground">Loved by Thousands</h2>
+              <p className="font-body text-herbal text-sm tracking-[0.2em] uppercase mb-3">
+                Testimonials
+              </p>
+
+              <h2 className="forum-regular font-heading text-4xl md:text-6xl text-primary-foreground drop-shadow-[0_6px_15px_rgba(0,0,0,0.4)]">
+                Loved by Thousands
+              </h2>
             </div>
           </ScrollReveal>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((t, i) => (
               <ScrollReveal key={t.name} delay={i * 0.15}>
-                <div className="bg-primary-foreground/10 backdrop-blur-sm rounded-3xl p-8 border border-primary-foreground/10">
-                  <p className="font-body text-primary-foreground/80 italic mb-6 leading-relaxed">"{t.text}"</p>
+
+                <div className="bg-white/5 backdrop-blur-md rounded-3xl p-8 
+                          border border-white/10
+                          shadow-lg hover:shadow-xl transition-all duration-300">
+
+                  <p className="font-body text-primary-foreground/80 italic mb-6 leading-relaxed">
+                    "{t.text}"
+                  </p>
+
                   <div>
-                    <p className="font-heading text-primary-foreground font-semibold">{t.name}</p>
-                    <p className="font-body text-primary-foreground/50 text-sm">{t.location}</p>
+                    <p className="font-heading text-primary-foreground font-semibold">
+                      {t.name}
+                    </p>
+                    <p className="font-body text-primary-foreground/50 text-sm">
+                      {t.location}
+                    </p>
                   </div>
+
                 </div>
+
               </ScrollReveal>
             ))}
           </div>
+
         </div>
       </section>
       <BranchesSection />
