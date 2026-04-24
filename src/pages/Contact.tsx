@@ -11,12 +11,10 @@ const Contact = () => {
       <div className="pb-20 min-h-screen">
 
         {/* 🌿 FULL WIDTH BG SECTION */}
-        <div className="bg-[#0f2218] pt-16 pb-24 md:pb-32 relative z-10 overflow-hidden w-full">
+        <div className="bg-[#0f2218] pt-6 pb-4 relative z-10 overflow-hidden w-full min-h-[544px]">
 
           {/* 🟢🟡 DOUBLE BORDER BOTTOM */}
           <div className="absolute bottom-0 left-0 w-full">
-            <div className="h-[1px] bg-[#c2a97a]"></div>
-            <div className="h-[3px] bg-[#0f2218]"></div>
             <div className="h-[1px] bg-[#0a1a12]"></div>
           </div>
 
@@ -28,11 +26,15 @@ const Contact = () => {
           />
 
           {/* TITLE */}
-          <h1 className="text-center text-4xl sm:text-5xl md:text-7xl lg:text-8xl forum-regular mt-24 md:mt-32 mb-4 text-[#c2a97a]">
+          <h1 className="text-center text-4xl sm:text-5xl md:text-9xl forum-regular mt-32 md:mt-40 lg:mt-48 mb-6 
+bg-gradient-to-r from-[#c2a97a] via-[#f8e7b0] to-[#d4af37]
+bg-clip-text text-transparent
+drop-shadow-[0_8px_5px_rgba(0,0,0,0.8)]">
             Contact Us
           </h1>
 
-          <p className="text-center text-sm md:text-base text-[#c2a97a]/70 max-w-xl mx-auto">
+          {/* SUBTEXT */}
+          <p className="forum-regular text-center text-lg md:text-2xl text-[#c2a97a] max-w-3xl mx-auto px-6 mb-16 drop-shadow-[0_4px_2px_rgba(0,0,0,0.6)]">
             Connect with our experts and begin your journey towards holistic healing and wellness.
           </p>
 
@@ -46,13 +48,15 @@ const Contact = () => {
               {
                 name: "KATTANAM",
                 phone: "+91 9894176585",
+                mobile: "+91 8867127954",
                 email: "bethanyahealthcare@gmail.com",
-                address: "BETHANYA HEALTHCARE PVT. LTD., Regd. Office: X/498 'REHOBOTH' Valuparampil Puthen Veedu, Thonnakkad, Chengannur–Mavelikkara Road, Near Thonnakkad Church, Chengannur, Kerala - 689511",
+                address: "BETHANYA AYURVEDA HOSPITAL, Santhome Building, Near Pope Pius H.S School, Kattanam, Alappuzha District, Kerala - 690503",
                 available: true,
               },
               {
                 name: "VARKKALA",
-                phone: "+91 8867127954",
+                phone: "+91 9894176585",
+                mobile: "+91 8867127954",
                 email: "bethanyahealthcare@gmail.com",
                 address: "BETHANYA AYURVEDA KSHETRA RETREAT, Kshetra Street, North Cliff, Varkala, Kerala",
                 available: true,
@@ -73,33 +77,38 @@ const Contact = () => {
                 {/* 🌿 Gold Top Line */}
                 <div className="absolute top-0 left-6 right-6 h-[1px] bg-[#c2a97a]/50"></div>
 
-                <h2 className="forum-regular text-2xl md:text-3xl font-semibold text-[#c2a97a] mb-4 tracking-wide text-center">
-                  {branch.name}
+                <h2 className="forum-regular text-2xl md:text-3xl font-semibold text-[#c2a97a] mb-4 tracking-wide text-center leading-snug">
+                  BETHANYA AYURVEDA <br />
+                  <span className="block mt-1">{branch.name}</span>
                 </h2>
 
                 {branch.available ? (
                   <div className="space-y-4 text-sm">
 
-                    <div className="flex items-center gap-3 text-muted-foreground">
+                    <div className="flex items-center gap-3 text-white">
                       <Phone className="w-4 h-4 text-[#c2a97a]" />
                       {branch.phone}
                     </div>
+                    <div className="flex items-center gap-3 text-white">
+                      <Phone className="w-4 h-4 text-[#c2a97a]" />
+                      {branch.mobile}
+                    </div>
 
-                    <div className="flex items-center gap-3 text-muted-foreground">
+                    <div className="flex items-center gap-3 text-white">
                       <Mail className="w-5 h-5 sm:w-4 sm:h-4 md:w-5 md:h-5 text-[#c2a97a] flex-shrink-0" />
                       <span className="text-sm md:text-base break-words">
                         {branch.email}
                       </span>
                     </div>
 
-                    <div className="flex items-start gap-3 text-muted-foreground">
+                    <div className="flex items-start gap-3 text-white">
                       <MapPin className="w-5 h-5 text-[#c2a97a] mt-1 flex-shrink-0" />
                       <span>{branch.address}</span>
                     </div>
 
                   </div>
                 ) : (
-                  <div className="flex items-center justify-center h-full py-10">
+                  <div className="absolute inset-0 flex items-center justify-center">
                     <p className="font-cinzel shine-text text-xl sm:text-2xl md:text-3xl text-center text-white font-medium tracking-wide leading-tight px-4 drop-shadow-[0_0_6px_rgba(212,175,55,0.7)]">
                       Opening Soon
                     </p>

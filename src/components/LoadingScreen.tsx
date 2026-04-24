@@ -27,7 +27,7 @@ const LoadingScreen = () => {
         }`}
     >
       {/* 🌿 SAME BACKGROUND GRADIENT */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#006B1A]/90 to-[#004D12]/95"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0f2218] to-[#0f2218]"></div>
 
       {/* 🌿 TOP FADE */}
       {/* <div className="absolute top-0 left-0 w-full h-[120px] md:h-[160px] bg-gradient-to-b from-black/80 via-black/40 to-transparent z-10 pointer-events-none" /> */}

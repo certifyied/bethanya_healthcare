@@ -53,7 +53,7 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ id, name, price, category, image, description }: ProductCardProps) => (
-  <div className="rounded-3xl border border-[#c2a97a]">
+  <div className="rounded-3xl border border-[#c2a97a] mb-8 md:mb-10">
     {/* Golden outer border */}
 
     <div className="m-[4px] rounded-3xl">

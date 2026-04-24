@@ -63,14 +63,17 @@ hover:shadow-[0_20px_60px_rgba(0,0,0,0.15)]
 transition-all duration-300`}
       >
         {/* 🔥 INNER CARD */}
-        <div className="relative flex flex-col md:flex-row items-center gap-10 p-6 md:p-10 rounded-3xl border border-[#c2a97a]/40 bg-[#006B1A] w-full overflow-hidden">
+        <div className="relative flex flex-col md:flex-row items-center gap-10 p-6 md:p-10 rounded-3xl border border-[#c2a97a]/40 bg-[#0f2218] w-full overflow-hidden">
 
-          {/* 🌿 BACKGROUND IMAGE (NO URL STYLE) */}
-          {/* <img
+          {/* 🌿 BACKGROUND IMAGE WITH BLUR */}
+          <img
             src="/images/6a39089268a36d4b20c6a15202e41ac0.jpg"
             alt=""
-            className="absolute inset-0 w-full h-full object-cover opacity-40"
-          /> */}
+            className="absolute inset-0 w-full h-full object-cover opacity-40 blur-sm scale-110"
+          />
+
+          {/* OPTIONAL DARK OVERLAY FOR BETTER READABILITY */}
+          <div className="absolute inset-0 bg-black/20"></div>
 
           {/* CONTENT */}
           <div className="relative z-10 flex flex-col md:flex-row items-center gap-10 w-full">
@@ -83,15 +86,15 @@ transition-all duration-300`}
             </div>
 
             <div className="w-full md:w-1/2">
-              <h3 className="text-[#c2a97a] text-3xl md:text-4xl font-semibold text-[#1f3d2b] mb-6 drop-shadow-md">
+              <h3 className="forum-regular text-[#c2a97a] text-4xl md:text-5xl font-semibold text-[#1f3d2b] mb-6 drop-shadow-md">
                 {title}
               </h3>
 
-              <ul className="space-y-3 text-[#4b3a2f] drop-shadow-md">
+              <ul className="forum-regular space-y-4 text-[#4b3a2f] drop-shadow-md">
                 {items.map((item: string, i: number) => (
-                  <li key={i} className="flex gap-3 text-lg">
+                  <li key={i} className="flex gap-3 text-xl md:text-2xl">
                     <span className="text-[#c2a97a] font-semibold">{i + 1}.</span>
-                    <span className="text-[#c2a97a] ">{item}</span>
+                    <span className="text-[#c2a97a]">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -100,11 +103,12 @@ transition-all duration-300`}
               <div className="text-center mt-6">
                 <button
                   onClick={() => openEnquiry(title)}
-                  className="px-6 py-3 rounded-2xl transition-all duration-300
-  bg-[#0f2218] border border-[#d4af37]
-  outline outline-1 outline-[#d4af37]/30 outline-offset-4
-  text-[#c2a97a]
-  hover:bg-[#d4af37] hover:text-[#0f2218]"
+                  className="forum-regular px-8 py-4 text-lg md:text-xl rounded-3xl transition-all duration-300
+          bg-gradient-to-r from-[#d4af37] via-[#f5d76e] to-[#c2a97a]
+          border border-[#d4af37]
+          outline outline-1 outline-[#d4af37]/30 outline-offset-4
+          text-[#0f2218] font-semibold
+          hover:scale-105 hover:shadow-[0_8px_20px_rgba(212,175,55,0.35)]"
                 >
                   Appointment
                 </button>
@@ -134,20 +138,33 @@ function ServicesPackages() {
     <section id="services" className="bg-white">
 
       {/* 🔽 FULL WIDTH GREEN SECTION */}
-      <div className="bg-[#006B1A] pt-4 pb-4 relative z-10 overflow-hidden w-full">
+      <div className="bg-[#0f2218] pt-4 pb-4 relative z-10 overflow-hidden w-full">
 
         {/* 🟢🟡 DOUBLE BORDER BOTTOM */}
         <div className="absolute bottom-0 left-0 w-full">
+
+          <img
+            src="/images/bba3b14fb34e0afa43cfe531b8ab86.png"
+            alt="border"
+            className="absolute left-0 bottom-0 w-60 opacity-60 pointer-events-none"
+          />
 
           {/* Inner green/dark line */}
           <div className="h-[1px] bg-[#0a1a12]"></div>
         </div>
 
-
         {/* TITLE */}
-        <h1 className="text-center text-4xl sm:text-5xl md:text-9xl forum-regular mt-32 md:mt-40 lg:mt-48 mb-16 text-[#c2a97a] drop-shadow-md">
-          Branches & Services
-        </h1>
+        <h1 className="text-center text-4xl sm:text-5xl md:text-9xl forum-regular mt-32 md:mt-40 lg:mt-48 mb-6 
+bg-gradient-to-r from-[#c2a97a] via-[#f8e7b0] to-[#d4af37]
+bg-clip-text text-transparent
+drop-shadow-[0_8px_5px_rgba(0,0,0,0.8)]">
+  Branches & Services
+</h1>
+
+        {/* CAPTION */}
+        <p className="forum-regular text-center text-lg md:text-2xl text-[#c2a97a] max-w-3xl mx-auto px-6 mb-16 drop-shadow-[0_4px_2px_rgba(0,0,0,0.6)]">
+          Discover our wellness branches and explore authentic Ayurvedic treatments crafted for complete healing and rejuvenation.
+        </p>
 
         {/* BRANCH SELECTOR */}
         <div className="px-6 mt-10 mb-10">
@@ -155,7 +172,7 @@ function ServicesPackages() {
             <ScrollReveal delay={0.2}>
 
               {/* 🔹 HEADING */}
-              <h3 className="text-center text-2xl md:text-3xl font-medium text-[#c2a97a] mb-6 tracking-wide">
+              <h3 className="forum-regular text-center text-2xl md:text-3xl font-medium text-[#c2a97a] mb-6 tracking-wide drop-shadow-[0_4px_5px_rgba(0,0,0,0.8)]">
                 Choose Our Branch
               </h3>
 
@@ -173,7 +190,8 @@ tracking-wider
 ${selectedBranch === branch
                         ? "bg-[#d4af37] text-[#0f2218] ring-[#d4af37]"
                         : "text-[#c2a97a]"
-                      }`}        >
+                      }`}
+                  >
                     {branch}
                   </button>
                 ))}
@@ -190,19 +208,27 @@ ${selectedBranch === branch
 
         {/* ✅ SELECTED BRANCH NAME */}
         {selectedBranch && (
-          <h2 className="cinzel-heading text-center text-3xl md:text-5xl font-semibold text-[#1f3d2b] mb-10">
-            {selectedBranch} Branch
-          </h2>
+          <div className="text-center mb-10">
+            <h2 className="forum-regular text-3xl md:text-5xl font-extrabold text-[#1f3d2b] leading-none">
+              {selectedBranch} Branch
+            </h2>
+
+            {/* VERY CLOSE UNDERLINE */}
+            <div className="flex justify-center -mt-4 md:-mt-16">
+              <img
+                src="/images/underline1.png"
+                alt="underline"
+                className="w-40 md:w-56 object-contain"
+              />
+            </div>
+          </div>
         )}
 
         {/* VARKALA COMING SOON */}
         {!data && (
-          <div className="text-center py-20">
-            {/* <h3 className="text-3xl font-semibold text-[#1f3d2b]">
-              Varkala Branch
-            </h3> */}
-            <p className="mt-4 text-lg text-[#4b3a2f]">
-              Coming Soon 🌿
+          <div className="text-center -mt-16 mb-14">
+            <p className="forum-regular mt-4 text-2xl md:text-6xl gold-shine">
+              Coming Soon
             </p>
           </div>
         )}
@@ -215,7 +241,9 @@ ${selectedBranch === branch
               image="/images/8CA5csIHslwV3sQ_pzp-VJomeg6dSWfeoxJbRqYh3f6.jpg"
               items={data.combo}
               branch={selectedBranch}
-              openEnquiry={(service: string) => setSearchParams({ branch: selectedBranch, service })}
+              openEnquiry={(service: string) =>
+                setSearchParams({ branch: selectedBranch, service })
+              }
             />
 
             <Section
@@ -224,7 +252,9 @@ ${selectedBranch === branch
               reverse
               items={data.spa}
               branch={selectedBranch}
-              openEnquiry={(service: string) => setSearchParams({ branch: selectedBranch, service })}
+              openEnquiry={(service: string) =>
+                setSearchParams({ branch: selectedBranch, service })
+              }
             />
 
             <Section
@@ -232,7 +262,9 @@ ${selectedBranch === branch
               image="/images/VA9zLVQfBMMJty.jpg"
               items={data.special}
               branch={selectedBranch}
-              openEnquiry={(service: string) => setSearchParams({ branch: selectedBranch, service })}
+              openEnquiry={(service: string) =>
+                setSearchParams({ branch: selectedBranch, service })
+              }
             />
 
             <Section
@@ -241,7 +273,9 @@ ${selectedBranch === branch
               reverse
               items={data.massage}
               branch={selectedBranch}
-              openEnquiry={(service: string) => setSearchParams({ branch: selectedBranch, service })}
+              openEnquiry={(service: string) =>
+                setSearchParams({ branch: selectedBranch, service })
+              }
             />
           </>
         )}

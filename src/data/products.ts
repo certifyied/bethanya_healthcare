@@ -2,7 +2,12 @@ export interface Product {
   id: string;
   name: string;
   price: string;
-  category: "Oils" | "Herbs" | "Skincare";
+  category:
+  | "Oils"
+  | "Herbs"
+  | "Skincare"
+  | "Foods"
+  | "Wellness";
   image: string;
   description: string;
   ingredients: string[];
@@ -11,63 +16,166 @@ export interface Product {
 
 export const products: Product[] = [
   {
-    id: "kumkumadi-oil",
-    name: "Kumkumadi Tailam",
-    price: "₹1,299",
+    id: "coco-ginger-sarbat",
+    name: "Coco Ginger Sarbat",
+    price: "₹249",
+    category: "Foods",
+    image: "/images/products/coco-ginger-sarbat.jpg",
+    description: "Traditional refreshing herbal sarbat.",
+    ingredients: ["Coconut", "Ginger"],
+    benefits: ["Refreshing", "Cooling", "Digestive support"],
+  },
+
+  {
+    id: "virgin-oil",
+    name: "Virgin Oil",
+    price: "₹499",
     category: "Oils",
-    image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=600&h=600&fit=crop",
-    description: "Radiance-boosting face oil with saffron and 16 potent Ayurvedic herbs for luminous, youthful skin.",
-    ingredients: ["Saffron", "Sandalwood", "Lotus", "Manjistha"],
-    benefits: ["Brightens complexion", "Reduces dark spots", "Anti-aging", "Deep nourishment"],
+    image: "/images/products/virgin-oil.jpg",
+    description: "Pure traditional virgin oil.",
+    ingredients: ["Natural Oil Extract"],
+    benefits: ["Nourishment", "Wellness support", "Multipurpose use"],
   },
+
   {
-    id: "ashwagandha-powder",
-    name: "Ashwagandha Churna",
-    price: "₹549",
-    category: "Herbs",
-    image: "https://images.unsplash.com/photo-1515694346937-94d85e39a29a?w=600&h=600&fit=crop",
-    description: "Pure organic Ashwagandha root powder for stress relief, vitality, and balanced energy.",
-    ingredients: ["Ashwagandha Root", "Wild-harvested"],
-    benefits: ["Reduces stress", "Boosts immunity", "Improves sleep", "Enhances vitality"],
-  },
-  {
-    id: "neem-face-wash",
-    name: "Neem & Tulsi Face Wash",
-    price: "₹399",
-    category: "Skincare",
-    image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=600&h=600&fit=crop",
-    description: "Gentle herbal cleanser with neem and tulsi extracts to purify and refresh your skin naturally.",
-    ingredients: ["Neem Extract", "Tulsi", "Aloe Vera", "Turmeric"],
-    benefits: ["Deep cleansing", "Anti-bacterial", "Controls oil", "Soothes skin"],
-  },
-  {
-    id: "brahmi-oil",
-    name: "Brahmi Hair Oil",
-    price: "₹699",
-    category: "Oils",
-    image: "https://images.unsplash.com/photo-1600428877878-1a0ff561571c?w=600&h=600&fit=crop",
-    description: "Traditional Brahmi-infused coconut oil to strengthen hair, reduce fall, and promote healthy growth.",
-    ingredients: ["Brahmi", "Coconut Oil", "Amla", "Bhringraj"],
-    benefits: ["Strengthens roots", "Reduces hair fall", "Promotes growth", "Calms the mind"],
-  },
-  {
-    id: "triphala-powder",
-    name: "Triphala Churna",
-    price: "₹449",
-    category: "Herbs",
-    image: "https://images.unsplash.com/photo-1471193945509-9ad0617afabf?w=600&h=600&fit=crop",
-    description: "A classical Ayurvedic blend of three fruits for digestive health and gentle detoxification.",
-    ingredients: ["Amalaki", "Bibhitaki", "Haritaki"],
-    benefits: ["Aids digestion", "Natural detox", "Rich in Vitamin C", "Balances doshas"],
-  },
-  {
-    id: "turmeric-cream",
-    name: "Haldi Glow Cream",
+    id: "hair-oil",
+    name: "Hair Oil",
     price: "₹599",
+    category: "Oils",
+    image: "/images/products/hair-oil.jpg",
+    description: "Traditional herbal hair oil.",
+    ingredients: ["Herbal Infusion"],
+    benefits: ["Hair nourishment", "Strengthens roots", "Scalp care"],
+  },
+
+  {
+    id: "karunochi-rice-powder",
+    name: "Karunochi Rice Powder",
+    price: "₹299",
+    category: "Foods",
+    image: "/images/products/karunochi-rice-powder.jpg",
+    description: "Traditional nutritious rice powder.",
+    ingredients: ["Karunochi Rice"],
+    benefits: ["Nutrition", "Energy support", "Digestive wellness"],
+  },
+
+  {
+    id: "kudangal-rice-powder",
+    name: "Kudangal Rice Powder",
+    price: "₹299",
+    category: "Foods",
+    image: "/images/products/kudangal-rice-powder.jpg",
+    description: "Wholesome traditional rice powder.",
+    ingredients: ["Kudangal Rice"],
+    benefits: ["Natural nourishment", "Healthy grains", "Energy support"],
+  },
+
+  {
+    id: "ragi-powder",
+    name: "Ragi Powder",
+    price: "₹249",
+    category: "Foods",
+    image: "/images/products/ragi-powder.jpg",
+    description: "Traditional ragi nutrition powder.",
+    ingredients: ["Ragi"],
+    benefits: ["Calcium rich", "High fiber", "Energy support"],
+  },
+
+  {
+    id: "sirijeevana",
+    name: "Sirijeevana",
+    price: "₹399",
+    category: "Wellness",
+    image: "/images/products/sirijeevana.jpg",
+    description: "Traditional Ayurvedic wellness preparation.",
+    ingredients: ["Herbal Blend"],
+    benefits: ["Vitality", "Balance", "Wellness support"],
+  },
+
+  {
+    id: "millets",
+    name: "Millets",
+    price: "₹299",
+    category: "Foods",
+    image: "/images/products/millets.jpg",
+    description: "Nutritious traditional millets.",
+    ingredients: ["Millets"],
+    benefits: ["Fiber rich", "Healthy nutrition", "Sustained energy"],
+  },
+
+  {
+    id: "ragi-flakes",
+    name: "Ragi Flakes",
+    price: "₹199",
+    category: "Foods",
+    image: "/images/products/ragi-flakes.jpg",
+    description: "Healthy ragi flakes for daily nourishment.",
+    ingredients: ["Ragi"],
+    benefits: ["Quick nutrition", "Fiber rich", "Energy support"],
+  },
+
+  {
+    id: "bajra-powder",
+    name: "Bajra Powder",
+    price: "₹249",
+    category: "Foods",
+    image: "/images/products/bajra-powder.jpg",
+    description: "Traditional bajra nutrition powder.",
+    ingredients: ["Bajra"],
+    benefits: ["Healthy grains", "Iron rich", "Digestive support"],
+  },
+
+  {
+    id: "jower-powder",
+    name: "Jower Powder",
+    price: "₹249",
+    category: "Foods",
+    image: "/images/products/jower-powder.jpg",
+    description: "Traditional jower flour powder.",
+    ingredients: ["Jower"],
+    benefits: ["Natural nutrition", "Fiber rich", "Energy support"],
+  },
+
+  {
+    id: "kajal",
+    name: "Kajal",
+    price: "₹199",
     category: "Skincare",
-    image: "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=600&h=600&fit=crop",
-    description: "Luxurious turmeric and sandalwood cream that illuminates skin with an ancient golden glow.",
-    ingredients: ["Turmeric", "Sandalwood", "Milk Protein", "Rose Water"],
-    benefits: ["Golden glow", "Anti-inflammatory", "Moisturizing", "Even skin tone"],
+    image: "/images/products/kajal.jpg",
+    description: "Traditional Ayurvedic kajal.",
+    ingredients: ["Herbal Blend"],
+    benefits: ["Eye care", "Natural beauty", "Cooling effect"],
+  },
+  {
+    id: "lip-balm",
+    name: "Lip Balm",
+    price: "₹149",
+    category: "Skincare",
+    image: "/images/products/lip-balm.jpg",
+    description: "Natural nourishing lip balm for soft and hydrated lips.",
+    ingredients: ["Herbal Extracts", "Natural Oils"],
+    benefits: ["Moisturizes lips", "Prevents dryness", "Softens lips"],
+  },
+
+  {
+    id: "soap",
+    name: "Herbal Soap",
+    price: "₹129",
+    category: "Skincare",
+    image: "/images/products/soap.jpg",
+    description: "Traditional herbal soap for gentle natural cleansing.",
+    ingredients: ["Herbal Blend", "Natural Oils"],
+    benefits: ["Cleanses skin", "Gentle care", "Natural freshness"],
+  },
+
+  {
+    id: "face-wash",
+    name: "Face Wash",
+    price: "₹249",
+    category: "Skincare",
+    image: "/images/products/face-wash.jpg",
+    description: "Herbal face wash for refreshing and purifying skin care.",
+    ingredients: ["Herbal Extracts", "Aloe Vera"],
+    benefits: ["Deep cleansing", "Refreshes skin", "Supports healthy glow"],
   },
 ];

@@ -98,13 +98,25 @@ relative z-10">
 
                                 {/* CONTENT */}
                                 <div className="p-4 text-center pointer-events-none">
-                                    <h3 className="text-[#c2a97a] font-heading text-lg mb-2">
-                                        {product.name}
-                                    </h3>
-                                    <p className="text-[#c2a97a]/70 text-xs leading-relaxed line-clamp-3">
-                                        {product.description}
-                                    </p>
-                                </div>
+  <h3
+    className="text-[#c2a97a] font-heading
+    text-xl md:text-2xl
+    mb-2
+    drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]"
+  >
+    {product.name}
+  </h3>
+
+  <p
+    className="text-[#c2a97a]/70
+    text-sm md:text-base
+    leading-relaxed
+    line-clamp-3
+    drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]"
+  >
+    {product.description}
+  </p>
+</div>
 
                             </div>
                         </div>

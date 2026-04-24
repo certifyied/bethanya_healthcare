@@ -76,7 +76,7 @@ export default function ServicesSection() {
             {/* 🌿 Grid with single golden outline */}
             <div className="relative z-10 max-w-7xl mx-auto p-1">
                 <div
-                    className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 bg-[#1f3d2b] backdrop-blur-md rounded-2xl p-6 relative"
+                    className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 bg-[#0f2218] backdrop-blur-md rounded-2xl p-6 relative"
                 >
                     {/* Inner golden border */}
                    

@@ -31,19 +31,22 @@ const Index = () => {
   return (
     <div className="overflow-hidden">
       {/* Hero */}
-      <section className="relative min-h-screen  flex items-center justify-center overflow-hidden px-4 sm:px-6 md:px-10 lg:px-16 py-12 md:py-16 lg:py-0">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6 md:px-10 lg:px-16 py-12 md:py-16 lg:py-0">
 
         {/* 🌿 BACKGROUND GRADIENT */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#006B1A]/90  to-[#004D12]/95 "></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0f2218] to-[#0f2218]"></div>
 
         {/* 🌿 BACKGROUND IMAGE */}
-        {/* <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0">
           <img
             src="/images/6a39089268a36d4b20c6a15202e41ac0.jpg"
             alt="background"
             className="w-full h-full object-cover opacity-20 md:opacity-10"
           />
-        </div> */}
+        </div>
+
+        {/* 🌿 GLASS / BLUR OVERLAY */}
+        <div className="absolute inset-0 z-[1] bg-white/5 backdrop-blur-md"></div>
 
         {/* 🌿 TOP FADE */}
         <div className="absolute top-0 left-0 w-full h-[120px] md:h-[160px] bg-gradient-to-b from-black/80 via-black/40 to-transparent z-20 pointer-events-none" />
@@ -56,71 +59,100 @@ const Index = () => {
           src="/images/8826c6b22fbc58a7e6c3202646061610.png"
           alt="leaf"
           className="absolute -top-10 -right-10 md:-right-16 
-  w-[180px] md:w-[240px] lg:w-[300px] xl:w-[420px] 
-  opacity-80 pointer-events-none
-  drop-shadow-[0_30px_10px_rgba(0,0,0,0.35)]"
+    w-[180px] md:w-[240px] lg:w-[300px] xl:w-[420px] 
+    opacity-80 pointer-events-none z-10
+    drop-shadow-[0_30px_10px_rgba(0,0,0,0.35)]"
           animate={{ y: [0, -15, 0] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         />
 
         {/* 🌿 CONTENT (TRUE CENTER) */}
-        <div className="relative z-10 w-full flex justify-center items-center text-center">
+        <div className="relative z-10 w-full flex justify-center items-center text-center mt-20 mb-20">
 
-          <div className="max-w-[750px] mx-auto mt-16">
+<div className="max-w-[750px] mx-auto mt-10 md:mt-16 px-4 sm:px-5">
 
-            {/* 🌿 HEADING */}
-            <motion.h1
-              className="cinzel-heading mt-32 md:mt-28 lg:mt-24 xl:mt-20 
-  text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-8xl 
-  font-semibold text-white leading-[1.1] mb-3 tracking-[0.04em] text-center w-full"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, ease: "easeOut" }}
-            >
-              Bethanya Ayurveda
-            </motion.h1>
+  <motion.h1
+    className="cinzel-heading
+    mt-8 sm:mt-14 md:mt-24 lg:mt-24
+    text-3xl sm:text-5xl md:text-6xl xl:text-8xl
+    font-semibold leading-[1.15]
+    mb-2 md:mb-3
+    tracking-[0.02em] md:tracking-[0.04em]
+    text-center
+    bg-gradient-to-r from-[#f7e7a1] via-[#d4af37] to-[#b8860b]
+    bg-clip-text text-transparent"
+  >
+    Bethanya Ayurveda
+  </motion.h1>
 
-            <motion.p
-              className="forum-regular text-[#D4AF37] 
-  text-lg sm:text-xl md:text-2xl 
-  tracking-[0.3em] uppercase mb-6
-  drop-shadow-[2px_2px_2px_rgba(0,0,0,0.8)]"
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.2 }}
-            >
-              Embrace Life | Embrace Wellness
-            </motion.p>
+  <motion.p
+    className="forum-regular text-[#D4AF37]
+    text-sm sm:text-lg md:text-2xl
+    tracking-[0.15em] md:tracking-[0.3em]
+    uppercase mb-4 md:mb-6"
+  >
+    Embrace Life | Embrace Wellness
+  </motion.p>
 
-            {/* 🌿 DESCRIPTION */}
-            <motion.p
-              className="forum-regular text-gray-300 mb-8 leading-relaxed 
-  text-xl md:text-2xl lg:text-xl 
-  max-w-[500px] mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.25, ease: "easeOut" }}
-            >
-              Welcome to Bethanya Ayurveda, a serene healing sanctuary rooted in the timeless traditions of Kerala Ayurveda. Here, classical wisdom, pure herbal care, and graceful hospitality come together to restore balance, awaken vitality, and nurture complete well being.
-            </motion.p>
+  {/* Paragraph 1 */}
+  <motion.p
+    className="forum-regular text-gray-300
+    text-base sm:text-lg md:text-2xl lg:text-xl
+    leading-[1.7] md:leading-relaxed
+    mb-5 md:mb-8
+    max-w-[100%] mx-auto
+    text-left md:text-justify"
+  >
+    Welcome to Bethanya Ayurveda, a serene healing sanctuary rooted in the timeless traditions of Kerala Ayurveda. Here, classical wisdom, pure herbal care, and graceful hospitality come together to restore balance, awaken vitality, and nurture complete well being. Experience our Ayurvedic Massages, Special Treatments, thoughtfully curated Combo Packs, and rejuvenating Spa Therapies.
+  </motion.p>
 
-            {/* 🌿 BUTTON */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.4 }}
-            >
-              <Link
-                to="/products"
-                className="inline-block relative px-8 py-4 rounded-full bg-[#1f3d2b] text-white text-base md:text-lg hover:bg-[#163020] transition shadow-lg"
-              >
-                <span className="absolute inset-[2px] rounded-full"></span>
-                <span className="forum-regular relative z-10">Explore Products</span>
+  {/* Paragraph 2 */}
+  <motion.p
+    className="forum-regular text-gray-300
+    text-base sm:text-lg md:text-2xl lg:text-xl
+    leading-[1.7]
+    mb-5 md:mb-8
+    text-left md:text-justify"
+  >
+    We are a dedicated team of Ayurvedic professionals rooted in the timeless healing traditions of Kerala. With proven experience in successfully managing a reputed Ayurvedic hospital, our journey is built on trust, compassion, care, and authentic treatment practices. We now bring our expertise to a serene coastal destination where healing meets calmness, comfort, and complete rejuvenation.
+  </motion.p>
 
-              </Link>
-            </motion.div>
+  {/* Paragraph 3 */}
+  <motion.p
+    className="forum-regular text-gray-300
+    text-base sm:text-lg md:text-2xl lg:text-xl
+    leading-[1.7]
+    mb-5 md:mb-8
+    text-left md:text-justify"
+  >
+    Our hospital stroke center offers a carefully curated range of Ayurvedic Massages, Special Treatments, Combo Therapies, and Professional Spa Services. Each treatment is delivered using classical Ayurvedic methods, quality herbal preparations, and personalized care to help detoxify the body, relieve stress, reduce pain, and restore natural balance.
+  </motion.p>
 
-          </div>
+  {/* Paragraph 4 */}
+  <motion.p
+    className="forum-regular text-gray-300
+    text-base sm:text-lg md:text-2xl lg:text-xl
+    leading-[1.7]
+    mb-6 md:mb-8
+    text-left md:text-justify"
+  >
+    Our strength lies in experience, authenticity, and clinical excellence. Backed by the success of Bethanya Ayurveda Hospital, one of the most trusted Ayurvedic hospitals in Kerala, we bring hospital grade professionalism into a peaceful wellness setting. Situated in one of Kerala's most loved tourist destinations, our center offers the perfect blend of effective treatment and a relaxing getaway atmosphere.
+  </motion.p>
+
+  <motion.div>
+    <Link
+      to="/products"
+      className="inline-block px-6 py-3 md:px-8 md:py-4
+      rounded-full bg-[#1f3d2b]
+      text-sm md:text-lg text-white"
+    >
+      <span className="forum-regular">
+        Explore Products
+      </span>
+    </Link>
+  </motion.div>
+
+</div>
         </div>
         <motion.img
           src="/images/cdde68071816c2b47099100d06e01d06.png"
