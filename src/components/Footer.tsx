@@ -42,7 +42,7 @@ const Footer = () => (
           <div className="flex flex-col gap-3 font-body text-base md:text-lg opacity-80 leading-relaxed">
 
             <span className="forum-regular font-medium">
-              BETHANYA HEALTHCARE PVT. LTD.
+              BETHANYA AYURVEDA PVT. LTD.
             </span>
 
             <span className="forum-regular">

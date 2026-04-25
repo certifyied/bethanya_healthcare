@@ -16,7 +16,9 @@ function HomeAdress() {
           CHENGANNUR-MAVELIKKARA ROAD, NEAR THONACKAD CHURCH,
           CHENGANNUR, KERALA - 689511
           <br />
-          Tel:
+          Tel: +91 9894176585
+          <br />
+          Tel: +91 8867127954
           <br />
           E-Mail ID: bethanyahealthcare@gmail.com
         </p>

@@ -41,9 +41,9 @@ const LoadingScreen = () => {
       </h1>
 
       {/* Healthcare */}
-      <p className="cinzel-heading relative z-20 mt-4 text-[#c2a97a]/80 tracking-[4px] text-lg md:text-xl lg:text-6xl drop-shadow-[2px_2px_6px_rgba(0,0,0,0.8)]">
-        Ayurveda
-      </p>
+      <p className="cinzel-heading relative z-20 mt-4 text-[#c2a97a]/80 tracking-[4px] text-3xl md:text-5xl lg:text-8xl drop-shadow-[2px_2px_6px_rgba(0,0,0,0.8)]">
+  Ayurveda
+</p>
 
       <style>{`
         .bethanya-text {

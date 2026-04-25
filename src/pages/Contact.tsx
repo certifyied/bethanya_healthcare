@@ -58,7 +58,7 @@ drop-shadow-[0_8px_5px_rgba(0,0,0,0.8)]">
                 phone: "+91 9894176585",
                 mobile: "+91 8867127954",
                 email: "bethanyahealthcare@gmail.com",
-                address: "BETHANYA AYURVEDA KSHETRA RETREAT, Kshetra Street, North Cliff, Varkala, Kerala",
+                address: "BETHANYA AYURVEDA VARKALA,\nKshetra Street, North Cliff, Varkala, Kerala",
                 available: true,
               },
               {
@@ -261,8 +261,8 @@ drop-shadow-[0_8px_5px_rgba(0,0,0,0.8)]">
                     </div>
 
                     <button
-  type="submit"
-  className="
+                      type="submit"
+                      className="
     forum-regular
     relative
     w-full
@@ -275,11 +275,11 @@ drop-shadow-[0_8px_5px_rgba(0,0,0,0.8)]">
     hover:bg-[#274b35]
     transition-all duration-300
   "
->
-  Send Message
+                    >
+                      Send Message
 
-  <span className="absolute inset-[2px] rounded-2xl border border-[#D4AF37]" />
-</button>
+                      <span className="absolute inset-[2px] rounded-2xl border border-[#D4AF37]" />
+                    </button>
 
                   </form>
                 </div>

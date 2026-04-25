@@ -3,7 +3,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import ProductCard from "@/components/ProductCard";
 import { products } from "@/data/products";
 
-const categories = ["All", "Oils", "Herbs", "Skincare"] as const;
+const categories = ["All", "Oils", "Foods", "Skincare", "Wellness"] as const;
 
 const Products = () => {
   const [active, setActive] = useState<string>("All");
@@ -32,8 +32,8 @@ const Products = () => {
 bg-gradient-to-r from-[#c2a97a] via-[#f8e7b0] to-[#d4af37]
 bg-clip-text text-transparent
 drop-shadow-[0_8px_5px_rgba(0,0,0,0.8)]">
-  Products
-</h1>
+          Products
+        </h1>
 
         {/* CAPTION */}
         <p className="forum-regular text-center text-lg md:text-2xl text-[#c2a97a] max-w-3xl mx-auto px-6 mb-16 drop-shadow-[0_4px_2px_rgba(0,0,0,0.6)]">
@@ -50,7 +50,7 @@ drop-shadow-[0_8px_5px_rgba(0,0,0,0.8)]">
                 Choose Category
               </h3>
 
-              <div className="flex justify-center gap-2 flex-nowrap">
+              <div className="flex flex-wrap justify-center gap-3 sm:gap-4 max-w-3xl mx-auto">
                 {categories.map((cat) => (
                   <button
                     key={cat}

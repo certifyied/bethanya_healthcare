@@ -176,7 +176,7 @@ drop-shadow-[0_8px_5px_rgba(0,0,0,0.8)]">
                 Choose Our Branch
               </h3>
 
-              <div className="flex justify-center gap-2 flex-nowrap">
+              <div className="flex flex-wrap justify-center gap-3 sm:gap-4 max-w-3xl mx-auto">
                 {branches.map((branch) => (
                   <button
                     key={branch}
@@ -223,6 +223,7 @@ ${selectedBranch === branch
             </div>
           </div>
         )}
+        
 
         {/* VARKALA COMING SOON */}
         {!data && (
@@ -280,6 +281,7 @@ ${selectedBranch === branch
           </>
         )}
       </div>
+      
       <AppointmentModal
         isOpen={showEnquiry}
         onClose={() => {
