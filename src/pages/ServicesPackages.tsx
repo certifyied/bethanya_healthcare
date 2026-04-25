@@ -158,8 +158,8 @@ function ServicesPackages() {
 bg-gradient-to-r from-[#c2a97a] via-[#f8e7b0] to-[#d4af37]
 bg-clip-text text-transparent
 drop-shadow-[0_8px_5px_rgba(0,0,0,0.8)]">
-  Branches & Services
-</h1>
+          Branches & Services
+        </h1>
 
         {/* CAPTION */}
         <p className="forum-regular text-center text-lg md:text-2xl text-[#c2a97a] max-w-3xl mx-auto px-6 mb-16 drop-shadow-[0_4px_2px_rgba(0,0,0,0.6)]">
@@ -176,25 +176,27 @@ drop-shadow-[0_8px_5px_rgba(0,0,0,0.8)]">
                 Choose Our Branch
               </h3>
 
-              <div className="flex flex-wrap justify-center gap-3 sm:gap-4 max-w-3xl mx-auto">
-                {branches.map((branch) => (
-                  <button
-                    key={branch}
-                    onClick={() => setSelectedBranch(branch)}
-                    className={`forum-regular relative z-20 font-body text-sm md:text-base px-5 md:px-8 py-2 md:py-3 rounded-xl md:rounded-2xl transition-all duration-300 whitespace-nowrap flex-shrink-0
+              <div className="overflow-x-auto scrollbar-hide">
+                <div className="flex justify-start md:justify-center gap-3 sm:gap-4 min-w-max px-2">
+                  {branches.map((branch) => (
+                    <button
+                      key={branch}
+                      onClick={() => setSelectedBranch(branch)}
+                      className={`forum-regular relative z-20 font-body text-sm md:text-base px-5 md:px-8 py-2 md:py-3 rounded-xl md:rounded-2xl transition-all duration-300 whitespace-nowrap flex-shrink-0
 
 bg-[#1f3d2b]
 ring-1 ring-[#0f2218]
 tracking-wider
 
 ${selectedBranch === branch
-                        ? "bg-[#d4af37] text-[#0f2218] ring-[#d4af37]"
-                        : "text-[#c2a97a]"
-                      }`}
-                  >
-                    {branch}
-                  </button>
-                ))}
+                          ? "bg-[#d4af37] text-[#0f2218] ring-[#d4af37]"
+                          : "text-[#c2a97a]"
+                        }`}
+                    >
+                      {branch}
+                    </button>
+                  ))}
+                </div>
               </div>
 
             </ScrollReveal>
@@ -223,7 +225,7 @@ ${selectedBranch === branch
             </div>
           </div>
         )}
-        
+
 
         {/* VARKALA COMING SOON */}
         {!data && (
@@ -281,7 +283,7 @@ ${selectedBranch === branch
           </>
         )}
       </div>
-      
+
       <AppointmentModal
         isOpen={showEnquiry}
         onClose={() => {

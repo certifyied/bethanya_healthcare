@@ -41,39 +41,42 @@ drop-shadow-[0_8px_5px_rgba(0,0,0,0.8)]">
         </p>
 
         {/* CATEGORY SELECTOR */}
-        <div className="px-6 mt-10 mb-10">
-          <div className="w-full">
-            <ScrollReveal delay={0.2}>
+<div className="px-6 mt-10 mb-10">
+  <div className="w-full">
+    <ScrollReveal delay={0.2}>
 
-              {/* 🔹 HEADING */}
-              <h3 className="text-center text-2xl md:text-3xl font-medium text-[#c2a97a] mb-6 tracking-wide drop-shadow-[0_4px_5px_rgba(0,0,0,0.8)]">
-                Choose Category
-              </h3>
+      {/* 🔹 HEADING */}
+      <h3 className="text-center text-2xl md:text-3xl font-medium text-[#c2a97a] mb-6 tracking-wide drop-shadow-[0_4px_5px_rgba(0,0,0,0.8)]">
+        Choose Category
+      </h3>
 
-              <div className="flex flex-wrap justify-center gap-3 sm:gap-4 max-w-3xl mx-auto">
-                {categories.map((cat) => (
-                  <button
-                    key={cat}
-                    onClick={() => setActive(cat)}
-                    className={`forum-regular relative z-20 font-body text-sm md:text-base px-5 md:px-8 py-2 md:py-3 rounded-xl md:rounded-2xl transition-all duration-300 whitespace-nowrap flex-shrink-0
+      {/* 🔹 HORIZONTAL SCROLL ON SMALL SCREENS */}
+      <div className="overflow-x-auto scrollbar-hide">
+        <div className="flex justify-start md:justify-center gap-3 sm:gap-4 min-w-max px-2">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActive(cat)}
+              className={`forum-regular relative z-20 font-body text-sm md:text-base px-5 md:px-8 py-2 md:py-3 rounded-xl md:rounded-2xl transition-all duration-300 whitespace-nowrap flex-shrink-0
 
 bg-[#1f3d2b]
 ring-1 ring-[#0f2218]
 tracking-wider
 
 ${active === cat
-                        ? "bg-[#d4af37] text-[#0f2218] ring-[#d4af37]"
-                        : "text-[#c2a97a]"
-                      }`}
-                  >
-                    {cat}
-                  </button>
-                ))}
-              </div>
-
-            </ScrollReveal>
-          </div>
+                  ? "bg-[#d4af37] text-[#0f2218] ring-[#d4af37]"
+                  : "text-[#c2a97a]"
+                }`}
+            >
+              {cat}
+            </button>
+          ))}
         </div>
+      </div>
+
+    </ScrollReveal>
+  </div>
+</div>
 
       </div>
 
