@@ -1,0 +1,337 @@
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&family=Anton&family=Bebas+Neue&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Cinzel:wght@400..900&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Forum&family=Fredoka:wght@300..700&family=Gruppo&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Major+Mono+Display&family=Michroma&family=Orbitron:wght@400..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Sofia&family=Sometype+Mono:ital,wght@0,400..700;1,400..700&family=Special+Gothic+Expanded+One&family=Urbanist:ital,wght@0,100..900;1,100..900&family=Yeseva+One&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Bellefair&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+.bodoni-moda {
+  font-family: "Bodoni Moda", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  /* you can change: 400–900 */
+  font-style: normal;
+}
+
+.cinzel-heading {
+  font-family: "Cinzel", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  /* change weight like 400, 500, 700, 900 */
+  font-style: normal;
+}
+
+@layer base {
+  :root {
+    /* --background: 0 0% 100%;
+    --foreground: 16 27% 18%;
+
+    --card: 60 56% 95%;
+    --card-foreground: 16 27% 18%; */
+
+    --popover: 60 56% 95%;
+    --popover-foreground: 16 27% 18%;
+
+    --primary: 122 56% 24%;
+    --primary-foreground: 60 56% 95%;
+
+    --secondary: 122 39% 49%;
+    --secondary-foreground: 60 56% 95%;
+
+    --muted: 40 30% 85%;
+    --muted-foreground: 16 15% 45%;
+
+    --accent: 16 27% 29%;
+    --accent-foreground: 60 56% 95%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 60 56% 95%;
+
+    --border: 40 20% 78%;
+    --input: 40 20% 82%;
+    --ring: 122 56% 24%;
+
+    --radius: 1rem;
+
+    --sidebar-background: 122 56% 10%;
+    --sidebar-foreground: 60 56% 91%;
+    --sidebar-primary: 122 39% 49%;
+    --sidebar-primary-foreground: 60 56% 95%;
+    --sidebar-accent: 122 30% 18%;
+    --sidebar-accent-foreground: 60 56% 91%;
+    --sidebar-border: 122 30% 20%;
+    --sidebar-ring: 122 39% 49%;
+
+    /* Custom tokens */
+    --forest: 122 56% 24%;
+    --herbal: 122 39% 49%;
+    --sandalwood: 60 56% 91%;
+    --earth: 16 27% 29%;
+    --cream: 48 60% 96%;
+    --gold: 43 72% 55%;
+
+    --gradient-hero: linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 0%, 100%), hsl(0, 0%, 100%));
+    --gradient-leaf: linear-gradient(135deg, hsl(122 56% 24%), hsl(122 39% 49%));
+    --gradient-earth: linear-gradient(135deg, hsl(16 27% 29%), hsl(122 56% 24%));
+    --gradient-gold: linear-gradient(135deg, hsl(43 72% 55%), hsl(40 60% 70%));
+
+    --shadow-soft: 0 4px 20px -4px hsl(122 56% 24% / 0.15);
+    --shadow-glow: 0 0 30px -5px hsl(122 39% 49% / 0.3);
+    --shadow-card: 0 8px 32px -8px hsl(16 27% 18% / 0.1);
+
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-body: 'Lato', 'Helvetica Neue', sans-serif;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+@layer utilities {
+  .text-gradient-leaf {
+    background: var(--gradient-leaf);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .bg-gradient-leaf {
+    background: var(--gradient-leaf);
+  }
+
+  .bg-gradient-earth {
+    background: var(--gradient-earth);
+  }
+
+  .font-bodoni {
+    font-family: "Bodoni Moda", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+  }
+
+  .forum-regular {
+    font-family: "Forum", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+}
+
+/* Loading spinner */
+@keyframes spin-leaf {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(180deg) scale(1.1);
+  }
+
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+.animate-spin-leaf {
+  animation: spin-leaf 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Scroll fade in */
+@keyframes reveal-up {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-reveal-up {
+  animation: reveal-up 0.8s ease-out forwards;
+}
+
+/* Navbar blur */
+.navbar-blur {
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+}
+
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slideRight {
+  animation: slideRight 0.6s ease forwards;
+}
+
+@keyframes autoSlide {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-autoSlide {
+  animation: autoSlide 20s linear infinite;
+}
+
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+/* ✨ Shining text effect */
+.shine-text {
+  position: relative;
+  display: inline-block;
+  color: white;
+  overflow: hidden;
+}
+
+/* moving light */
+.shine-text::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+
+  /* 👇 UPDATED: smooth fade edges */
+  background: linear-gradient(120deg,
+      transparent 0%,
+      rgba(255, 215, 0, 0) 25%,
+      rgba(255, 215, 0, 0.8) 50%,
+      rgba(255, 215, 0, 0) 75%,
+      transparent 100%);
+
+  transform: skewX(-25deg);
+
+  /* 👇 smoother motion */
+  animation: shine 3s ease-in-out infinite;
+}
+
+/* animation */
+@keyframes shine {
+  0% {
+    left: -75%;
+  }
+
+  100% {
+    left: 125%;
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.gold-shine {
+  background: linear-gradient(
+    120deg,
+    #8c6a2b 20%,
+    #d4af37 40%,
+    #fff4b0 50%,
+    #d4af37 60%,
+    #8c6a2b 80%
+  );
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+
+  animation: goldShimmer 4s linear infinite;
+  text-shadow: 0 0 12px rgba(212,175,55,0.35);
+}
+
+@keyframes goldShimmer {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+.gold-shine{
+  animation: goldShimmer 4s linear infinite,
+             glowPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes glowPulse{
+  50%{
+    text-shadow:
+      0 0 8px rgba(212,175,55,.5),
+      0 0 18px rgba(212,175,55,.35);
+  }
+}
+
