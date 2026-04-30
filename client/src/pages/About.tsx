@@ -4,7 +4,6 @@ import Layout from "@/components/layout/Layout";
 
 const About = () => (
   <Layout>
-
     <div className="min-h-screen bg-[#0f2218]">
 
       {/* HERO */}
