@@ -183,11 +183,18 @@ export const loginAdmin = async (req: Request, res: Response) => {
         );
 
         // 6️⃣ Set cookie
+        // res.cookie("admin_token", token, {
+        //     httpOnly: true,
+        //     secure: false, // true in production with HTTPS
+        //     sameSite: "lax", // "none" for production frontend/backend different domains
+        //     maxAge: 24 * 60 * 60 * 1000, // 1 day
+        //     path: "/",
+        // });
         res.cookie("admin_token", token, {
             httpOnly: true,
-            secure: false, // true in production with HTTPS
-            sameSite: "lax", // "none" for production frontend/backend different domains
-            maxAge: 24 * 60 * 60 * 1000, // 1 day
+            secure: true,        // ✅ MUST for HTTPS
+            sameSite: "none",    // ✅ MUST for cross-domain
+            maxAge: 24 * 60 * 60 * 1000,
             path: "/",
         });
 
@@ -417,21 +424,21 @@ export const changeAdminPassword = async (req: Request, res: Response) => {
 
 
 export const getAllService = async (req: Request, res: Response) => {
-  try {
-    const services = await Service.find();
+    try {
+        const services = await Service.find();
 
-    res.status(200).json({
-      message: "All services fetched successfully",
-      services,
-    });
-  } catch (error: any) {
-    console.error("GET ALL SERVICE ERROR:", error);
+        res.status(200).json({
+            message: "All services fetched successfully",
+            services,
+        });
+    } catch (error: any) {
+        console.error("GET ALL SERVICE ERROR:", error);
 
-    res.status(500).json({
-      message: "Failed to fetch services",
-      error: error.message || error,
-    });
-  }
+        res.status(500).json({
+            message: "Failed to fetch services",
+            error: error.message || error,
+        });
+    }
 };
 
 
