@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const LoadingScreen = () => {
+const SplashScreen = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
 
@@ -80,4 +80,4 @@ const LoadingScreen = () => {
   );
 };
 
-export default LoadingScreen;
+export default SplashScreen;

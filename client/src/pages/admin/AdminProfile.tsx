@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import API from "../../utils/axios";
 import AdminLayout from "@/components/admin/AdminLayout";
+import toast from "react-hot-toast";
 
 const AdminProfile = () => {
   const [admin, setAdmin] = useState({
@@ -82,8 +83,11 @@ const AdminProfile = () => {
 
       setAdmin(res.data.admin);
       setIsEditing(false);
+      toast.success("Profile updated successfully");
     } catch (err: any) {
-      setError(err.response?.data?.message || "Update failed");
+      const errorMsg = err.response?.data?.message || "Update failed";
+      setError(errorMsg);
+      toast.error(errorMsg);
     } finally {
       setSaving(false);
     }
@@ -100,10 +104,15 @@ const AdminProfile = () => {
         { withCredentials: true }
       );
 
+      toast.success("Logged out successfully");
       localStorage.removeItem("admin_token");
-      window.location.href = "/";
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 500);
     } catch (err: any) {
-      setError(err.response?.data?.message || "Logout failed");
+      const errorMsg = err.response?.data?.message || "Logout failed";
+      setError(errorMsg);
+      toast.error(errorMsg);
     } finally {
       setLogoutLoading(false);
     }
@@ -122,12 +131,16 @@ const AdminProfile = () => {
       setPasswordError("");
 
       if (!passwordForm.oldPassword || !passwordForm.newPassword) {
-        setPasswordError("Both fields are required");
+        const msg = "Both fields are required";
+        setPasswordError(msg);
+        toast.error(msg);
         return;
       }
 
       if (passwordForm.oldPassword === passwordForm.newPassword) {
-        setPasswordError("New password must be different");
+        const msg = "New password must be different";
+        setPasswordError(msg);
+        toast.error(msg);
         return;
       }
 
@@ -137,122 +150,208 @@ const AdminProfile = () => {
         { withCredentials: true }
       );
 
-      alert("Password changed successfully");
+      toast.success("Password changed successfully");
 
       setShowPasswordModal(false);
       setPasswordForm({ oldPassword: "", newPassword: "" });
 
     } catch (err: any) {
-      setPasswordError(
-        err.response?.data?.message || "Password change failed"
-      );
+      const errorMsg = err.response?.data?.message || "Password change failed";
+      setPasswordError(errorMsg);
+      toast.error(errorMsg);
     } finally {
       setPasswordLoading(false);
     }
   };
 
   if (loading) {
-    return <div className="text-center mt-10">Loading profile...</div>;
-  }
+    return (
+      <AdminLayout>
+        <div className="min-h-[60vh] flex flex-col items-center justify-center gap-6">
 
+          {/* 🔄 Spinner */}
+          <div className="w-12 h-12 border-4 border-[#2e5b46] border-t-transparent rounded-full animate-spin"></div>
+
+          {/* ✨ Styled Text */}
+          <p className="forum-regular text-lg md:text-xl font-extrabold tracking-wide text-[#0f2218] flex items-center gap-1">
+            Loading Profile
+          </p>
+
+        </div>
+      </AdminLayout>
+    );
+  }
   return (
     <AdminLayout>
-      <div className="mt-20 flex justify-center">
-        <div className="bg-white rounded-xl p-6 w-full max-w-md">
+      <div className="min-h-screen px-4 md:px-10 py-10">
 
-          <h2 className="forum-regular text-4xl font-bold text-center mb-6">
+        {/* 🔥 HEADER */}
+        <div className="bg-gradient-to-br from-[#0f2218] via-[#132a20] to-[#1b3a2c] 
+rounded-3xl p-8 md:p-12 shadow-xl border border-white/5 mb-10 mt-2 md:mt-6">
+
+          <h1 className="cinzel-heading text-3xl md:text-5xl text-white">
             Admin Profile
-          </h2>
+          </h1>
 
-          {error && (
-            <p className="text-red-500 text-sm mb-4 text-center">
-              {error}
+          <p className="text-lg forum-regular text-white/70 mt-2">
+            Manage your account details and security settings
+          </p>
+        </div>
+
+        {/* 🔥 PROFILE CARD */}
+        <div className="max-w-2xl mx-auto relative">
+
+          {/* 🌿 Glow Background */}
+          <div className="absolute -top-10 -right-10 w-40 h-40 bg-green-800/20 blur-3xl rounded-full"></div>
+
+          <div className="relative 
+  bg-gradient-to-br from-white/10 to-white/5 
+  backdrop-blur-2xl 
+  border border-white/10 
+  rounded-3xl p-8 md:p-10 
+  shadow-[0_10px_40px_rgba(0,0,0,0.4)]
+  hover:shadow-[0_20px_60px_rgba(0,0,0,0.6)]
+  transition-all duration-500">
+
+            {/* 🔥 Header */}
+            <h2 className="text-3xl font-bold text-[#0f2218] mb-2 tracking-wide">
+              Personal Information
+            </h2>
+
+            <p className="forum-regular text-lg text-[#0f2218]/60 mb-6">
+              Update your personal details and keep your account secure
             </p>
-          )}
 
-          {/* Name */}
-          <div className="mb-3">
-            <label className="font-semibold">Name</label>
-            <input
-              type="text"
-              name="name"
-              value={isEditing ? form.name : admin.name}
-              onChange={handleChange}
-              disabled={!isEditing}
-              className="w-full border p-2 rounded mt-1"
-            />
-          </div>
+            {error && (
+              <p className="text-red-500 text-sm mb-4">
+                {error}
+              </p>
+            )}
 
-          {/* Email */}
-          <div className="mb-3">
-            <label className="font-semibold">Email</label>
-            <input
-              type="email"
-              name="email"
-              value={isEditing ? form.email : admin.email}
-              onChange={handleChange}
-              disabled={!isEditing}
-              className="w-full border p-2 rounded mt-1"
-            />
-          </div>
+            {/* 🔥 INPUTS */}
+            <div className="space-y-5">
 
-          {/* Mobile */}
-          <div className="mb-3">
-            <label className="font-semibold">Mobile</label>
-            <input
-              type="text"
-              name="mobile"
-              value={isEditing ? form.mobile : admin.mobile}
-              onChange={handleChange}
-              disabled={!isEditing}
-              className="w-full border p-2 rounded mt-1"
-            />
-          </div>
+              {/* Name */}
+              <div>
+                <label className="text-[#0f2218]/70 text-sm font-medium">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  value={isEditing ? form.name : admin.name}
+                  onChange={handleChange}
+                  disabled={!isEditing}
+                  className="w-full mt-1 p-3 rounded-xl 
+          bg-white/70 text-[#0f2218] 
+          border border-gray-200
+          focus:outline-none focus:ring-2 focus:ring-[#d4af37]/50
+          transition"
+                />
+              </div>
 
-          {/* ACTION BUTTONS */}
-          {!isEditing ? (
-            <button
-              onClick={() => setIsEditing(true)}
-              className="forum-regular w-full bg-black text-white py-2 rounded-xl mt-4 "
-            >
-              Edit Profile
-            </button>
-          ) : (
-            <div className="forum-regular flex gap-3 mt-4">
-              <button
-                onClick={handleUpdate}
-                disabled={saving}
-                className="forum-regular flex-1 bg-[#0f2218] text-white py-2 rounded-xl "
-              >
-                {saving ? "Saving..." : "Save"}
-              </button>
+              {/* Email */}
+              <div>
+                <label className="text-[#0f2218]/70 text-sm font-medium">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  value={isEditing ? form.email : admin.email}
+                  onChange={handleChange}
+                  disabled={!isEditing}
+                  className="w-full mt-1 p-3 rounded-xl 
+          bg-white/70 text-[#0f2218] 
+          border border-gray-200
+          focus:outline-none focus:ring-2 focus:ring-[#d4af37]/50
+          transition"
+                />
+              </div>
 
-              <button
-                onClick={() => {
-                  setIsEditing(false);
-                  setForm(admin);
-                }}
-                className="flex-1 bg-gray-400 text-white py-2 rounded-xl "
-              >
-                Cancel
-              </button>
+              {/* Mobile */}
+              <div>
+                <label className="text-[#0f2218]/70 text-sm font-medium">
+                  Mobile
+                </label>
+                <input
+                  type="text"
+                  name="mobile"
+                  value={isEditing ? form.mobile : admin.mobile}
+                  onChange={handleChange}
+                  disabled={!isEditing}
+                  className="w-full mt-1 p-3 rounded-xl 
+          bg-white/70 text-[#0f2218] 
+          border border-gray-200
+          focus:outline-none focus:ring-2 focus:ring-[#d4af37]/50
+          transition"
+                />
+              </div>
+
             </div>
-          )}
 
-          {/* LOGOUT */}
-          <button
-            onClick={() => setShowPasswordModal(true)}
-            className="forum-regular w-full bg-black text-white py-2 rounded-xl mt-3 "
-          >
-            Change Password
-          </button>
+            {/* 🔥 ACTION BUTTONS */}
+            {!isEditing ? (
+              <button
+                onClick={() => setIsEditing(true)}
+                className="forum-regular text-lg w-full mt-8 py-3 rounded-xl 
+        bg-gradient-to-r from-[#d4af37] via-[#f6e27a] to-[#d4af37]
+        text-black font-semibold tracking-wide
+        shadow-lg hover:scale-105 transition"
+              >
+                Edit Profile
+              </button>
+            ) : (
+              <div className="flex gap-3 mt-8">
+                <button
+                  onClick={handleUpdate}
+                  disabled={saving}
+                  className="flex-1 py-3 rounded-xl 
+          bg-[#0f2218] text-white 
+          shadow-md hover:scale-105 transition"
+                >
+                  {saving ? "Saving..." : "Save"}
+                </button>
 
-          <button
-            onClick={() => setShowLogoutModal(true)}
-            className="forum-regular w-full bg-red-600 text-white py-2 rounded-xl mt-3  hover:scale-105 transition"
-          >
-            Logout
-          </button>
+                <button
+                  onClick={() => {
+                    setIsEditing(false);
+                    setForm(admin);
+                  }}
+                  className="flex-1 py-3 rounded-xl 
+          bg-gray-300 text-[#0f2218] 
+          hover:scale-105 transition"
+                >
+                  Cancel
+                </button>
+              </div>
+            )}
+
+            {/* 🔥 EXTRA ACTIONS */}
+            <div className="mt-8 space-y-3">
+
+              <button
+                onClick={() => setShowPasswordModal(true)}
+                className="forum-regular text-lg w-full py-3 rounded-xl 
+        bg-gradient-to-r from-[#0f2218] to-[#1f3a2c] 
+        text-white font-semibold tracking-wide
+        shadow-md hover:scale-105 transition"
+              >
+                Change Password
+              </button>
+
+              <button
+                onClick={() => setShowLogoutModal(true)}
+                className="forum-regular text-lg w-full py-3 rounded-xl 
+        bg-red-600 text-white 
+        hover:bg-red-700 hover:scale-105 transition"
+              >
+                Logout
+              </button>
+
+            </div>
+
+          </div>
         </div>
       </div>{showLogoutModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">

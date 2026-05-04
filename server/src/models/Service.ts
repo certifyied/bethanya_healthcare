@@ -18,7 +18,7 @@ const serviceSchema = new Schema(
     category: {
       type: String,
       required: true,
-      enum: ["combo", "spa", "special", "massage"],
+      enum: ["Combo Packs", "Spa Massage", "Special Treatments", "Ayurvedic Massage"],
     },
 
     branch: {

@@ -8,6 +8,13 @@ import API from "@/utils/axios";
 
 const branches = ["KATTANAM", "VARKALA", "THONNAKKAD"];
 
+const categoryMap = {
+"Combo Packs": "combo",
+"Spa Massage": "spa",
+"Special Treatments": "special",
+"Ayurvedic Massage": "massage",
+};
+
 const Section = ({
   title,
   items,
@@ -15,6 +22,9 @@ const Section = ({
   reverse = false,
   openEnquiry,
 }: any) => {
+
+
+
 
   // ❌ If no services → render nothing
   if (!items || items.length === 0) return null;
@@ -121,27 +131,25 @@ function ServicesPackages() {
         setServices(data);
 
         // 🔥 Group by branch + category
-        const grouped: any = {};
+       const grouped: any = {};
 
-        data.forEach((s: any) => {
-          const branch = s.branch;
-          const category = s.category;
+data.forEach((s: any) => {
+  const branch = s.branch;
+  const categoryKey = categoryMap[s.category]; // ✅ now works
 
-          if (!grouped[branch]) {
-            grouped[branch] = {
-              combo: [],
-              spa: [],
-              special: [],
-              massage: [],
-            };
-          }
+  if (!grouped[branch]) {
+    grouped[branch] = {
+      combo: [],
+      spa: [],
+      special: [],
+      massage: [],
+    };
+  }
 
-          if (!grouped[branch][category]) {
-            grouped[branch][category] = [];
-          }
-
-          grouped[branch][category].push(s);
-        });
+  if (categoryKey) {
+    grouped[branch][categoryKey].push(s);
+  }
+});
 
         setGroupedServices(grouped);
 

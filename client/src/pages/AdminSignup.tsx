@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import API from "../utils/axios";
 import Layout from "@/components/layout/Layout";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const AdminSignup = () => {
     const [formData, setFormData] = useState({
@@ -13,8 +14,6 @@ const AdminSignup = () => {
     });
 
     const [loading, setLoading] = useState(false);
-    const [message, setMessage] = useState("");
-    const [error, setError] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
 
@@ -29,8 +28,6 @@ const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
 
   setLoading(true);
-  setMessage("");
-  setError("");
 
   try {
     const response = await API.post(
@@ -38,9 +35,7 @@ const handleSubmit = async (e: React.FormEvent) => {
       formData
     );
 
-    setMessage(
-      response.data.message || "Admin registered successfully"
-    );
+    toast.success(response.data.message || "Admin registered successfully");
 
     setFormData({
       name: "",
@@ -49,13 +44,13 @@ const handleSubmit = async (e: React.FormEvent) => {
       password: "",
     });
 
-    // ✅ Redirect after 1.5 sec
+    // Redirect after 1.5 sec
     setTimeout(() => {
       navigate("/admin-only-portal-login");
     }, 1500);
 
   } catch (err: any) {
-    setError(
+    toast.error(
       err.response?.data?.message ||
       "Something went wrong. Please try again."
     );
@@ -71,18 +66,6 @@ const handleSubmit = async (e: React.FormEvent) => {
                     <h2 className="text-2xl font-bold text-center mb-6">
                         Admin Signup
                     </h2>
-
-                    {message && (
-                        <p className="text-green-600 text-sm text-center mb-4">
-                            {message}
-                        </p>
-                    )}
-
-                    {error && (
-                        <p className="text-red-600 text-sm text-center mb-4">
-                            {error}
-                        </p>
-                    )}
 
                     <form onSubmit={handleSubmit} className="space-y-4">
                         <div>
