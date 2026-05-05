@@ -9,10 +9,10 @@ import API from "@/utils/axios";
 const branches = ["KATTANAM", "VARKALA", "THONNAKKAD"];
 
 const categoryMap = {
-"Combo Packs": "combo",
-"Spa Massage": "spa",
-"Special Treatments": "special",
-"Ayurvedic Massage": "massage",
+  "Combo Packs": "combo",
+  "Spa Massage": "spa",
+  "Special Treatments": "special",
+  "Ayurvedic Massage": "massage",
 };
 
 const Section = ({
@@ -23,7 +23,11 @@ const Section = ({
   openEnquiry,
 }: any) => {
 
+  const sectionImage = items[0]?.image;
 
+  const finalImage = sectionImage?.startsWith("http")
+    ? sectionImage
+    : `${import.meta.env.VITE_API_BASE_URL}/${sectionImage}`;
 
 
   // ❌ If no services → render nothing
@@ -34,9 +38,8 @@ const Section = ({
 
       {/* 🟢 OUTER BORDER WITH GAP */}
       <div
-        className={`relative flex flex-col md:flex-row ${
-          reverse ? "md:flex-row-reverse" : ""
-        }
+        className={`relative flex flex-col md:flex-row ${reverse ? "md:flex-row-reverse" : ""
+          }
         items-center gap-10 
         p-[6px]
         rounded-3xl 
@@ -65,7 +68,9 @@ const Section = ({
             <div className="w-full md:w-1/2">
               <div
                 className="h-[350px] md:h-[450px] w-full rounded-3xl bg-cover bg-center shadow-lg"
-                style={{ backgroundImage: `url(${image})` }}
+                style={{
+                  backgroundImage: `url(${finalImage || image})`,
+                }}
               />
             </div>
 
@@ -131,25 +136,25 @@ function ServicesPackages() {
         setServices(data);
 
         // 🔥 Group by branch + category
-       const grouped: any = {};
+        const grouped: any = {};
 
-data.forEach((s: any) => {
-  const branch = s.branch;
-  const categoryKey = categoryMap[s.category]; // ✅ now works
+        data.forEach((s: any) => {
+          const branch = s.branch;
+          const categoryKey = categoryMap[s.category]; // ✅ now works
 
-  if (!grouped[branch]) {
-    grouped[branch] = {
-      combo: [],
-      spa: [],
-      special: [],
-      massage: [],
-    };
-  }
+          if (!grouped[branch]) {
+            grouped[branch] = {
+              combo: [],
+              spa: [],
+              special: [],
+              massage: [],
+            };
+          }
 
-  if (categoryKey) {
-    grouped[branch][categoryKey].push(s);
-  }
-});
+          if (categoryKey) {
+            grouped[branch][categoryKey].push(s);
+          }
+        });
 
         setGroupedServices(grouped);
 

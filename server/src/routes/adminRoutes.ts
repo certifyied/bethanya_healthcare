@@ -10,7 +10,7 @@ router.post("/signup", registerAdmin);
 router.post("/login", loginAdmin);
 router.get("/check-admin", adminAuth, checkAdmin);
 router.post("/admin-logout", adminLogout);
-router.get("/services", adminAuth, getAllService);
+router.get("/admin-services", adminAuth, getAllService);
 router.get("/admin-profile", adminAuth, getAdminProfile);
 router.put("/admin-update", adminAuth, updateAdminProfile);
 router.put("/admin-change-password", adminAuth, changeAdminPassword);

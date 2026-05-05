@@ -10,7 +10,7 @@ function AdminServices() {
 
     const fetchServices = async () => {
         try {
-            const res = await API.get("/api/admin/services");
+            const res = await API.get("/api/admin/admin-services");
             setServices(res.data.services || []);
         } catch (err: any) {
             setError("Failed to load services");
