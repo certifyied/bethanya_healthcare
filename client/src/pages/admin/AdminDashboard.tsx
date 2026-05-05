@@ -10,7 +10,7 @@ function AdminDashboard() {
   const [adminName, setAdminName] = useState("Admin");
 
   // ✅ Static categories & branches
-  const ALL_CATEGORIES = ["combo", "spa", "special", "massage"];
+  const ALL_CATEGORIES = ["Combo Packs", "Spa Massage", "Special Treatments", "Ayurvedic Massage"];
   const ALL_BRANCHES = ["KATTANAM", "VARKALA", "THONNAKKAD"];
 
   const fetchServices = async () => {
@@ -49,20 +49,21 @@ function AdminDashboard() {
   const totalServices = services.length;
 
   // ✅ Category count
-  const categoryCount = ALL_CATEGORIES.reduce((acc: any, cat) => {
-    acc[cat] = services.filter(
-      (s) => s.category?.toLowerCase().trim() === cat
-    ).length;
-    return acc;
-  }, {});
+const categoryCount = ALL_CATEGORIES.reduce((acc: any, cat) => {
+  acc[cat] = services.filter(
+    (s) =>
+      s.category?.toLowerCase().trim() === cat.toLowerCase().trim()
+  ).length;
+  return acc;
+}, {});
 
-  // ✅ Branch count
-  const branchCount = ALL_BRANCHES.reduce((acc: any, branch) => {
-    acc[branch] = services.filter(
-      (s) => s.branch?.toUpperCase().trim() === branch
-    ).length;
-    return acc;
-  }, {});
+const branchCount = ALL_BRANCHES.reduce((acc: any, branch) => {
+  acc[branch] = services.filter(
+    (s) =>
+      s.branch?.toUpperCase().trim() === branch.toUpperCase().trim()
+  ).length;
+  return acc;
+}, {});
 
   if (loading) {
     return (
