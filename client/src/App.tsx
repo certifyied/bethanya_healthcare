@@ -28,7 +28,11 @@ const App = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(false);
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2700); // match SplashScreen timing
+
+    return () => clearTimeout(timer);
   }, []);
 
   if (loading) return <SplashScreen />;
@@ -36,7 +40,7 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <Toaster/>
+        <Toaster />
 
         <BrowserRouter>
           <ScrollToTop />

@@ -75,10 +75,13 @@ app.use(express.json());
 app.use(
   cors({
     origin: [
-      "http://localhost:8080", // your Vite dev URL
-      "https://bethanya-healthcare.vercel.app" // 👈 replace with your deployed frontend
+      "http://localhost:8080",
+      "https://bethanya-healthcare.vercel.app",
+      "https://bethanyahealthcare.com",
+      "https://www.bethanyahealthcare.com"
     ],
-    credentials: true,
+    credentials: true, methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"]
   })
 );
 
