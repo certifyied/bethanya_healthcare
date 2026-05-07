@@ -94,14 +94,14 @@ export const sendMessage = async (
 
     // ✅ Nodemailer Transport
     const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 465,
-      secure: true,
+      service: "gmail",
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
       },
     });
+    await transporter.verify();
+    console.log("SMTP READY");
 
     // ✅ Send Mail
     await transporter.sendMail({
@@ -160,16 +160,15 @@ export const sendMessage = async (
                 ${email}
               </p>
 
-              ${
-                phone
-                  ? `
+              ${phone
+          ? `
                 <p>
                   <strong>Phone:</strong><br />
                   ${phone}
                 </p>
               `
-                  : ""
-              }
+          : ""
+        }
 
               <p>
                 <strong>Message:</strong><br />
