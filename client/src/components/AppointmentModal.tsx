@@ -37,6 +37,7 @@ const AppointmentModal = ({ isOpen, onClose }: any) => {
     });
   };
 
+  
   // ✅ Validation
   const validateForm = () => {
 
