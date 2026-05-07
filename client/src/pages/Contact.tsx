@@ -33,12 +33,12 @@ const Contact = () => {
     }
 
     // ✅ Email validation
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-if (!emailRegex.test(formData.email.trim())) {
-  toast.error("Please enter a valid email address");
-  return false;
-}
+    if (!emailRegex.test(formData.email.trim())) {
+      toast.error("Please enter a valid email address");
+      return false;
+    }
 
     // ✅ Message validation
 
@@ -363,9 +363,9 @@ drop-shadow-[0_8px_5px_rgba(0,0,0,0.8)]">
                       </div>
 
                       <button
-  type="submit"
-  disabled={loading}
-  className="
+                        type="submit"
+                        disabled={loading}
+                        className="
     forum-regular
     relative
     w-full
@@ -379,11 +379,11 @@ drop-shadow-[0_8px_5px_rgba(0,0,0,0.8)]">
     transition-all duration-300
     disabled:opacity-70
   "
->
-  Send Message
+                      >
+                        Send Message
 
-  <span className="absolute inset-[2px] rounded-2xl border border-[#D4AF37]" />
-</button>
+                        <span className="absolute inset-[2px] rounded-2xl border border-[#D4AF37]" />
+                      </button>
 
                     </form>
                   </div>

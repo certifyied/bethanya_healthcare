@@ -47,12 +47,12 @@ const AppointmentModal = ({ isOpen, onClose }: any) => {
     }
 
     // Email
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-if (!emailRegex.test(form.email.trim())) {
-  alert("Please enter a valid email address");
-  return false;
-}
+    if (!emailRegex.test(form.email.trim())) {
+      alert("Please enter a valid email address");
+      return false;
+    }
 
     // Phone
     const phoneRegex = /^[6-9]\d{9}$/;
@@ -225,13 +225,13 @@ Service: ${form.service}
             </button>
 
             <button
-  type="submit"
-  disabled={loading}
-  onClick={() => setActionType("email")}
-  className="flex-1 py-3 rounded-xl bg-[#c2a97a] hover:bg-[#d4af37] text-[#0f2218] transition-all duration-300 disabled:opacity-70"
->
-  Email
-</button>
+              type="submit"
+              disabled={loading}
+              onClick={() => setActionType("email")}
+              className="flex-1 py-3 rounded-xl bg-[#c2a97a] hover:bg-[#d4af37] text-[#0f2218] transition-all duration-300 disabled:opacity-70"
+            >
+              Email
+            </button>
 
           </div>
 
