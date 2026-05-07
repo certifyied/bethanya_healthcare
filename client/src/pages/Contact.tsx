@@ -363,9 +363,9 @@ drop-shadow-[0_8px_5px_rgba(0,0,0,0.8)]">
                       </div>
 
                       <button
-                        type="submit"
-                        disabled={loading}
-                        className="
+  type="submit"
+  disabled={loading}
+  className="
     forum-regular
     relative
     w-full
@@ -379,11 +379,11 @@ drop-shadow-[0_8px_5px_rgba(0,0,0,0.8)]">
     transition-all duration-300
     disabled:opacity-70
   "
-                      >
-                        {loading ? "Sending..." : "Send Message"}
+>
+  Send Message
 
-                        <span className="absolute inset-[2px] rounded-2xl border border-[#D4AF37]" />
-                      </button>
+  <span className="absolute inset-[2px] rounded-2xl border border-[#D4AF37]" />
+</button>
 
                     </form>
                   </div>

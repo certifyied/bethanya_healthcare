@@ -225,13 +225,13 @@ Service: ${form.service}
             </button>
 
             <button
-              type="submit"
-              disabled={loading}
-              onClick={() => setActionType("email")}
-              className="flex-1 py-3 rounded-xl bg-[#c2a97a] hover:bg-[#d4af37] text-[#0f2218] transition-all duration-300 disabled:opacity-70"
-            >
-              {loading ? "Sending..." : "Email"}
-            </button>
+  type="submit"
+  disabled={loading}
+  onClick={() => setActionType("email")}
+  className="flex-1 py-3 rounded-xl bg-[#c2a97a] hover:bg-[#d4af37] text-[#0f2218] transition-all duration-300 disabled:opacity-70"
+>
+  Email
+</button>
 
           </div>
 
