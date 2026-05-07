@@ -100,7 +100,7 @@ app.post("/create-services", (req, res) => {
 app.use("/api/admin", adminRoutes);
 app.use("/api", serviceRoutes);
 app.use("/api/admin", AdminServiceRoutes);
-app.use("/api/contact", contactRoutes);
+app.use("/api", contactRoutes);
 
 const PORT = process.env.PORT || 4000;
 const MONGO_URI = process.env.MONGO_URI;

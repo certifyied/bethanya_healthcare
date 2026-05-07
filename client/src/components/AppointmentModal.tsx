@@ -95,7 +95,7 @@ Service: ${form.service}`;
       setLoading(true);
 
       const response = await API.post(
-        "/api/contact/send-message",
+        "/api/send-message",
         {
           name: form.name.trim(),
           email: form.email.trim(),
