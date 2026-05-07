@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { X } from "lucide-react";
 import { useSearchParams } from "react-router-dom";
-import toast from "react-hot-toast";
 import API from "@/utils/axios";
 
 const AppointmentModal = ({ isOpen, onClose }: any) => {
@@ -26,6 +25,10 @@ const AppointmentModal = ({ isOpen, onClose }: any) => {
     }));
   }, [searchParams]);
 
+  const [actionType, setActionType] = useState<
+    "whatsapp" | "email"
+  >("whatsapp");
+
   // ✅ Handle input changes
   const handleChange = (e: any) => {
     setForm({
@@ -39,7 +42,7 @@ const AppointmentModal = ({ isOpen, onClose }: any) => {
 
     // Name
     if (!form.name.trim()) {
-      toast.error("Please enter your name");
+      alert("Please enter your name");
       return false;
     }
 
@@ -48,7 +51,7 @@ const AppointmentModal = ({ isOpen, onClose }: any) => {
       /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|in|org|net|edu)$/i;
 
     if (!emailRegex.test(form.email)) {
-      toast.error("Please enter a valid email address");
+      alert("Please enter a valid email address");
       return false;
     }
 
@@ -56,7 +59,7 @@ const AppointmentModal = ({ isOpen, onClose }: any) => {
     const phoneRegex = /^[6-9]\d{9}$/;
 
     if (!phoneRegex.test(form.phone)) {
-      toast.error("Please enter a valid 10-digit phone number");
+      alert("Please enter a valid 10-digit phone number");
       return false;
     }
 
@@ -78,6 +81,17 @@ Phone: ${form.phone}
 Branch: ${form.branch}
 Service: ${form.service}`;
 
+    // ✅ WHATSAPP
+    if (actionType === "whatsapp") {
+      const url = `https://wa.me/918136951157?text=${encodeURIComponent(
+        message
+      )}`;
+
+      window.open(url, "_blank");
+      return;
+    }
+
+    // ✅ EMAIL API
     try {
       setLoading(true);
 
@@ -100,7 +114,7 @@ Service: ${form.service}
 
       if (response.data.success) {
 
-        toast.success("Appointment enquiry sent successfully!");
+        alert("Appointment enquiry sent successfully!");
 
         setForm({
           name: "",
@@ -113,14 +127,14 @@ Service: ${form.service}
         onClose();
 
       } else {
-        toast.error(response.data.message || "Unable to send appointment enquiry.");
+        alert(response.data.message);
       }
 
     } catch (error: any) {
 
       console.log(error);
 
-      toast.error(
+      alert(
         error?.response?.data?.message ||
         "Something went wrong"
       );
@@ -204,24 +218,8 @@ Service: ${form.service}
           <div className="flex gap-4 mt-6">
 
             <button
-              type="button"
-              onClick={() => {
-                if (!validateForm()) return;
-
-                const message = `Appointment Request:
-
-Name: ${form.name}
-Email: ${form.email}
-Phone: ${form.phone}
-Branch: ${form.branch}
-Service: ${form.service}`;
-
-                const url = `https://wa.me/918136951157?text=${encodeURIComponent(
-                  message
-                )}`;
-
-                window.open(url, "_blank");
-              }}
+              type="submit"
+              onClick={() => setActionType("whatsapp")}
               className="flex-1 py-3 rounded-xl bg-green-600 hover:bg-green-700 text-white transition-all duration-300"
             >
               WhatsApp
@@ -230,6 +228,7 @@ Service: ${form.service}`;
             <button
               type="submit"
               disabled={loading}
+              onClick={() => setActionType("email")}
               className="flex-1 py-3 rounded-xl bg-[#c2a97a] hover:bg-[#d4af37] text-[#0f2218] transition-all duration-300 disabled:opacity-70"
             >
               {loading ? "Sending..." : "Email"}
