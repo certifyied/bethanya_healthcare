@@ -84,6 +84,14 @@ export const sendMessage = async (
       }
     }
 
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+      return res.status(500).json({
+        success: false,
+        message:
+          "Email sender credentials are not configured. Please set EMAIL_USER and EMAIL_PASS.",
+      });
+    }
+
     // ✅ Nodemailer Transport
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",

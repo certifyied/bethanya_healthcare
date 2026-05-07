@@ -79,10 +79,12 @@ app.use(
       "http://localhost:8080",
       "https://bethanya-healthcare.vercel.app",
       "https://bethanyahealthcare.com",
-      "https://www.bethanyahealthcare.com"
+      "https://www.bethanyahealthcare.com",
+      "https://api.bethanyahealthcare.com"
     ],
-    credentials: true, methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"]
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
