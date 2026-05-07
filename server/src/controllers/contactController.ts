@@ -48,58 +48,61 @@ import { Request, Response } from "express";
 import nodemailer from "nodemailer";
 
 export const sendMessage = async (
-    req: Request,
-    res: Response
+  req: Request,
+  res: Response
 ) => {
-    try {
-        const { name, email, phone, message } = req.body;
+  try {
+    const { name, email, phone, message } = req.body;
 
-        // ✅ Required field validation
-        if (!name || !email || !message) {
-            return res.status(400).json({
-                success: false,
-                message: "All fields are required",
-            });
-        }
+    // ✅ Required field validation
+    if (!name || !email || !message) {
+      return res.status(400).json({
+        success: false,
+        message: "All fields are required",
+      });
+    }
 
-        // ✅ Email validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // ✅ Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-        if (!emailRegex.test(email)) {
-            return res.status(400).json({
-                success: false,
-                message: "Please enter a valid email address",
-            });
-        }
+    if (!emailRegex.test(email.trim())) {
+      return res.status(400).json({
+        success: false,
+        message: "Please enter a valid email address",
+      });
+    }
 
-        // ✅ Phone validation (optional)
-        if (phone) {
-            const phoneRegex = /^[0-9]{10}$/;
+    // ✅ Phone validation (optional)
+    if (phone) {
+      const phoneRegex = /^[0-9]{10}$/;
 
-            if (!phoneRegex.test(phone)) {
-                return res.status(400).json({
-                    success: false,
-                    message: "Phone number must be 10 digits",
-                });
-            }
-        }
-
-        const transporter = nodemailer.createTransport({
-            service: "gmail",
-            auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASS,
-            },
+      if (!phoneRegex.test(phone.trim())) {
+        return res.status(400).json({
+          success: false,
+          message: "Phone number must be 10 digits",
         });
+      }
+    }
 
-        await transporter.sendMail({
-            from: process.env.EMAIL_USER,
-            replyTo: email,
-            to: "bethanyaweb@gmail.com",
+    // ✅ Nodemailer Transport
+    const transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true,
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
 
-            subject: `New Contact Message from ${name}`,
+    // ✅ Send Mail
+    await transporter.sendMail({
+      from: `"Bethanya Ayurveda" <${process.env.EMAIL_USER}>`,
+      to: "bethanyaweb@gmail.com",
 
-            html: `
+      subject: `New Contact Message from ${name}`,
+
+      html: `
         <div style="
           font-family: Arial, sans-serif;
           background: #f8f8f8;
@@ -149,15 +152,16 @@ export const sendMessage = async (
                 ${email}
               </p>
 
-              ${phone
-                    ? `
+              ${
+                phone
+                  ? `
                 <p>
                   <strong>Phone:</strong><br />
                   ${phone}
                 </p>
               `
-                    : ""
-                }
+                  : ""
+              }
 
               <p>
                 <strong>Message:</strong><br />
@@ -180,20 +184,21 @@ export const sendMessage = async (
 
         </div>
       `,
-        });
+    });
 
-        res.status(200).json({
-            success: true,
-            message: "Message sent successfully",
-        });
+    return res.status(200).json({
+      success: true,
+      message: "Message sent successfully",
+    });
 
-    } catch (error: any) {
-        console.log("FULL EMAIL ERROR:", error);
+  } catch (error: any) {
 
-        return res.status(500).json({
-            success: false,
-            message: error.message,
-            stack: error.stack
-        });
-    }
+    console.log("FULL EMAIL ERROR:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: error.message || "Failed to send message",
+      stack: error.stack,
+    });
+  }
 };
