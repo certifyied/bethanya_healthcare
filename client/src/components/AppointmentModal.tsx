@@ -47,13 +47,12 @@ const AppointmentModal = ({ isOpen, onClose }: any) => {
     }
 
     // Email
-    const emailRegex =
-      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|in|org|net|edu)$/i;
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!emailRegex.test(form.email)) {
-      alert("Please enter a valid email address");
-      return false;
-    }
+if (!emailRegex.test(form.email.trim())) {
+  alert("Please enter a valid email address");
+  return false;
+}
 
     // Phone
     const phoneRegex = /^[6-9]\d{9}$/;

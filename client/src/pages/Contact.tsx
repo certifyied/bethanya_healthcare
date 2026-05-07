@@ -33,13 +33,12 @@ const Contact = () => {
     }
 
     // ✅ Email validation
-    const emailRegex =
-      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|in|org|net|edu)$/i;
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!emailRegex.test(formData.email)) {
-      toast.error("Please enter a valid email address");
-      return false;
-    }
+if (!emailRegex.test(formData.email.trim())) {
+  toast.error("Please enter a valid email address");
+  return false;
+}
 
     // ✅ Message validation
 
