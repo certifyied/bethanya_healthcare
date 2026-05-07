@@ -58,7 +58,7 @@ const Contact = () => {
       setLoading(true);
 
       const response = await API.post(
-        "/api/send-message",
+        "/api/contact/send-message",
         formData
       );
 
