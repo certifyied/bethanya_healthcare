@@ -63,14 +63,14 @@ export const sendMessage = async (
         }
 
         // ✅ Email validation
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-if (!emailRegex.test(email)) {
-    return res.status(400).json({
-        success: false,
-        message: "Please enter a valid email address",
-    });
-}
+        if (!emailRegex.test(email)) {
+            return res.status(400).json({
+                success: false,
+                message: "Please enter a valid email address",
+            });
+        }
 
         // ✅ Phone validation (optional)
         if (phone) {
@@ -188,12 +188,12 @@ if (!emailRegex.test(email)) {
         });
 
     } catch (error: any) {
-        console.log(error);
+        console.log("FULL EMAIL ERROR:", error);
 
-        res.status(500).json({
+        return res.status(500).json({
             success: false,
-            message: "Failed to send message",
-            error: error.message,
+            message: error.message,
+            stack: error.stack
         });
     }
 };
