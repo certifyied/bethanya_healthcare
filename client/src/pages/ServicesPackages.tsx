@@ -15,6 +15,26 @@ const categoryMap = {
   "Ayurvedic Massage": "massage",
 };
 
+const branchAddresses: any = {
+  KATTANAM: {
+    name: "BETHANYA AYURVEDA",
+    address:
+      "BETHANYA AYURVEDA HOSPITAL, Santhome Building, Near Pope Pius H.S School, Kattanam, Alappuzha District, Kerala - 690503",
+    phone1: "+91 9894176585",
+    phone2: "+91 8867127954",
+    email: "bethanyahealthcare@gmail.com",
+  },
+
+  VARKALA: {
+    name: "BETHANYA AYURVEDA",
+    address:
+      "BETHANYA AYURVEDA VARKALA, Kshetra Street, North Cliff, Varkala, Kerala",
+    phone1: "+91 9894176585",
+    phone2: "+91 8867127954",
+    email: "bethanyahealthcare@gmail.com",
+  },
+};
+
 const Section = ({
   title,
   items,
@@ -255,6 +275,7 @@ ${selectedBranch === branch
         <div className="mx-auto max-w-6xl pt-28 px-6">
 
           {/* ✅ SELECTED BRANCH NAME */}
+          {/* ✅ SELECTED BRANCH NAME */}
           {selectedBranch && (
             <div className="text-center mb-10">
               <h2 className="forum-regular text-3xl md:text-5xl font-extrabold text-[#1f3d2b] leading-none">
@@ -268,6 +289,79 @@ ${selectedBranch === branch
                   alt="underline"
                   className="w-40 md:w-56 object-contain"
                 />
+              </div>
+
+              {/* ✅ ADDRESS CARD */}
+              <div className="mt-8 flex justify-center px-4">
+                <div
+                  className="
+      relative overflow-hidden
+      bg-[#0f2218]
+      border border-[#c2a97a]/30
+      rounded-[30px]
+      px-6 md:px-10
+      py-8
+      shadow-[0_10px_40px_rgba(0,0,0,0.25)]
+      max-w-3xl
+      w-full
+    "
+                >
+                  {/* GOLD GLOW */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#d4af37]/5 via-transparent to-[#f5d76e]/5 pointer-events-none"></div>
+
+                  {/* TITLE */}
+                  <div className="relative z-10 text-center mb-6">
+                    <h3 className="forum-regular text-2xl md:text-4xl text-[#f5d76e] tracking-wide">
+                      {branchAddresses[selectedBranch]?.name}
+                    </h3>
+
+                    <div className="w-24 h-[1px] bg-[#c2a97a]/40 mx-auto mt-3"></div>
+                  </div>
+
+                  {/* ADDRESS */}
+                  <div className="relative z-10 text-center mb-8">
+                    <p className="forum-regular text-[#e8d7b0] text-sm md:text-lg leading-relaxed">
+                      {branchAddresses[selectedBranch]?.address}
+                    </p>
+                  </div>
+
+                  {/* CONTACT GRID */}
+                  <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-4">
+
+                    {/* PHONE 1 */}
+                    <div className="bg-[#13281d] rounded-2xl border border-[#c2a97a]/20 p-4 text-center">
+                      <p className="text-[#c2a97a] text-xs uppercase tracking-widest mb-2">
+                        Phone
+                      </p>
+
+                      <p className="forum-regular text-[#f5d76e] text-sm md:text-base">
+                        {branchAddresses[selectedBranch]?.phone1}
+                      </p>
+                    </div>
+
+                    {/* PHONE 2 */}
+                    <div className="bg-[#13281d] rounded-2xl border border-[#c2a97a]/20 p-4 text-center">
+                      <p className="text-[#c2a97a] text-xs uppercase tracking-widest mb-2">
+                        Support
+                      </p>
+
+                      <p className="forum-regular text-[#f5d76e] text-sm md:text-base">
+                        {branchAddresses[selectedBranch]?.phone2}
+                      </p>
+                    </div>
+
+                    {/* EMAIL */}
+                    <div className="bg-[#13281d] rounded-2xl border border-[#c2a97a]/20 p-4 text-center">
+                      <p className="text-[#c2a97a] text-xs uppercase tracking-widest mb-2">
+                        Email
+                      </p>
+
+                      <p className="forum-regular text-[#f5d76e] text-sm md:text-base break-all">
+                        {branchAddresses[selectedBranch]?.email}
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           )}

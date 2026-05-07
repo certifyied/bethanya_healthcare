@@ -54,6 +54,7 @@ const Footer = () => (
 
             <span className="forum-regular">Email: bethanyahealthcare@gmail.com</span>
             <span className="forum-regular">Tel: 9894176585</span>
+            <span className="forum-regular">Tel: 8867127954</span>
 
           </div>
         </div>

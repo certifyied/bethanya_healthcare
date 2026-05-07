@@ -64,6 +64,7 @@ import cors from "cors";
 import adminRoutes from "./routes/adminRoutes";
 import serviceRoutes from "./routes/serviceRoutes";
 import AdminServiceRoutes from "./routes/serviceRoutes"
+import contactRoutes from "./routes/contactRoutes";
 import cookieParser from "cookie-parser";
 
 dotenv.config();
@@ -99,6 +100,7 @@ app.post("/create-services", (req, res) => {
 app.use("/api/admin", adminRoutes);
 app.use("/api", serviceRoutes);
 app.use("/api/admin", AdminServiceRoutes);
+app.use("/api/contact", contactRoutes);
 
 const PORT = process.env.PORT || 4000;
 const MONGO_URI = process.env.MONGO_URI;

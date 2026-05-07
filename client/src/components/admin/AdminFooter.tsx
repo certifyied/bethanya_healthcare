@@ -80,6 +80,9 @@ const AdminFooter = () => (
             <span className="forum-regular">
               Tel: 9894176585
             </span>
+            <span className="forum-regular">
+              Tel: 8867127954
+            </span>
 
           </div>
         </div>

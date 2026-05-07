@@ -1,10 +1,98 @@
 import { Mail, Phone, MapPin } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import { useState } from "react";
+import { toast } from "react-hot-toast";
 import Layout from "@/components/layout/Layout";
+import API from "@/utils/axios";
 
 const Contact = () => {
-  const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+
+  const validateForm = () => {
+
+    // ✅ Name validation
+    if (!formData.name.trim()) {
+      toast.error("Please enter your name");
+      return false;
+    }
+
+    // ✅ Email validation
+    const emailRegex =
+      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|in|org|net|edu)$/i;
+
+    if (!emailRegex.test(formData.email)) {
+      toast.error("Please enter a valid email address");
+      return false;
+    }
+
+    // ✅ Message validation
+
+
+    return true;
+  };
+
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
+    e.preventDefault();
+
+    // ✅ Validate first
+    if (!validateForm()) return;
+
+    try {
+      setLoading(true);
+
+      const response = await API.post(
+        "/api/contact/send-message",
+        formData
+      );
+
+      if (response.data.success) {
+
+        toast.success("Message sent successfully!");
+
+        setFormData({
+          name: "",
+          email: "",
+          message: "",
+        });
+
+      } else {
+        toast.error(
+          response.data.message ||
+          "Unable to send message."
+        );
+      }
+
+    } catch (error: any) {
+
+      console.log(error);
+
+      toast.error(
+        error?.response?.data?.message ||
+        "Something went wrong"
+      );
+
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <>
@@ -207,12 +295,13 @@ drop-shadow-[0_8px_5px_rgba(0,0,0,0.8)]">
                     />
 
                     <form
+                      onSubmit={handleSubmit}
                       className="
-              space-y-4 md:space-y-5
-              w-full
-              max-w-2xl
-              mx-auto
-            "
+    space-y-4 md:space-y-5
+    w-full
+    max-w-2xl
+    mx-auto
+  "
                     >
                       {[
                         { name: "name", label: "Your Name", type: "text" },
@@ -229,15 +318,20 @@ drop-shadow-[0_8px_5px_rgba(0,0,0,0.8)]">
 
                           <input
                             type={field.type}
+                            name={field.name}
+                            value={formData[field.name as keyof typeof formData]}
+                            onChange={handleChange}
+                            required
                             className="
-                    w-full
-                    bg-[#0f2218]
-                    rounded-xl md:rounded-2xl
-                    px-4 md:px-5
-                    py-3 md:py-4
-                    text-sm md:text-base
-                    text-white
-                  "
+    w-full
+    bg-[#0f2218]
+    rounded-xl md:rounded-2xl
+    px-4 md:px-5
+    py-3 md:py-4
+    text-sm md:text-base
+    text-white
+    outline-none
+  "
                             placeholder={field.label}
                           />
                         </div>
@@ -250,22 +344,28 @@ drop-shadow-[0_8px_5px_rgba(0,0,0,0.8)]">
 
                         <textarea
                           rows={4}
+                          name="message"
+                          value={formData.message}
+                          onChange={handleChange}
+                          required
                           className="
-                  w-full
-                  bg-[#0f2218]
-                  rounded-xl md:rounded-2xl
-                  px-4 md:px-5
-                  py-3
-                  text-sm md:text-base
-                  text-white
-                  resize-none
-                "
+    w-full
+    bg-[#0f2218]
+    rounded-xl md:rounded-2xl
+    px-4 md:px-5
+    py-3
+    text-sm md:text-base
+    text-white
+    resize-none
+    outline-none
+  "
                           placeholder="Tell us how we can help..."
                         />
                       </div>
 
                       <button
                         type="submit"
+                        disabled={loading}
                         className="
     forum-regular
     relative
@@ -278,9 +378,10 @@ drop-shadow-[0_8px_5px_rgba(0,0,0,0.8)]">
     shadow-lg
     hover:bg-[#274b35]
     transition-all duration-300
+    disabled:opacity-70
   "
                       >
-                        Send Message
+                        {loading ? "Sending..." : "Send Message"}
 
                         <span className="absolute inset-[2px] rounded-2xl border border-[#D4AF37]" />
                       </button>

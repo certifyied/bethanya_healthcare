@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { X } from "lucide-react";
 import { useSearchParams } from "react-router-dom";
-
+import toast from "react-hot-toast";
+import API from "@/utils/axios";
 
 const AppointmentModal = ({ isOpen, onClose }: any) => {
   const [searchParams] = useSearchParams();
@@ -14,6 +15,8 @@ const AppointmentModal = ({ isOpen, onClose }: any) => {
     service: "",
   });
 
+  const [loading, setLoading] = useState(false);
+
   // ✅ Auto-fill branch & service from URL
   useEffect(() => {
     setForm((prev) => ({
@@ -23,29 +26,122 @@ const AppointmentModal = ({ isOpen, onClose }: any) => {
     }));
   }, [searchParams]);
 
-  const [actionType, setActionType] = useState<"whatsapp" | "email">("whatsapp");
+  const [actionType, setActionType] = useState<
+    "whatsapp" | "email"
+  >("whatsapp");
 
+  // ✅ Handle input changes
   const handleChange = (e: any) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
   };
 
-  // ✅ Handle Submit (used for both buttons)
-  const handleSubmit = (e: any) => {
+  // ✅ Validation
+  const validateForm = () => {
+
+    // Name
+    if (!form.name.trim()) {
+      toast.error("Please enter your name");
+      return false;
+    }
+
+    // Email
+    const emailRegex =
+      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|in|org|net|edu)$/i;
+
+    if (!emailRegex.test(form.email)) {
+      toast.error("Please enter a valid email address");
+      return false;
+    }
+
+    // Phone
+    const phoneRegex = /^[6-9]\d{9}$/;
+
+    if (!phoneRegex.test(form.phone)) {
+      toast.error("Please enter a valid 10-digit phone number");
+      return false;
+    }
+
+    return true;
+  };
+
+  // ✅ Handle Submit
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
+    // ✅ Validate before submit
+    if (!validateForm()) return;
+
     const message = `Appointment Request:
+
 Name: ${form.name}
 Email: ${form.email}
 Phone: ${form.phone}
 Branch: ${form.branch}
 Service: ${form.service}`;
 
+    // ✅ WHATSAPP
     if (actionType === "whatsapp") {
-      const url = `https://wa.me/918136951157?text=${encodeURIComponent(message)}`;
+      const url = `https://wa.me/918136951157?text=${encodeURIComponent(
+        message
+      )}`;
+
       window.open(url, "_blank");
-    } else {
-      const subject = "New Appointment Request";
-      window.location.href = `mailto:soorajcpchathanathparampil@gmail.com?subject=${subject}&body=${encodeURIComponent(message)}`;
+      return;
+    }
+
+    // ✅ EMAIL API
+    try {
+      setLoading(true);
+
+      const response = await API.post(
+        "/api/contact/send-message",
+        {
+          name: form.name.trim(),
+          email: form.email.trim(),
+          phone: form.phone.trim(),
+
+          message: `
+Phone: ${form.phone}
+
+Branch: ${form.branch}
+
+Service: ${form.service}
+          `,
+        }
+      );
+
+      if (response.data.success) {
+
+        toast.success("Appointment enquiry sent successfully!");
+
+        setForm({
+          name: "",
+          email: "",
+          phone: "",
+          branch: searchParams.get("branch") || "",
+          service: searchParams.get("service") || "",
+        });
+
+        onClose();
+
+      } else {
+        toast.error(response.data.message || "Unable to send appointment enquiry.");
+      }
+
+    } catch (error: any) {
+
+      console.log(error);
+
+      toast.error(
+        error?.response?.data?.message ||
+        "Something went wrong"
+      );
+
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -53,10 +149,14 @@ Service: ${form.service}`;
 
   return (
     <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 px-4">
+
       <div className="bg-[#0f2218] w-full max-w-lg rounded-3xl p-8 relative border border-[#c2a97a]">
 
         {/* ❌ Close */}
-        <button onClick={onClose} className="absolute top-4 right-4 text-white">
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 text-white"
+        >
           <X />
         </button>
 
@@ -67,11 +167,12 @@ Service: ${form.service}`;
         {/* ✅ FORM */}
         <form
           className="space-y-4"
-          onSubmit={(e) => handleSubmit(e)}
+          onSubmit={handleSubmit}
         >
 
           <input
             name="name"
+            value={form.name}
             placeholder="Your Name"
             required
             onChange={handleChange}
@@ -81,6 +182,7 @@ Service: ${form.service}`;
           <input
             type="email"
             name="email"
+            value={form.email}
             placeholder="Email"
             required
             onChange={handleChange}
@@ -90,6 +192,7 @@ Service: ${form.service}`;
           <input
             type="tel"
             name="phone"
+            value={form.phone}
             placeholder="Phone"
             required
             onChange={handleChange}
@@ -101,8 +204,6 @@ Service: ${form.service}`;
             placeholder="Branch"
             value={form.branch}
             readOnly
-            required
-            onChange={handleChange}
             className="w-full p-3 rounded-xl bg-[#1a3a2a] border border-[#c2a97a]/40 text-white outline-none"
           />
 
@@ -111,8 +212,6 @@ Service: ${form.service}`;
             placeholder="Service"
             value={form.service}
             readOnly
-            required
-            onChange={handleChange}
             className="w-full p-3 rounded-xl bg-[#1a3a2a] border border-[#c2a97a]/40 text-white outline-none"
           />
 
@@ -122,17 +221,18 @@ Service: ${form.service}`;
             <button
               type="submit"
               onClick={() => setActionType("whatsapp")}
-              className="flex-1 py-3 rounded-xl bg-green-600 hover:bg-green-700 text-white"
+              className="flex-1 py-3 rounded-xl bg-green-600 hover:bg-green-700 text-white transition-all duration-300"
             >
               WhatsApp
             </button>
 
             <button
               type="submit"
+              disabled={loading}
               onClick={() => setActionType("email")}
-              className="flex-1 py-3 rounded-xl bg-[#c2a97a] hover:bg-[#d4af37] text-[#0f2218]"
+              className="flex-1 py-3 rounded-xl bg-[#c2a97a] hover:bg-[#d4af37] text-[#0f2218] transition-all duration-300 disabled:opacity-70"
             >
-              Email
+              {loading ? "Sending..." : "Email"}
             </button>
 
           </div>
