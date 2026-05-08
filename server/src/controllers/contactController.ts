@@ -43,7 +43,7 @@
 //     });
 //   }
 // };
-import { Request, Response } from "express";  // 👈 add this
+import { Request, Response } from "express";
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -53,14 +53,25 @@ export const sendMessage = async (req: Request, res: Response) => {
     console.log("CONTACT API HIT");
     console.log("BODY:", req.body);
 
+    const { name, email, message } = req.body;
+
+    // ✅ Strict email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.(com|in|org|net|co\.in|co\.uk|edu|gov|io)$/i;
+    if (!emailRegex.test(email?.trim())) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid email address",
+      });
+    }
+
     await resend.emails.send({
       from: "onboarding@resend.dev",
-      to: "bethanyaweb@gmail.com",
+      to: "bethanyahealthcare@gmail.com",  // ✅ correct receiver
       subject: "New Contact Message",
       text: `
-Name: ${req.body.name}
-Email: ${req.body.email}
-Message: ${req.body.message}
+Name: ${name}
+Email: ${email}
+Message: ${message}
       `,
     });
 

@@ -33,10 +33,10 @@ const Contact = () => {
     }
 
     // ✅ Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.(com|in|org|net|co\.in|co\.uk|edu|gov|io)$/i;
 
     if (!emailRegex.test(formData.email.trim())) {
-      toast.error("Please enter a valid email address");
+      toast.error("Please enter a valid email");
       return false;
     }
 
