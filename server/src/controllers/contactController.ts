@@ -43,37 +43,19 @@
 //     });
 //   }
 // };
+import { Request, Response } from "express";  // 👈 add this
+import { Resend } from "resend";
 
-import { Request, Response } from "express";
-import nodemailer from "nodemailer";
+const resend = new Resend(process.env.RESEND_API_KEY);
 
-export const sendMessage = async (
-  req: Request,
-  res: Response
-) => {
+export const sendMessage = async (req: Request, res: Response) => {
   try {
     console.log("CONTACT API HIT");
     console.log("BODY:", req.body);
 
-    const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",   // 👈 changed
-      port: 587,                // 👈 changed
-      secure: false,            // 👈 changed
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
-
-    console.log("TRANSPORT CREATED");
-
-    // DELETE transporter.verify() — remove these two lines:
-    // await transporter.verify();
-    // console.log("SMTP READY");
-
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER,
+    await resend.emails.send({
+      from: "onboarding@resend.dev",
+      to: "bethanyaweb@gmail.com",
       subject: "New Contact Message",
       text: `
 Name: ${req.body.name}
@@ -84,18 +66,10 @@ Message: ${req.body.message}
 
     console.log("MAIL SENT");
 
-    return res.status(200).json({
-      success: true,
-      message: "Message sent successfully",
-    });
+    return res.status(200).json({ success: true, message: "Message sent successfully" });
 
   } catch (error) {
     console.log("FULL EMAIL ERROR:", error);
-
-    return res.status(500).json({
-      success: false,
-      message: "Email failed",
-      error,
-    });
+    return res.status(500).json({ success: false, message: "Email failed", error });
   }
 };
