@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import { X } from "lucide-react";
 import { useSearchParams } from "react-router-dom";
 import API from "@/utils/axios";
+import { useToast } from "@/hooks/use-toast";
 
 const AppointmentModal = ({ isOpen, onClose }: any) => {
   const [searchParams] = useSearchParams();
+  const { toast } = useToast();
 
   const [form, setForm] = useState({
     name: "",
@@ -37,13 +39,16 @@ const AppointmentModal = ({ isOpen, onClose }: any) => {
     });
   };
 
-  
   // ✅ Validation
   const validateForm = () => {
 
     // Name
     if (!form.name.trim()) {
-      alert("Please enter your name");
+      toast({
+        title: "Validation Error",
+        description: "Please enter your name",
+        variant: "destructive",
+      });
       return false;
     }
 
@@ -51,7 +56,11 @@ const AppointmentModal = ({ isOpen, onClose }: any) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!emailRegex.test(form.email.trim())) {
-      alert("Please enter a valid email address");
+      toast({
+        title: "Validation Error",
+        description: "Please enter a valid email address",
+        variant: "destructive",
+      });
       return false;
     }
 
@@ -59,7 +68,11 @@ const AppointmentModal = ({ isOpen, onClose }: any) => {
     const phoneRegex = /^[6-9]\d{9}$/;
 
     if (!phoneRegex.test(form.phone)) {
-      alert("Please enter a valid 10-digit phone number");
+      toast({
+        title: "Validation Error",
+        description: "Please enter a valid 10-digit phone number",
+        variant: "destructive",
+      });
       return false;
     }
 
@@ -114,7 +127,10 @@ Service: ${form.service}
 
       if (response.data.success) {
 
-        alert("Appointment enquiry sent successfully!");
+        toast({
+          title: "Success",
+          description: "Appointment enquiry sent successfully!",
+        });
 
         setForm({
           name: "",
@@ -127,17 +143,22 @@ Service: ${form.service}
         onClose();
 
       } else {
-        alert(response.data.message);
+        toast({
+          title: "Error",
+          description: response.data.message,
+          variant: "destructive",
+        });
       }
 
     } catch (error: any) {
 
       console.log(error);
 
-      alert(
-        error?.response?.data?.message ||
-        "Something went wrong"
-      );
+      toast({
+        title: "Error",
+        description: error?.response?.data?.message || "Something went wrong",
+        variant: "destructive",
+      });
 
     } finally {
       setLoading(false);
