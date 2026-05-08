@@ -103,7 +103,6 @@ Service: ${form.service}`;
           phone: form.phone.trim(),
 
           message: `
-Phone: ${form.phone}
 
 Branch: ${form.branch}
 

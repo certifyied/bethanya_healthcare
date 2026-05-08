@@ -138,7 +138,7 @@ drop-shadow-[0_8px_5px_rgba(0,0,0,0.8)]">
               {[
                 {
                   name: "KATTANAM",
-                  phone: "+91 9894176585",
+                  phone: "+91 89217 99597",
                   mobile: "+91 8867127954",
                   email: "bethanyahealthcare@gmail.com",
                   address: "BETHANYA AYURVEDA HOSPITAL, Santhome Building, Near Pope Pius H.S School, Kattanam, Alappuzha District, Kerala - 690503",
@@ -146,7 +146,7 @@ drop-shadow-[0_8px_5px_rgba(0,0,0,0.8)]">
                 },
                 {
                   name: "VARKKALA",
-                  phone: "+91 9894176585",
+                  phone: "+91 88671 27954",
                   mobile: "+91 8867127954",
                   email: "bethanyahealthcare@gmail.com",
                   address: "BETHANYA AYURVEDA VARKALA,\nKshetra Street, North Cliff, Varkala, Kerala",
@@ -154,6 +154,10 @@ drop-shadow-[0_8px_5px_rgba(0,0,0,0.8)]">
                 },
                 {
                   name: "THONNAKKAD",
+                  phone: "+91 89217 99597",
+                  mobile: "+91 8867127954",
+                  email: "bethanyahealthcare@gmail.com",
+                  address: 'Regd. Office: X/498, "REHOBOTH", Valuparampil Puthen Veedu, Thonnakkad, Chengannur–Mavelikkara Road, Near Thonnakkad Church, Chengannur, Kerala – 689511',
                   available: false,
                 },
               ].map((branch) => (
@@ -190,10 +194,10 @@ drop-shadow-[0_8px_5px_rgba(0,0,0,0.8)]">
                         {branch.phone}
                       </div>
 
-                      <div className="flex items-center gap-3 text-white">
+                      {/* <div className="flex items-center gap-3 text-white">
                         <Phone className="w-4 h-4 text-[#c2a97a]" />
                         {branch.mobile}
-                      </div>
+                      </div> */}
 
                       <div className="flex items-center gap-3 text-white">
                         <Mail className="w-5 h-5 text-[#c2a97a] flex-shrink-0" />
@@ -210,30 +214,47 @@ drop-shadow-[0_8px_5px_rgba(0,0,0,0.8)]">
                     </div>
 
                   ) : (
+                    <div className="flex flex-col items-center justify-center gap-6">
 
-                    <div className="flex flex-col items-center justify-center py-10">
+                      <div className="space-y-4 text-sm w-full">
+                        <div className="flex items-center gap-3 text-white">
+                          <Phone className="w-4 h-4 text-[#c2a97a]" />
+                          {branch.phone}
+                        </div>
+                        {/* <div className="flex items-center gap-3 text-white">
+                          <Phone className="w-4 h-4 text-[#c2a97a]" />
+                          {branch.mobile}
+                        </div> */}
+                        <div className="flex items-center gap-3 text-white">
+                          <Mail className="w-5 h-5 text-[#c2a97a] flex-shrink-0" />
+                          <span className="text-sm md:text-base break-words">{branch.email}</span>
+                        </div>
+                        <div className="flex items-start gap-3 text-white">
+                          <MapPin className="w-5 h-5 text-[#c2a97a] mt-1 flex-shrink-0" />
+                          <span>{branch.address}</span>
+                        </div>
+                      </div>
 
                       <div className="
-        px-8 py-4
-        rounded-full
-        border border-[#c2a97a]/40
-        bg-[#1a3325]
-        shadow-[0_0_20px_rgba(194,169,122,0.15)]
-      ">
+      px-8 py-4
+      rounded-full
+      border border-[#c2a97a]/40
+      bg-[#1a3325]
+      shadow-[0_0_20px_rgba(194,169,122,0.15)]
+    ">
                         <p className="
-          font-cinzel
-          shine-text
-          text-xl md:text-2xl
-          text-white
-          tracking-wide
-          text-center
-        ">
+        font-cinzel
+        shine-text
+        text-xl md:text-2xl
+        text-white
+        tracking-wide
+        text-center
+      ">
                           Opening Soon
                         </p>
                       </div>
 
                     </div>
-
                   )}
 
                 </div>

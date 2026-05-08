@@ -12,13 +12,11 @@ function HomeAdress() {
           BETHANYA HEALTHCARE PVT. LTD
           <br/>
           Regd. Office: X/498
-          "REHOBOTH", VALUPARAMPIL PUTHEN VEEDU, THONACKAD,
-          CHENGANNUR-MAVELIKKARA ROAD, NEAR THONACKAD CHURCH,
+          "REHOBOTH", VALUPARAMPIL PUTHEN VEEDU, THONNAKKAD,
+          CHENGANNUR-MAVELIKKARA ROAD, NEAR THONNAKKAD CHURCH,
           CHENGANNUR, KERALA - 689511
           <br />
-          Tel: +91 9894176585
-          <br />
-          Tel: +91 8867127954
+          Tel: +91 8921799597
           <br />
           E-Mail ID: bethanyahealthcare@gmail.com
         </p>

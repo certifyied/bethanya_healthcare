@@ -20,7 +20,7 @@ const branchAddresses: any = {
     name: "BETHANYA AYURVEDA",
     address:
       "BETHANYA AYURVEDA HOSPITAL, Santhome Building, Near Pope Pius H.S School, Kattanam, Alappuzha District, Kerala - 690503",
-    phone1: "+91 9894176585",
+    phone1: "+91 89217 99597",
     phone2: "+91 8867127954",
     email: "bethanyahealthcare@gmail.com",
   },
@@ -29,7 +29,15 @@ const branchAddresses: any = {
     name: "BETHANYA AYURVEDA",
     address:
       "BETHANYA AYURVEDA VARKALA, Kshetra Street, North Cliff, Varkala, Kerala",
-    phone1: "+91 9894176585",
+    phone1: "+91 88671 27954",
+    phone2: "+91 8867127954",
+    email: "bethanyahealthcare@gmail.com",
+  },
+  THONNAKKAD: {
+    name: "BETHANYA AYURVEDA",
+    address:
+      'Regd. Office: X/498, "REHOBOTH", Valuparampil Puthen Veedu, Thonnakkad, Chengannur–Mavelikkara Road, Near Thonnakkad Church, Chengannur, Kerala – 689511',
+    phone1: "+91 89217 99597",
     phone2: "+91 8867127954",
     email: "bethanyahealthcare@gmail.com",
   },
@@ -275,7 +283,6 @@ ${selectedBranch === branch
         <div className="mx-auto max-w-6xl pt-28 px-6">
 
           {/* ✅ SELECTED BRANCH NAME */}
-          {/* ✅ SELECTED BRANCH NAME */}
           {selectedBranch && (
             <div className="text-center mb-10">
               <h2 className="forum-regular text-3xl md:text-5xl font-extrabold text-[#1f3d2b] leading-none">
@@ -292,9 +299,9 @@ ${selectedBranch === branch
               </div>
 
               {/* ✅ ADDRESS CARD */}
-              <div className="mt-8 flex justify-center px-4">
-                <div
-                  className="
+              <div className="-mt-4 mb-0 flex justify-center px-4">
+  <div
+    className="
       relative overflow-hidden
       bg-[#0f2218]
       border border-[#c2a97a]/30
@@ -305,71 +312,60 @@ ${selectedBranch === branch
       max-w-3xl
       w-full
     "
-                >
-                  {/* GOLD GLOW */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#d4af37]/5 via-transparent to-[#f5d76e]/5 pointer-events-none"></div>
+  >
+    {/* GOLD GLOW */}
+    <div className="absolute inset-0 bg-gradient-to-br from-[#d4af37]/5 via-transparent to-[#f5d76e]/5 pointer-events-none"></div>
 
-                  {/* TITLE */}
-                  <div className="relative z-10 text-center mb-6">
-                    <h3 className="forum-regular text-2xl md:text-4xl text-[#f5d76e] tracking-wide">
-                      {branchAddresses[selectedBranch]?.name}
-                    </h3>
+    {/* TITLE */}
+    <div className="relative z-10 text-center mb-6">
+      <h3 className="forum-regular text-2xl md:text-4xl text-[#f5d76e] tracking-wide">
+        {branchAddresses[selectedBranch]?.name}
+      </h3>
 
-                    <div className="w-24 h-[1px] bg-[#c2a97a]/40 mx-auto mt-3"></div>
-                  </div>
+      <div className="w-24 h-[1px] bg-[#c2a97a]/40 mx-auto mt-3"></div>
+    </div>
 
-                  {/* ADDRESS */}
-                  <div className="relative z-10 text-center mb-8">
-                    <p className="forum-regular text-[#e8d7b0] text-sm md:text-lg leading-relaxed">
-                      {branchAddresses[selectedBranch]?.address}
-                    </p>
-                  </div>
+    {/* ADDRESS */}
+    <div className="relative z-10 text-center mb-8">
+      <p className="forum-regular text-[#e8d7b0] text-sm md:text-lg leading-relaxed max-w-2xl mx-auto">
+        {branchAddresses[selectedBranch]?.address}
+      </p>
+    </div>
 
-                  {/* CONTACT GRID */}
-                  <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-4">
+    {/* CONTACT INFO */}
+    <div className="relative z-10 flex flex-col md:flex-row gap-5 justify-center items-stretch">
 
-                    {/* PHONE 1 */}
-                    <div className="bg-[#13281d] rounded-2xl border border-[#c2a97a]/20 p-4 text-center">
-                      <p className="text-[#c2a97a] text-xs uppercase tracking-widest mb-2">
-                        Phone
-                      </p>
+      {/* PHONE */}
+      <div className="flex-1 bg-[#13281d] rounded-2xl border border-[#c2a97a]/20 p-5 text-center hover:border-[#d4af37]/40 transition-all duration-300">
+        <p className="text-[#c2a97a] text-xs uppercase tracking-[0.25em] mb-3">
+          Phone
+        </p>
 
-                      <p className="forum-regular text-[#f5d76e] text-sm md:text-base">
-                        {branchAddresses[selectedBranch]?.phone1}
-                      </p>
-                    </div>
+        <p className="forum-regular text-[#f5d76e] text-sm md:text-lg">
+          {branchAddresses[selectedBranch]?.phone1}
+        </p>
+      </div>
 
-                    {/* PHONE 2 */}
-                    <div className="bg-[#13281d] rounded-2xl border border-[#c2a97a]/20 p-4 text-center">
-                      <p className="text-[#c2a97a] text-xs uppercase tracking-widest mb-2">
-                        Support
-                      </p>
+      {/* EMAIL */}
+      <div className="flex-1 bg-[#13281d] rounded-2xl border border-[#c2a97a]/20 p-5 text-center hover:border-[#d4af37]/40 transition-all duration-300">
+        <p className="text-[#c2a97a] text-xs uppercase tracking-[0.25em] mb-3">
+          Email
+        </p>
 
-                      <p className="forum-regular text-[#f5d76e] text-sm md:text-base">
-                        {branchAddresses[selectedBranch]?.phone2}
-                      </p>
-                    </div>
-
-                    {/* EMAIL */}
-                    <div className="bg-[#13281d] rounded-2xl border border-[#c2a97a]/20 p-4 text-center">
-                      <p className="text-[#c2a97a] text-xs uppercase tracking-widest mb-2">
-                        Email
-                      </p>
-
-                      <p className="forum-regular text-[#f5d76e] text-sm md:text-base break-all">
-                        {branchAddresses[selectedBranch]?.email}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+        <p className="forum-regular text-[#f5d76e] text-sm md:text-lg break-all">
+          {branchAddresses[selectedBranch]?.email}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
             </div>
           )}
 
 
           {/* VARKALA COMING SOON */}
           {!data && (
-            <div className="text-center -mt-16 mb-14">
+            <div className="text-center mt-16 mb-14">
               <p className="forum-regular mt-4 text-2xl md:text-6xl gold-shine">
                 Coming Soon
               </p>

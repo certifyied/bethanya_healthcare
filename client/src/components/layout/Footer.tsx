@@ -42,19 +42,19 @@ const Footer = () => (
           <div className="flex flex-col gap-3 font-body text-base md:text-lg opacity-80 leading-relaxed">
 
             <span className="forum-regular font-medium">
-              BETHANYA AYURVEDA PVT. LTD.
+              BETHANYA HEALTHCARE PVT. LTD.
             </span>
 
             <span className="forum-regular">
               Regd. Office: X/498, "REHOBOTH", Valuparampil Puthen Veedu,
-              Thonackad, Chengannur–Mavelikkara Road,
-              Near Thonackad Church,
+              Thonnakkad, Chengannur–Mavelikkara Road,
+              Near Thonnakkad Church,
               Chengannur, Kerala – 689511
             </span>
 
             <span className="forum-regular">Email: bethanyahealthcare@gmail.com</span>
-            <span className="forum-regular">Tel: 9894176585</span>
-            <span className="forum-regular">Tel: 8867127954</span>
+            <span className="forum-regular">Tel: +91 8921799597</span>
+            {/* <span className="forum-regular">Tel: 8867127954</span> */}
 
           </div>
         </div>
