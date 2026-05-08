@@ -68,7 +68,7 @@ export const sendMessage = async (req: Request, res: Response) => {
 
     await resend.emails.send({
       from: "onboarding@resend.dev",
-      to: "bethanyahealthcare@gmail.com",
+      to: "bethanyaweb@gmail.com",
       subject: `New Message from ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #c2a97a; border-radius: 12px; overflow: hidden;">
