@@ -380,7 +380,7 @@ drop-shadow-[0_8px_5px_rgba(0,0,0,0.8)]">
     disabled:opacity-70
   "
                       >
-                        Send Message
+                        {loading ? "Sending..." : "Send Message"}
 
                         <span className="absolute inset-[2px] rounded-2xl border border-[#D4AF37]" />
                       </button>
