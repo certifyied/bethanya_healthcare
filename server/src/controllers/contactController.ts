@@ -66,7 +66,7 @@ export const sendMessage = async (req: Request, res: Response) => {
 
     await resend.emails.send({
       from: "onboarding@resend.dev",
-      to: "bethanyahealthcare@gmail.com",  // ✅ correct receiver
+      to: "bethanyaweb@gmail.com",  // ✅ correct receiver
       subject: "New Contact Message",
       text: `
 Name: ${name}
