@@ -24,7 +24,7 @@ const Products = () => {
 
           {/* LEFT BOTTOM PNG BORDER */}
           <img
-            src="/images/bba3b14fb34e0afa43cfe531b8ab86.png"
+            src="/images/bba3b14fb34e0afa43cfe531b8ab86.webp"
             alt="border"
             className="absolute left-0 bottom-0 w-60 opacity-60 pointer-events-none"
           />

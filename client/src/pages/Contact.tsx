@@ -111,7 +111,7 @@ const Contact = () => {
 
             {/* 🌿 LEFT BOTTOM PNG BORDER */}
             <img
-              src="/images/bba3b14fb34e0afa43cfe531b8ab86.png"
+              src="/images/bba3b14fb34e0afa43cfe531b8ab86.webp"
               alt="border"
               className="absolute left-0 bottom-0 w-60 opacity-60 pointer-events-none"
             />
@@ -284,7 +284,7 @@ drop-shadow-[0_8px_5px_rgba(0,0,0,0.8)]">
                   <div
                     className="absolute inset-0 w-full h-full bg-cover bg-center"
                     style={{
-                      backgroundImage: "url('/images/2d3697190ba6990368958a388543aa8b.jpg')",
+                      backgroundImage: "url('/images/2d3697190ba6990368958a388543aa8b.webp')",
                     }}
                   />
 
@@ -303,8 +303,9 @@ drop-shadow-[0_8px_5px_rgba(0,0,0,0.8)]">
                     </h2>
 
                     <img
-                      src="/images/underline.png"
+                      src="/images/underline.webp"
                       alt="divider"
+                      loading="lazy"
                       className="
               mx-auto
               mb-6 md:mb-8

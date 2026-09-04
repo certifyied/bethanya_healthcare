@@ -335,3 +335,16 @@
   }
 }
 
+@keyframes slowShine {
+  0% {
+    transform: translateX(-180%) rotate(25deg);
+  }
+  35%, 100% {
+    transform: translateX(280%) rotate(25deg);
+  }
+}
+
+.whatsapp-slow-shine {
+  animation: slowShine 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+

@@ -65,8 +65,9 @@ overflow-visible">
 
                             {/* 🌸 FLOWER (CENTERED BACKGROUND) */}
                             <img
-                                src="/images/3341a8bafdc50e1bc5ea0afe04905fa7.png"
+                                src="/images/3341a8bafdc50e1bc5ea0afe04905fa7.webp"
                                 alt="flower"
+                                loading="lazy"
                                 className="absolute top-1/2 left-1/2 
   -translate-x-1/2 -translate-y-1/2 
   w-[900px] opacity-80 

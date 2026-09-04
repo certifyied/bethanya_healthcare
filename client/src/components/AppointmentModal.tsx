@@ -73,7 +73,7 @@ const AppointmentModal = ({ isOpen, onClose }: any) => {
     // ✅ Validate before submit
     if (!validateForm()) return;
 
-    const message = `Appointment Request:
+    const message = `Hello, I would like to book an appointment.
 
 Name: ${form.name}
 Email: ${form.email}

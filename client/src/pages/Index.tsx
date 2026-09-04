@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
 import { Leaf, Droplets, Heart, Shield } from "lucide-react";
-import FloatingLeaves from "@/components/FloatingLeaves";
 import ScrollReveal from "@/components/ScrollReveal";
-import ProductCard from "@/components/ProductCard";
 import { products } from "@/data/products";
 import Banner from "@/components/Banner";
-import ServicesPackages from "@/pages/ServicesPackages";
+import BranchVideoSection from "@/components/BranchVideoSection";
+import BranchGallerySection from "@/components/BranchGallerySection";
 import ServicesSection from "@/components/ServicesSection";
 import BranchesSection from "@/components/BranchesSection";
 import ProductCarousel from "@/components/ProductCarousel";
@@ -43,8 +42,9 @@ const Index = () => {
           {/* 🌿 BACKGROUND IMAGE */}
           <div className="absolute inset-0 z-0">
             <img
-              src="/images/6a39089268a36d4b20c6a15202e41ac0.jpg"
+              src="/images/6a39089268a36d4b20c6a15202e41ac0.webp"
               alt="background"
+              fetchPriority="high"
               className="w-full h-full object-cover opacity-20 md:opacity-10"
             />
           </div>
@@ -60,7 +60,7 @@ const Index = () => {
 
           {/* 🌿 FLOATING LEAF */}
           <motion.img
-            src="/images/8826c6b22fbc58a7e6c3202646061610.png"
+            src="/images/8826c6b22fbc58a7e6c3202646061610.webp"
             alt="leaf"
             className="absolute -top-10 -right-10 md:-right-16 
     w-[180px] md:w-[240px] lg:w-[300px] xl:w-[420px] 
@@ -73,81 +73,129 @@ const Index = () => {
           {/* 🌿 CONTENT (TRUE CENTER) */}
           <div className="relative z-10 w-full flex justify-center items-center text-center mt-20 mb-20">
 
-            <div className="max-w-[750px] mx-auto mt-10 md:mt-16 px-4 sm:px-5">
+            <div className="max-w-[850px] mx-auto mt-10 md:mt-16 px-4 sm:px-5">
 
               <motion.h1
                 className="cinzel-heading
-    mt-8 sm:mt-14 md:mt-24 lg:mt-24
-    text-3xl sm:text-5xl md:text-6xl xl:text-8xl
-    font-semibold leading-[1.15]
-    mb-2 md:mb-3
-    tracking-[0.02em] md:tracking-[0.04em]
+    mt-8 sm:mt-14 md:mt-20 lg:mt-24
+    text-2xl sm:text-4xl md:text-5xl lg:text-6xl
+    font-semibold leading-[1.25]
+    mb-6 md:mb-8
+    tracking-[0.02em] md:tracking-[0.03em]
     text-center
     bg-gradient-to-r from-[#f7e7a1] via-[#d4af37] to-[#b8860b]
     bg-clip-text text-transparent"
               >
-                Bethanya Ayurveda
+                A Historic Milestone for Bethanya Ayurveda
               </motion.h1>
-
-              <motion.p
-                className="forum-regular text-[#D4AF37]
-    text-sm sm:text-lg md:text-2xl
-    tracking-[0.15em] md:tracking-[0.3em]
-    uppercase mb-4 md:mb-6"
-              >
-                Embrace Life | Embrace Wellness
-              </motion.p>
 
               {/* Paragraph 1 */}
               <motion.p
-                className="forum-regular text-gray-300
-    text-base sm:text-lg md:text-2xl lg:text-xl
-    leading-[1.7] md:leading-relaxed
-    mb-5 md:mb-8
-    max-w-[100%] mx-auto
-    text-left md:text-justify"
+                className="forum-regular text-gray-200
+    text-base sm:text-lg md:text-xl
+    leading-[1.75] md:leading-relaxed
+    mb-5 md:mb-7
+    text-center"
               >
-                Welcome to Bethanya Ayurveda, a serene healing sanctuary rooted in the timeless traditions of Kerala Ayurveda. Here, classical wisdom, pure herbal care, and graceful hospitality come together to restore balance, awaken vitality, and nurture complete well being. Experience our Ayurvedic Massages, Special Treatments, thoughtfully curated Combo Packs, and rejuvenating Spa Therapies.
+                A unique and historic moment in the journey of Bethanya Ayurveda as we opened another branch at Thonackad, conveniently located near Mavelikara town.
               </motion.p>
 
               {/* Paragraph 2 */}
               <motion.p
-                className="forum-regular text-gray-300
-    text-base sm:text-lg md:text-2xl lg:text-xl
-    leading-[1.7]
-    mb-5 md:mb-8
-    text-left md:text-justify"
+                className="forum-regular text-gray-200
+    text-base sm:text-lg md:text-xl
+    leading-[1.75] md:leading-relaxed
+    mb-5 md:mb-7
+    text-center"
               >
-                We are a dedicated team of Ayurvedic professionals rooted in the timeless healing traditions of Kerala. With proven experience in successfully managing a reputed Ayurvedic hospital, our journey is built on trust, compassion, care, and authentic treatment practices. We now bring our expertise to a serene coastal destination where healing meets calmness, comfort, and complete rejuvenation.
+                The new branch was inaugurated by <strong className="text-white font-semibold">Adv. Chandy Oommen, MLA</strong>, who graciously honoured the occasion with his presence and formally inaugurated Bethanya Ayurveda, Thonackad, on 22nd August 2026.
               </motion.p>
 
               {/* Paragraph 3 */}
               <motion.p
-                className="forum-regular text-gray-300
-    text-base sm:text-lg md:text-2xl lg:text-xl
-    leading-[1.7]
-    mb-5 md:mb-8
-    text-left md:text-justify"
+                className="forum-regular text-gray-200
+    text-base sm:text-lg md:text-xl
+    leading-[1.75] md:leading-relaxed
+    mb-5 md:mb-7
+    text-center"
               >
-                Our hospital stroke center offers a carefully curated range of Ayurvedic Massages, Special Treatments, Combo Therapies, and Professional Spa Services. Each treatment is delivered using classical Ayurvedic methods, quality herbal preparations, and personalized care to help detoxify the body, relieve stress, reduce pain, and restore natural balance.
+                The grand opening ceremony was attended by <strong className="text-white font-semibold">Mrs. Rethi, President of Puliyoor Grama Panchayat</strong>, along with ward members, distinguished political leaders, social workers, well-wishers, and members of the community.
               </motion.p>
 
               {/* Paragraph 4 */}
               <motion.p
-                className="forum-regular text-gray-300
-    text-base sm:text-lg md:text-2xl lg:text-xl
-    leading-[1.7]
-    mb-6 md:mb-8
-    text-left md:text-justify"
+                className="forum-regular text-gray-200
+    text-base sm:text-lg md:text-xl
+    leading-[1.75] md:leading-relaxed
+    mb-5 md:mb-7
+    text-center"
               >
-                Our strength lies in experience, authenticity, and clinical excellence. Backed by the success of Bethanya Ayurveda Hospital, one of the most trusted Ayurvedic hospitals in Kerala, we bring hospital grade professionalism into a peaceful wellness setting. Situated in one of Kerala's most loved tourist destinations, our center offers the perfect blend of effective treatment and a relaxing getaway atmosphere.
+                Earlier, the facilities of Bethanya Ayurveda were dedicated by <strong className="text-white font-semibold">Rev. Sajan Mathew, Senior Pastor of Bethanya Prayer Garden International Ministries</strong>, marking the beginning of a new chapter in the journey of Bethanya Ayurveda.
               </motion.p>
 
+              {/* Paragraph 5 */}
+              <motion.p
+                className="forum-regular text-gray-200
+    text-base sm:text-lg md:text-xl
+    leading-[1.75] md:leading-relaxed
+    mb-5 md:mb-7
+    text-center"
+              >
+                Bethanya Ayurveda is a venture under the management of Bethanya Healthcare Pvt. Ltd., led by <strong className="text-white font-semibold">Dr. Krupa Raichel Thomas, Director (Medical &amp; Clinical Affairs)</strong>, and <strong className="text-white font-semibold">Mr. Alex Samson, Director (Administration &amp; Management)</strong>, under the guidance of <strong className="text-white font-semibold">Dr. V. J. Mathew, Chairman</strong>.
+              </motion.p>
+
+              {/* Paragraph 6 */}
+              <motion.p
+                className="forum-regular text-gray-200
+    text-base sm:text-lg md:text-xl
+    leading-[1.75] md:leading-relaxed
+    mb-5 md:mb-7
+    text-center"
+              >
+                This milestone marks another significant step in our mission to bring authentic Ayurveda, holistic healing, and compassionate healthcare closer to more people.
+              </motion.p>
+
+              {/* Paragraph 7 */}
+              <motion.p
+                className="forum-regular text-gray-200
+    text-base sm:text-lg md:text-xl
+    leading-[1.75] md:leading-relaxed
+    mb-7 md:mb-9
+    text-center"
+              >
+                Our main branch at Kattanam continues to be the foundation of our journey, while the new branch at Thonackad carries the same vision forward. Both branches provide quality Ayurvedic care with modern facilities, experienced doctors, trained therapists, and dedicated medical staff, ensuring compassionate and professional care for every patient.
+              </motion.p>
+
+              {/* Commitment & Motto */}
+              <motion.div className="mt-8 mb-6 text-center">
+                <p className="forum-regular text-gray-200 text-base sm:text-lg md:text-xl leading-relaxed mb-1">
+                  With every new beginning, our commitment remains the same.
+                </p>
+                <p className="forum-regular text-[#D4AF37] text-lg sm:text-xl md:text-2xl font-semibold tracking-wide">
+                  &ldquo;Embrace Wellness | Embrace Life&rdquo;
+                </p>
+              </motion.div>
+
+              {/* Dedication Quote */}
+              <motion.p className="forum-regular italic text-gray-300 text-base sm:text-lg md:text-xl mb-8 text-center">
+                &ldquo;To God be the glory for all that He has begun and all that is yet to come.&rdquo;
+              </motion.p>
+
+              {/* Brand Logo */}
+              <motion.div className="flex justify-center mb-8">
+                <img
+                  src="/images/Bethanya_Logo.webp"
+                  alt="Bethanya Ayurveda"
+                  className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 object-contain drop-shadow-[0_4px_16px_rgba(0,0,0,0.5)]"
+                />
+              </motion.div>
+
+              {/* CTA Button */}
               <motion.div>
                 <Link
                   to="/products"
                   className="inline-block px-6 py-3 md:px-8 md:py-4
-      rounded-full bg-[#1f3d2b]
+      rounded-full bg-[#1f3d2b] hover:bg-[#284f38] transition-colors duration-300 border border-[#c2a97a]/40 shadow-lg
       text-sm md:text-lg text-white"
                 >
                   <span className="forum-regular">
@@ -159,7 +207,7 @@ const Index = () => {
             </div>
           </div>
           <motion.img
-            src="/images/cdde68071816c2b47099100d06e01d06.png"
+            src="/images/cdde68071816c2b47099100d06e01d06.webp"
             alt="leaf"
             className="absolute bottom-[-20px] left-[-20px] 
   w-[140px] sm:w-[180px] md:w-[220px] lg:w-[260px] xl:w-[320px] 
@@ -173,8 +221,9 @@ const Index = () => {
         <section className="relative py-24 px-6 overflow-hidden">
           {/* 🌿 TOP RIGHT PNG */}
           <img
-            src="/images/c8e87042094b221187b54a21cd70ba6b.png"
+            src="/images/c8e87042094b221187b54a21cd70ba6b.webp"
             alt="decor"
+            loading="lazy"
             className="absolute top-2 right-0 sm:-top-10 w-32 sm:w-40 md:w-60 lg:w-80 pointer-events-none drop-shadow-[0_10px_05px_rgba(0,0,0,0.80)]"
           />
 
@@ -211,17 +260,25 @@ const Index = () => {
         </section>
 
         <HomeAdress />
+        <BranchesSection />
 
         <Banner />
 
+        {/* Services & Packages Section */}
+        <ServicesSection />
 
-        {/* Featured Products */}
+        {/* Latest Branch Opening Video Section */}
+        <BranchVideoSection />
+
+        {/* Pinterest-Style Masonry Branch Gallery Section */}
+        <BranchGallerySection />
         <section className="py-20 px-6 bg-[#0f2218] relative overflow-hidden">
 
           {/* 🌿 BLURRED BACKGROUND IMAGE */}
           <img
-            src="/images/6a39089268a36d4b20c6a15202e41ac0.jpg"
+            src="/images/6a39089268a36d4b20c6a15202e41ac0.webp"
             alt=""
+            loading="lazy"
             className="absolute inset-0 w-full h-full object-cover blur-md scale-110 "
           />
 
@@ -266,13 +323,11 @@ const Index = () => {
           </div>
         </section>
 
-        <ServicesSection />
-
         {/* Testimonials */}
         <section
           className="py-24 px-6 bg-[#0f2218] bg-cover bg-center relative"
           style={{
-            backgroundImage: "url('/images/Hero2.jpg')", // change path
+            backgroundImage: "url('/images/Hero2.webp')", // change path
           }}
         >
 
@@ -322,7 +377,6 @@ const Index = () => {
 
           </div>
         </section>
-        <BranchesSection />
       </div>
     </Layout>
   );

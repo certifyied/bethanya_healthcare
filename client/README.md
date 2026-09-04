@@ -1,3 +1,3 @@
-# Welcome to your Lovable project
+# Bethanya Ayurveda
 
-TODO: Document your project here
+Ayurvedic healthcare treatments, wellness therapies, and natural healthcare products.

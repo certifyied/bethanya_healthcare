@@ -12,7 +12,7 @@ function Banner() {
       {/* BANNER IMAGE */}
       <div
         className="forum-regular w-full py-8 px-4 bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/Banner.jpeg')" }}
+        style={{ backgroundImage: "url('/images/Banner.webp')" }}
       >
         <div className="flex flex-col md:flex-row items-center justify-around text-center gap-6 text-[#2f241d]">
 

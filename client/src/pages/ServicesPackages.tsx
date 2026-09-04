@@ -3,16 +3,92 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { useSearchParams } from "react-router-dom";
 import AppointmentModal from "@/components/AppointmentModal";
 import Layout from "@/components/layout/Layout";
-import API from "@/utils/axios";
-
+import { Phone } from "lucide-react";
 
 const branches = ["KATTANAM", "VARKALA", "THONNAKKAD"];
 
-const categoryMap = {
-  "Combo Packs": "combo",
-  "Spa Massage": "spa",
-  "Special Treatments": "special",
-  "Ayurvedic Massage": "massage",
+interface ServiceItem {
+  title: string;
+  image?: string;
+}
+
+const servicesData: Record<
+  string,
+  {
+    combo: ServiceItem[];
+    spa: ServiceItem[];
+    special: ServiceItem[];
+    massage: ServiceItem[];
+  } | null
+> = {
+  KATTANAM: {
+    combo: [
+      { title: "Abhyangam & Steam bath" },
+      { title: "Udwarthanam & Steam bath" },
+      { title: "Abhyanga & Shirodhara" },
+      { title: "Local Massage & Local Podikizhi" },
+      { title: "Back massage, Local podikizhi & Kativasti/Lepanam" },
+      { title: "Abhyangam & Podikizhi" },
+    ],
+    spa: [
+      { title: "Rejuvenation therapy" },
+      { title: "Body spa (Massage and scrub)" },
+      { title: "Body massage + Scrub + Pack" },
+    ],
+    special: [
+      { title: "Shirodhara" },
+      { title: "Udwarthanam" },
+      { title: "Podikizhi" },
+      { title: "Elakizhi" },
+      { title: "Naranga kizhi" },
+      { title: "Njavarakizhi" },
+      { title: "Pizhichil" },
+      { title: "Kativasti" },
+      { title: "Greevavasthi" },
+      { title: "Januvasthi" },
+      { title: "Meruvasthi" },
+      { title: "Kati pitchu" },
+      { title: "Takradhara" },
+      { title: "Ksheera dhara" },
+      { title: "Kashaya dhara" },
+      { title: "Dhanyamla dhara" },
+      { title: "Tharpanam" },
+      { title: "Karnapooranam" },
+      { title: "Shirovasthi" },
+      { title: "Nasyam" },
+    ],
+    massage: [
+      { title: "Abhyangam" },
+      { title: "Aroma therapy" },
+      { title: "Deep tissue massage" },
+      { title: "Marma massage" },
+      { title: "Head massage" },
+      { title: "Face massage" },
+      { title: "Foot massage" },
+      { title: "Back massage" },
+      { title: "Neck and Shoulder massage" },
+      { title: "Neck and back massage" },
+      { title: "Head Neck and back massage" },
+    ],
+  },
+  THONNAKKAD: {
+    combo: [
+      { title: "Abhyangam & Steam bath" },
+      { title: "Abhyanga & Shirodhara" },
+    ],
+    spa: [
+      { title: "Rejuvenation therapy" },
+    ],
+    special: [
+      { title: "Shirodhara" },
+      { title: "Podikizhi" },
+    ],
+    massage: [
+      { title: "Abhyangam" },
+      { title: "Head massage" },
+    ],
+  },
+  VARKALA: null, // Coming soon
 };
 
 const branchAddresses: any = {
@@ -48,15 +124,15 @@ const Section = ({
   items,
   image,
   reverse = false,
-  openEnquiry,
+  branch,
 }: any) => {
-
   const sectionImage = items[0]?.image;
 
-  const finalImage = sectionImage?.startsWith("http")
-    ? sectionImage
-    : `${import.meta.env.VITE_API_BASE_URL}/${sectionImage}`;
-
+  const finalImage = sectionImage
+    ? sectionImage.startsWith("http")
+      ? sectionImage
+      : `${import.meta.env.VITE_API_BASE_URL}/${sectionImage}`
+    : image;
 
   // ❌ If no services → render nothing
   if (!items || items.length === 0) return null;
@@ -82,8 +158,9 @@ const Section = ({
 
           {/* 🌿 BACKGROUND */}
           <img
-            src="/images/6a39089268a36d4b20c6a15202e41ac0.jpg"
+            src="/images/6a39089268a36d4b20c6a15202e41ac0.webp"
             alt=""
+            loading="lazy"
             className="absolute inset-0 w-full h-full object-cover opacity-40 blur-sm scale-110"
           />
 
@@ -109,33 +186,52 @@ const Section = ({
                 {title}
               </h3>
 
-              {/* ✅ IMPORTANT FIX HERE */}
+              {/* ✅ Treatment list with WhatsApp click */}
               <ul className="forum-regular space-y-4 drop-shadow-md">
-                {items.map((service: any, i: number) => (
-                  <li key={i} className="flex gap-3 text-xl md:text-2xl">
-                    <span className="text-[#c2a97a] font-semibold">
-                      {i + 1}.
-                    </span>
-                    <span className="text-[#c2a97a]">
-                      {service.title}
-                    </span>
-                  </li>
-                ))}
+                {items.map((service: any, i: number) => {
+                  const serviceTitle = typeof service === "string" ? service : service.title;
+                  const handleServiceClick = () => {
+                    const message = `Hello, I would like to know more about ${serviceTitle} at ${branch}.`;
+                    const url = `https://wa.me/918921799597?text=${encodeURIComponent(message)}`;
+                    window.open(url, "_blank");
+                  };
+
+                  return (
+                    <li
+                      key={i}
+                      onClick={handleServiceClick}
+                      className="group flex items-center justify-between gap-3 text-xl md:text-2xl cursor-pointer hover:text-[#f5d76e] transition-colors p-1.5 -mx-1.5 rounded-xl hover:bg-white/5"
+                    >
+                      <div className="flex items-start gap-3">
+                        <span className="text-[#c2a97a] font-semibold">
+                          {i + 1}.
+                        </span>
+                        <span className="text-[#c2a97a] group-hover:text-[#f5d76e]">
+                          {serviceTitle}
+                        </span>
+                      </div>
+                      <span className="text-xs text-[#c2a97a] opacity-0 group-hover:opacity-100 transition-opacity font-sans">
+                        Enquire &rarr;
+                      </span>
+                    </li>
+                  );
+                })}
               </ul>
 
-              {/* BUTTON */}
+              {/* CALL NOW BUTTON */}
               <div className="text-center mt-6">
-                <button
-                  onClick={() => openEnquiry(title)}
-                  className="forum-regular px-8 py-4 text-lg md:text-xl rounded-3xl transition-all duration-300
+                <a
+                  href="tel:+918921799597"
+                  className="forum-regular inline-flex items-center gap-2.5 px-8 py-4 text-lg md:text-xl rounded-3xl transition-all duration-300
                   bg-gradient-to-r from-[#d4af37] via-[#f5d76e] to-[#c2a97a]
                   border border-[#d4af37]
                   outline outline-1 outline-[#d4af37]/30 outline-offset-4
                   text-[#0f2218] font-semibold
                   hover:scale-105 hover:shadow-[0_8px_20px_rgba(212,175,55,0.25)]"
                 >
-                  Appointment
-                </button>
+                  <Phone className="w-5 h-5" />
+                  <span>Call for Appointment</span>
+                </a>
               </div>
 
             </div>
@@ -147,58 +243,11 @@ const Section = ({
 };
 
 function ServicesPackages() {
-  const [services, setServices] = useState<any[]>([]);
-  const [groupedServices, setGroupedServices] = useState<any>({});
   const [selectedBranch, setSelectedBranch] = useState("KATTANAM");
   const [showEnquiry, setShowEnquiry] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
 
-
-
-  useEffect(() => {
-    const fetchServices = async () => {
-      try {
-        const res = await API.get("/api/services"); // 👈 public API
-        const data = res.data.services || [];
-
-        setServices(data);
-
-        // 🔥 Group by branch + category
-        const grouped: any = {};
-
-        data.forEach((s: any) => {
-          const branch = s.branch;
-          const categoryKey = categoryMap[s.category]; // ✅ now works
-
-          if (!grouped[branch]) {
-            grouped[branch] = {
-              combo: [],
-              spa: [],
-              special: [],
-              massage: [],
-            };
-          }
-
-          if (categoryKey) {
-            grouped[branch][categoryKey].push(s);
-          }
-        });
-
-        setGroupedServices(grouped);
-
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    fetchServices();
-  }, []);
-
-
-  // const data = servicesData[selectedBranch];
-
-  const data = groupedServices[selectedBranch];
-
+  const data = servicesData[selectedBranch];
 
   useEffect(() => {
     const branch = searchParams.get("branch");
@@ -218,7 +267,7 @@ function ServicesPackages() {
           <div className="absolute bottom-0 left-0 w-full">
 
             <img
-              src="/images/bba3b14fb34e0afa43cfe531b8ab86.png"
+              src="/images/bba3b14fb34e0afa43cfe531b8ab86.webp"
               alt="border"
               className="absolute left-0 bottom-0 w-60 opacity-60 pointer-events-none"
             />
@@ -292,8 +341,9 @@ ${selectedBranch === branch
               {/* VERY CLOSE UNDERLINE */}
               <div className="flex justify-center -mt-4 md:-mt-16">
                 <img
-                  src="/images/underline1.png"
+                  src="/images/underline1.webp"
                   alt="underline"
+                  loading="lazy"
                   className="w-40 md:w-56 object-contain"
                 />
               </div>
@@ -377,7 +427,7 @@ ${selectedBranch === branch
             <>
               <Section
                 title="Combo Packs"
-                image="/images/8CA5csIHslwV3sQ_pzp-VJomeg6dSWfeoxJbRqYh3f6.jpg"
+                image="/images/8CA5csIHslwV3sQ_pzp-VJomeg6dSWfeoxJbRqYh3f6.webp"
                 items={data.combo}
                 branch={selectedBranch}
                 openEnquiry={(service: string) =>
@@ -387,7 +437,7 @@ ${selectedBranch === branch
 
               <Section
                 title="Spa Massage"
-                image="/images/DFp7i7MyG3HOnmFWul7p.jpg"
+                image="/images/DFp7i7MyG3HOnmFWul7p.webp"
                 reverse
                 items={data.spa}
                 branch={selectedBranch}
@@ -398,7 +448,7 @@ ${selectedBranch === branch
 
               <Section
                 title="Special Treatments"
-                image="/images/VA9zLVQfBMMJty.jpg"
+                image="/images/VA9zLVQfBMMJty.webp"
                 items={data.special}
                 branch={selectedBranch}
                 openEnquiry={(service: string) =>
@@ -408,7 +458,7 @@ ${selectedBranch === branch
 
               <Section
                 title="Ayurvedic Massage"
-                image="/images/Zcu9vir12SYeuV3V7vuPCWLb3E9DG-BpT.jpg"
+                image="/images/Zcu9vir12SYeuV3V7vuPCWLb3E9DG-BpT.webp"
                 reverse
                 items={data.massage}
                 branch={selectedBranch}
