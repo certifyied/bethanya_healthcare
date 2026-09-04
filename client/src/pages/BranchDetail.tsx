@@ -42,6 +42,94 @@ const BranchDetail = () => {
     whatsappMessage
   )}`;
 
+  // 🌿 FOR VARKALA BRANCH: Pure "Coming Soon" page only, nothing more
+  if (isVarkala) {
+    return (
+      <Layout>
+        <div className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-[#0a1a12] px-6 py-24">
+          {/* Background image with layered dark overlay */}
+          <div className="absolute inset-0 z-0">
+            <img
+              src={branch.image}
+              alt={branch.displayName}
+              fetchPriority="high"
+              className="w-full h-full object-cover object-center filter brightness-[0.35] scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0a1a12] via-[#0a1a12]/70 to-black/60" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0a1a12]/80 via-transparent to-[#0a1a12]/80" />
+          </div>
+
+          {/* Golden decorative frame */}
+          <div className="absolute inset-6 md:inset-12 border border-[#c2a97a]/30 rounded-3xl pointer-events-none z-10" />
+
+          {/* Ambient Glow */}
+          <div className="absolute w-96 h-96 bg-[#d4af37]/10 rounded-full blur-3xl pointer-events-none" />
+
+          {/* Center Coming Soon Card */}
+          <div className="relative z-20 max-w-3xl mx-auto text-center px-4">
+            {/* Breadcrumb */}
+            <div className="flex items-center justify-center gap-2 text-xs md:text-sm text-[#c2a97a] mb-8 tracking-widest uppercase">
+              <Link to="/" className="hover:underline">Home</Link>
+              <span>/</span>
+              <span className="text-gray-400">Branches</span>
+              <span>/</span>
+              <span className="text-white font-semibold">Varkala</span>
+            </div>
+
+            {/* Coming Soon Badge */}
+            <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full mb-8 text-xs sm:text-sm tracking-[0.25em] uppercase font-bold border shadow-xl backdrop-blur-md bg-gradient-to-r from-[#d4af37]/25 to-[#f5d76e]/15 border-[#d4af37] text-[#f5d76e]">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#f5d76e] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#f5d76e]"></span>
+              </span>
+              <span>Coming Soon</span>
+            </div>
+
+            {/* Title */}
+            <h1 className="forum-regular text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-white mb-6 drop-shadow-[0_8px_15px_rgba(0,0,0,0.8)]">
+              {branch.displayName}
+            </h1>
+
+            {/* Tagline */}
+            <p className="forum-regular text-xl sm:text-2xl md:text-3xl text-[#f5d76e] max-w-2xl mx-auto leading-relaxed mb-6 drop-shadow-[0_4px_6px_rgba(0,0,0,0.7)]">
+              &ldquo;{branch.tagline}&rdquo;
+            </p>
+
+            <p className="font-body text-gray-300 text-base sm:text-lg max-w-xl mx-auto leading-relaxed mb-10 font-light">
+              Our upcoming oceanfront healing sanctuary in Varkala is currently being prepared. We look forward to welcoming you soon with authentic coastal Ayurvedic wellness therapies.
+            </p>
+
+            {/* Action Buttons */}
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <a
+                href={branchWhatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="forum-regular inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full text-base sm:text-lg font-semibold transition-all duration-300
+                  bg-gradient-to-r from-[#d4af37] via-[#f5d76e] to-[#c2a97a]
+                  text-[#0f2218] shadow-[0_10px_25px_rgba(212,175,55,0.3)]
+                  hover:scale-105 hover:shadow-[0_15px_30px_rgba(212,175,55,0.45)]"
+              >
+                <FaWhatsapp className="w-5 h-5 text-emerald-900" />
+                <span>WhatsApp Us</span>
+              </a>
+
+              <Link
+                to="/branches/kattanam"
+                className="forum-regular inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-base sm:text-lg font-semibold
+                  bg-[#0f2218]/80 text-[#f5d76e] border border-[#c2a97a]/50 backdrop-blur-sm
+                  hover:bg-[#1f3d2b] transition-all duration-300 shadow-md hover:scale-105"
+              >
+                <span>Explore Open Branches</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </Layout>
+    );
+  }
+
   return (
     <Layout>
       <div className="bg-[#fcfaf7] min-h-screen">
