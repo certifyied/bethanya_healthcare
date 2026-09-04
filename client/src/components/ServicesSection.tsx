@@ -19,6 +19,9 @@ const servicesData = [
       "Rejuvenation Therapy",
       "Body Spa (Massage & Scrub)",
       "Massage + Scrub + Pack",
+      "Deep Relaxation Spa",
+      "Herbal Facial & Scrub",
+      "Full Body Glow Therapy",
     ],
   },
   {
@@ -50,82 +53,84 @@ const servicesData = [
 
 export default function ServicesSection() {
   const handleServiceClick = (item: string) => {
-    // If no branch, put a full stop before at / after service name
     const message = `Hello, I would like to know more about ${item}.`;
     const url = `https://wa.me/918921799597?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
   };
 
   return (
-    <section className="py-24 px-6 relative overflow-hidden">
-      {/* 🌿 Background image with opacity */}
-      <div className="absolute inset-0 bg-center bg-white bg-no-repeat bg-cover pointer-events-none"></div>
+    <section className="py-12 md:py-16 px-4 sm:px-6 relative overflow-hidden bg-[#faf8f5]">
+      {/* 🌿 Compact Section Header */}
+      <div className="text-center max-w-2xl mx-auto mb-8 md:mb-10 relative z-10">
+        <p className="text-xs sm:text-sm tracking-[0.25em] text-[#1f3d2b] uppercase font-bold">
+          Our Offerings
+        </p>
+        <h2 className="forum-regular text-3xl sm:text-4xl md:text-5xl font-serif text-[#0f2218] mt-1.5 mb-2">
+          Services & Packages
+        </h2>
+        <p className="forum-regular text-gray-600 text-sm sm:text-base">
+          Click any treatment to chat directly with our consultants on WhatsApp
+        </p>
+      </div>
 
-      {/* 🌿 Heading */}
-      <div className="relative mb-16 min-h-[160px] flex items-center justify-center">
-        <div className="text-center relative z-10">
-          <p className="text-sm tracking-[0.3em] text-[#0f2218] uppercase font-bold">
-            Our Offerings
-          </p>
-          <h2 className="forum-regular text-5xl md:text-7xl font-serif text-[#0f2218] mt-3">
-            Services & Packages
-          </h2>
-          <p className="forum-regular text-gray-600 text-base md:text-xl mt-3">
-            Click any treatment to chat directly with our consultants on WhatsApp
-          </p>
+      {/* 🌿 Space-Effective Cohesive Luxury Card */}
+      <div className="relative z-10 max-w-7xl mx-auto">
+        <div className="bg-[#0f2218] rounded-3xl p-5 sm:p-7 md:p-8 border border-[#c2a97a]/30 shadow-2xl">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-0 lg:divide-x lg:divide-white/10">
+            {servicesData.map((service, index) => (
+              <motion.div
+                key={index}
+                className={`flex flex-col justify-between ${
+                  index === 0
+                    ? "lg:pr-5"
+                    : index === servicesData.length - 1
+                    ? "lg:pl-5"
+                    : "lg:px-5"
+                }`}
+              >
+                <div>
+                  <h3 className="forum-regular text-xl md:text-2xl font-semibold mb-3 text-[#d4af37]">
+                    {service.title}
+                  </h3>
+
+                  <ul className="forum-regular space-y-1.5 text-sm md:text-[15px] text-gray-200">
+                    {service.items.map((item, i) => (
+                      <li
+                        key={i}
+                        onClick={() => handleServiceClick(item)}
+                        className="group/item flex items-center justify-between gap-1.5 cursor-pointer hover:text-[#f5d76e] transition-colors py-1 px-2 -mx-2 rounded-lg hover:bg-white/10"
+                      >
+                        <div className="flex items-start gap-1.5 leading-snug">
+                          <span className="text-[#d4af37]">•</span>
+                          <span>{item}</span>
+                        </div>
+                        <span className="text-[11px] text-[#f5d76e] opacity-0 group-hover/item:opacity-100 transition-opacity font-sans shrink-0">
+                          Enquire &rarr;
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="mt-4 pt-3 border-t border-[#c2a97a]/20">
+                  <button
+                    onClick={() => handleServiceClick(service.title)}
+                    className="w-full py-2 px-3 rounded-full text-xs uppercase tracking-wider font-semibold border border-[#c2a97a]/50 text-[#f5d76e] hover:bg-[#c2a97a] hover:text-[#0f2218] transition-all duration-200 shadow-sm"
+                  >
+                    Enquire {service.title}
+                  </button>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* 🌿 Grid with single golden outline */}
-      <div className="relative z-10 max-w-7xl mx-auto p-1">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 bg-[#0f2218] backdrop-blur-md rounded-2xl p-6 relative">
-          {servicesData.map((service, index) => (
-            <motion.div
-              key={index}
-              className="relative group rounded-2xl p-6 overflow-hidden flex flex-col justify-between"
-            >
-              <div>
-                <h3 className="forum-regular text-2xl md:text-3xl font-semibold mb-4 text-[#d4af37] relative z-10">
-                  {service.title}
-                </h3>
-
-                <ul className="forum-regular space-y-3 text-base md:text-lg text-gray-200 relative z-10">
-                  {service.items.map((item, i) => (
-                    <li
-                      key={i}
-                      onClick={() => handleServiceClick(item)}
-                      className="group/item flex items-center justify-between gap-2 cursor-pointer hover:text-[#f5d76e] transition-colors p-1 -mx-1 rounded-lg hover:bg-white/5"
-                    >
-                      <div className="flex items-start gap-2">
-                        <span className="text-[#d4af37]">•</span>
-                        <span>{item}</span>
-                      </div>
-                      <span className="text-xs text-[#c2a97a] opacity-0 group-hover/item:opacity-100 transition-opacity font-sans">
-                        Enquire &rarr;
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="mt-6 pt-4 border-t border-[#c2a97a]/20">
-                <button
-                  onClick={() => handleServiceClick(service.title)}
-                  className="w-full py-2.5 px-3 rounded-full text-xs uppercase tracking-wider font-semibold border border-[#c2a97a]/50 text-[#f5d76e] hover:bg-[#c2a97a] hover:text-[#0f2218] transition-all"
-                >
-                  Enquire {service.title}
-                </button>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-
-      {/* 🌿 CTA */}
-      <div className="text-center mt-16 relative z-10">
+      {/* 🌿 Compact Bottom CTA */}
+      <div className="text-center mt-8 md:mt-10 relative z-10">
         <Link
           to="/services"
-          className="inline-block forum-regular relative px-8 md:px-10 py-3 md:py-4 rounded-full bg-[#1f3d2b] text-white font-semibold text-lg md:text-xl hover:bg-[#163020] transition shadow-md hover:shadow-lg hover:scale-105 border border-[#c2a97a]/40"
+          className="inline-block forum-regular px-7 py-2.5 md:py-3 rounded-full bg-[#1f3d2b] text-[#f5d76e] font-semibold text-base md:text-lg hover:bg-[#163020] transition-all shadow-md hover:scale-105 border border-[#c2a97a]/40"
         >
           Explore All Services & Pricing
         </Link>
