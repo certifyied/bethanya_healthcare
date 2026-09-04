@@ -147,62 +147,53 @@ const Navbar = () => {
               />
             </button>
 
-            {/* Dropdown Card */}
+            {/* Standard Dropdown Menu (matching mobile view style) */}
             {dropdownOpen && (
-              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-80 xl:w-96 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
-                <div className="bg-[#0f2218] text-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.35)] border border-[#c2a97a]/40 overflow-hidden backdrop-blur-xl">
-                  {/* Dropdown Header */}
-                  <div className="px-5 py-3.5 bg-[#132b1f] border-b border-[#c2a97a]/20 flex items-center justify-between">
-                    <span className="text-[11px] uppercase tracking-[0.25em] text-[#f5d76e] font-bold">
-                      Our Wellness Branches
-                    </span>
-                    <span className="text-[11px] text-[#c2a97a]/80">Kerala</span>
-                  </div>
+              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-72 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
+                <div className="bg-white text-gray-800 rounded-xl shadow-[0_12px_35px_rgba(0,0,0,0.12)] border border-gray-200 overflow-hidden p-1.5">
+                  {branchesNav.map((b) => (
+                    <Link
+                      key={b.id}
+                      to={b.path}
+                      onClick={() => setDropdownOpen(false)}
+                      className={`flex items-center justify-between p-2.5 rounded-lg text-sm transition-colors ${
+                        location.pathname === b.path
+                          ? "bg-[#1f3d2b] text-white font-medium shadow-sm"
+                          : "text-gray-700 hover:bg-[#1f3d2b]/5 hover:text-[#1f3d2b]"
+                      }`}
+                    >
+                      <div className="flex items-center gap-2.5">
+                        <MapPin
+                          className={`w-4 h-4 ${
+                            location.pathname === b.path
+                              ? "text-[#f5d76e]"
+                              : "text-[#c2a97a]"
+                          }`}
+                        />
+                        <span className="font-medium">{b.name}</span>
+                      </div>
 
-                  {/* Branch Items List */}
-                  <div className="p-2 space-y-1">
-                    {branchesNav.map((b) => (
-                      <Link
-                        key={b.id}
-                        to={b.path}
-                        onClick={() => setDropdownOpen(false)}
-                        className="group flex items-start justify-between gap-3 p-3 rounded-xl hover:bg-[#1f3d2b] transition-all duration-200"
-                      >
-                        <div className="flex items-start gap-3">
-                          <div className="p-2 rounded-lg bg-[#254634] text-[#f5d76e] group-hover:scale-110 transition-transform">
-                            <MapPin className="w-4 h-4" />
-                          </div>
-                          <div>
-                            <div className="font-serif text-sm font-semibold text-white group-hover:text-[#f5d76e] transition-colors flex items-center gap-2">
-                              <span>{b.name}</span>
-                            </div>
-                            <p className="text-xs text-gray-300 leading-snug mt-0.5 font-light">
-                              {b.type}
-                            </p>
-                          </div>
-                        </div>
+                      {b.badge && (
+                        <span
+                          className={`text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full ${
+                            location.pathname === b.path
+                              ? "bg-[#f5d76e] text-[#0f2218]"
+                              : "bg-amber-100 text-amber-900 border border-amber-300"
+                          }`}
+                        >
+                          {b.badge}
+                        </span>
+                      )}
+                    </Link>
+                  ))}
 
-                        {/* Opening Soon Tag on Varkala */}
-                        {b.badge && (
-                          <span className="relative flex-shrink-0 inline-flex items-center gap-1 text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-gradient-to-r from-[#d4af37] to-[#f5d76e] text-[#0f2218] shadow-sm animate-pulse">
-                            <Sparkles className="w-2.5 h-2.5" />
-                            <span>{b.badge}</span>
-                          </span>
-                        )}
-                      </Link>
-                    ))}
-                  </div>
-
-                  {/* All Services & Packages Link */}
-                  <div className="p-2 bg-[#09150f] border-t border-[#c2a97a]/20">
+                  <div className="mt-1 pt-1 border-t border-gray-100">
                     <Link
                       to="/services"
                       onClick={() => setDropdownOpen(false)}
-                      className="flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold text-[#f5d76e] hover:bg-[#1a3827] transition-all"
+                      className="flex items-center justify-between p-2.5 rounded-lg text-xs font-bold text-[#1f3d2b] hover:bg-[#1f3d2b]/5 uppercase tracking-wider transition-colors"
                     >
-                      <span className="uppercase tracking-wider">
-                        Explore All Services & Packages
-                      </span>
+                      <span>All Services & Packages</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
                   </div>
